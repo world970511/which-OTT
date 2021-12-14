@@ -1,4 +1,6 @@
-export const postSignin = async (req, res) => {
+import UserModel from '../models/User.js';
+
+export const postSignup = async (req, res) => {
   const { user_id, pwd, name, email } = req.body;
   const user = await UserModel.create({
     user_id,
@@ -9,4 +11,4 @@ export const postSignin = async (req, res) => {
   res.status(200).json({ user });
 };
 
-export const getSignin = async (req, res) => {};
+export const getSignup = async (req, res) => {};

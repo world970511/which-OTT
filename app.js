@@ -1,15 +1,12 @@
 import express from 'express';
 import connectDB from './db/connectDB.js';
-import UserModel from './models/User.js';
 import dotenv from 'dotenv';
+import siginup from './routes/signup.js';
 
 dotenv.config();
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'));
-app.post('/signup',signup);
-
-app.post('/login',)
+app.use('/signup', siginup);
 
 const start = async () => {
   try {
