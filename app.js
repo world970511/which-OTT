@@ -9,7 +9,7 @@ const app = express();
 const __dirname = path.resolve();
 
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => res.render('./layout/nav.ejs'));
+app.get('/', (req, res) => res.render('./home'));
 
 app.use(express.static(__dirname + '/static'));
 
