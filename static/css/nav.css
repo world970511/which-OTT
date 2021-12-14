@@ -1,0 +1,36 @@
+@import url(//font.elice.io/EliceDigitalBaeum.css);
+
+html, body {
+  margin: 0;
+  font-family: "Elice Digital Baeum", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #E5E5E5;
+}
+
+nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav div i {
+  height: 24px;
+}
+
+nav div span {
+  font-size: 10px;
+}
