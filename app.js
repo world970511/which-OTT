@@ -7,15 +7,9 @@ dotenv.config();
 const app = express();
 
 app.get('/', (req, res) => res.send('Hello World!'));
-app.post('/signup', async (req, res) => {
-  const { user_id, pwd, name, email } = req.body;
-  await UserModel.create({
-    user_id,
-    pwd,
-    name,
-    email,
-  });
-});
+app.post('/signup',signup);
+
+app.post('/login',)
 
 const start = async () => {
   try {
