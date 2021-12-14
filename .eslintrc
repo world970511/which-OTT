@@ -10,5 +10,8 @@
   },
   "rules": {
     "linebreak-style": ["error", "windows"]
+  },
+  "as-needed": {
+    "requireForBlockBody": true
   }
 }
