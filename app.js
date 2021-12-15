@@ -9,6 +9,7 @@ import path from 'path';
 dotenv.config();
 
 const __dirname = path.resolve();
+const app = express();
 
 app.set('view engine', 'ejs');
 
@@ -18,14 +19,12 @@ app.use(express.static(__dirname + '/static'));
 /* main */
 app.get('/', (req, res) => res.render('./home'));
 
-const app = express();
-
 app.use(express.json());
 app.use('/signup', siginup);
 app.use('/post', post);
 
 const start = async () => {
-  try {    
+  try {
     /* DB */
     await connectDB(process.env.MONGODB);
 
