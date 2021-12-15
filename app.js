@@ -12,19 +12,15 @@ app.set('view engine', 'ejs');
 
 /* DB */
 
-
 /* middle ware */
 app.use(express.static(__dirname + '/static'));
 
 /* main */
-app.get('/', (req, res) => res.render('./home'));
-
+app.get('/', (req, res) => res.render('./account/login'));
 
 /* router */
-
 
 /* server */
 app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`),
 );
-
