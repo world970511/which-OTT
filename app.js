@@ -26,7 +26,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/static'));
 
-
 app.use(passport.initialize());
 app.use(getUserFromJwt);
 
@@ -40,7 +39,7 @@ app.use('/auth', authRouter);
 const start = async () => {
   try {
     /* DB */
-    await connectDB(process.env.MONGODB);
+    // await connectDB(process.env.MONGODB);
     app.listen(3000, () => {
       console.log(`Example app listening on port ${3000}!`);
     });
