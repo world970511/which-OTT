@@ -10,7 +10,9 @@ const config = {
 
 const local = new LocalStrategy(config, async (user_id, password, done) => {
   try {
+    console.log(user_id, password);
     const user = await User.findOne({ user_id });
+    console.log(user);
     if (!user) {
       throw new Error('회원을 찾을 수 없습니다.');
     }

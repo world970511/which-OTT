@@ -36,7 +36,7 @@ app.use('/auth', authRouter);
 /* server */
 const start = async () => {
   try {
-    await connectDB(process.env.connectDB);
+    await connectDB(process.env.MONGODB);
     app.listen(3000, () => {
       console.log(`Example app listening on port ${3000}!`);
     });
