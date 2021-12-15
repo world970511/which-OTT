@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h3>로그인</h3>
-    <form action="/auth" method="post">
-      <table>
-        <tr>
-          <td>아이디 :</td>
-          <td><input type="text" name="user_id" /></td>
-        </tr>
-        <tr>
-          <td>비번 :</td>
-          <td><input type="password" name="password" /></td>
-        </tr>
-        <tr>
-          <td><input type="submit" value="로그인" /></td>
-        </tr>
-      </table>
+
+<head>
+  <%- include("../layout/head") %>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/login.css">
+    <title>Login</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      코다마켓
+    </div>
+
+    <form class="login-form">
+      <input type="text" placeholder="아이디" class="loginbox" required><br>
+      <input type="password" placeholder="비밀번호" class="loginbox" required>
     </form>
-  </body>
+
+    <div class="login-menu">
+      <div class="keep-login">
+        <input type="checkbox" name="xxx" value="yyy" checked>
+        <a href="#">로그인 유지</a>
+      </div>
+      <a href="#">아이디/비밀번호 찾기</a>
+    </div>
+
+    <button class="login-btn">로그인</button>
+  </div>
+</body>
+
 </html>
