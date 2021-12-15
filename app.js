@@ -1,7 +1,6 @@
 /* import */
 import express from 'express';
 import connectDB from './db/connectDB.js';
-import dotenv from 'dotenv';
 import signupRouter from './routes/signup.js';
 import authRouter from './routes/auth.js';
 import passport from 'passport';
@@ -29,14 +28,12 @@ app.get('/', (req, res) => res.render('./home'));
 app.use('/signup', signupRouter);
 app.use('/auth', authRouter);
 
-
-
 /* server */
 const start = async () => {
   try {
-    await connectDB(process.env.DB);
-    app.listen(process.env.port, () => {
-      console.log(`Example app listening on port ${process.env.port}!`);
+    // await connectDB(process.env.DB);
+    app.listen(3000, () => {
+      console.log(`Example app listening on port ${3000}!`);
     });
   } catch (error) {
     console.log(error);
