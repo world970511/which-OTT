@@ -16,9 +16,10 @@ passportInit();
 /* setting */
 dotenv.config();
 
+const __dirname = path.resolve();
+
 const app = express();
 
-const __dirname = path.resolve();
 app.set('view engine', 'ejs');
 
 app.use(express.json());
@@ -31,6 +32,8 @@ app.use(getUserFromJwt);
 
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
+app.get('/signup', (req, res) => res.render('./account/signup'));
+
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
