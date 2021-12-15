@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/static'));
 
+
 app.use(passport.initialize());
 app.use(getUserFromJwt);
 
