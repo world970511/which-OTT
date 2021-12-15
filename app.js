@@ -4,6 +4,7 @@ import connectDB from './db/connectDB.js';
 import cookieParser from 'cookie-parser';
 import signupRouter from './routes/signup.js';
 import authRouter from './routes/auth.js';
+import postRouter from './routes/post.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -31,11 +32,13 @@ app.use(getUserFromJwt);
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
 app.use('/signup', signupRouter);
+app.use('/post', postRouter);
 app.use('/auth', authRouter);
 
 /* server */
 const start = async () => {
   try {
+    /* DB */
     await connectDB(process.env.MONGODB);
     app.listen(3000, () => {
       console.log(`Example app listening on port ${3000}!`);
