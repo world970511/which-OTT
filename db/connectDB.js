@@ -2,8 +2,9 @@ import mongoose from 'mongoose';
 
 const connectDB = url => {
   mongoose.connect(url, {});
-
-  console.log('DB connected');
+  mongoose.connection.on('connected', () => {
+    console.log('connected to MongoDB');
+  });
 };
 
 export default connectDB;
