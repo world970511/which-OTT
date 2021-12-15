@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/static'));
 /* main */
 app.get('/', (req, res) => res.render('./home'));
 app.get('/post', (req, res) => res.render('./product/post'));
+app.get('/signup', (req, res) => res.render('./account/signup'));
 
 /* router */
 
