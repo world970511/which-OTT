@@ -4,13 +4,13 @@ import hashPassword from '../../utils/hash-password.js';
 const LocalStrategy = passportLocal.Strategy;
 
 const config = {
-  usernameField: 'username',
+  usernameField: 'user_id',
   passwordField: 'password',
 };
 
-const local = new LocalStrategy(config, async (username, password, done) => {
+const local = new LocalStrategy(config, async (user_id, password, done) => {
   try {
-    const user = await User.findOne({ user_id: username });
+    const user = await User.findOne({ user_id });
     if (!user) {
       throw new Error('회원을 찾을 수 없습니다.');
     }
@@ -19,7 +19,7 @@ const local = new LocalStrategy(config, async (username, password, done) => {
     }
 
     done(null, {
-      user_id: username,
+      user_id,
       name: user.name,
     });
   } catch (err) {

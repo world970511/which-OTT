@@ -20,6 +20,8 @@ const app = express();
 const __dirname = path.resolve();
 app.set('view engine', 'ejs');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/static'));
 
@@ -34,7 +36,7 @@ app.use('/auth', authRouter);
 /* server */
 const start = async () => {
   try {
-    await connectDB('mongodb://localhost:27017/User');
+    await connectDB(process.env.connectDB);
     app.listen(3000, () => {
       console.log(`Example app listening on port ${3000}!`);
     });
