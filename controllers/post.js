@@ -52,6 +52,8 @@ export const postEdit = async (req, res) => {
 
   const post = await postModel.findOneAndUpdate({ _id: postId }, req.body, {
     new: true,
+    upsert: true,
+    timestamps: { createdAt: false, updatedAt: true },
   });
 
   res.status(200).json({ post });
