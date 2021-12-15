@@ -3,7 +3,7 @@ header {
   justify-content: space-between;
   width: 100%;
   height: 70px;
-  padding: 0 12px;
+  padding: 0 16px 0 12px;
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -11,19 +11,19 @@ header .logo-img {
   height: 100%;
 }
 
-.btn-list {
+header .btn-list {
   display: flex;
   align-items: center;
 }
 
-.btn-list li {
+header .btn-list li {
   font-size: 20px;
   margin-left: 12px;
 }
 
-.btn-list .alarm-btn .alarm-remain {
+header .btn-list .alarm-btn .alarm-remain {
   position: absolute;
-  right: 4px;
+  right: 8px;
   width: 8px;
   height: 8px;
   border-radius: 30px;
