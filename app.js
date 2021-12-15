@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import signupRouter from './routes/signup.js';
 import authRouter from './routes/auth.js';
 import postRouter from './routes/post.js';
+import searchRouter from './routes/search.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -37,7 +38,7 @@ app.get('/signup', (req, res) => res.render('./account/signup'));
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
-
+app.use('/search', searchRouter);
 /* server */
 const start = async () => {
   try {

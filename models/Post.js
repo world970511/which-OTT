@@ -9,10 +9,15 @@ const PostSchema = new Schema({
   content: { type: String, required: true },
   category: { type: Array, required: true },
   price: { type: Number, required: true },
-  like_num: { type: [Number] },
+  like_num: { type: Number },
   isSoldOut: { type: Boolean, default: false },
   createAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
 });
 
-export default model('PostSchema', PostSchema);
+PostSchema.pre('save', function (next) {
+  this.updated = Date.now();
+  return next();
+});
+
+export default model('Post', PostSchema);

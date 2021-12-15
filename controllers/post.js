@@ -1,18 +1,20 @@
 import postModel from '../models/Post.js';
+import userModel from '../models/User.js';
 
 export const postUpload = async (req, res) => {
   const { userId } = req.params;
   const { title, content, author, location, category, price } = req.body;
-  console.log(req.body);
+
   const post = await postModel.create({
+    author: userId,
     title,
     content,
-    author,
     location,
     category,
     price,
   });
 
+  // const post2 = await postModel.findOne({ title }).populate('author').exec();
   res.status(200).json({ post });
 };
 
