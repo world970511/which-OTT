@@ -10,7 +10,6 @@ const config = {
 
 const local = new LocalStrategy(config, async (user_id, password, done) => {
   try {
-    console.log(user_id, password);
     const user = await User.findOne({ user_id });
 
     if (!user) {
