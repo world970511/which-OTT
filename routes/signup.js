@@ -3,6 +3,6 @@ import { getSignup, postSignup } from '../controllers/signup.js';
 
 const router = express.Router();
 
-router.route('/').get(getSignup).post(postSignup);
+router.post('/', postSignup);
 
 export default router;

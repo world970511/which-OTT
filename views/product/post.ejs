@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Post Page</title>
+  <link rel="stylesheet" href="">
+  <head>
+    <%- include("../layout/head") %>
+
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+    crossorigin="anonymous"
+    />
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/nav_logo.css" />
+  <link rel="stylesheet" href="css/product_post.css" />
+  
+</head>
+<body>
+  <form action="#" method="POST">
+    <%= console.log(1+1) %>
+
+    <div class="post_nav">
+      <ul class="post_menu">
+        <li><i class="fas fa-times"></i></li>
+        <li><h4>중고거래 글쓰기</h4></li>
+        <li><input type="submit" value="완료"></li>
+      </ul>
+    </div>
+    <hr style="border: solid 1px #E5E5E5">
+    
+  <div class="post_main">
+      <div class="post_img_line">
+        <button type="button" class="post_img_btn">
+            <div class="post_img">
+              <i class="fas fa-camera post_img_icon"></i>
+                <span class="img_count_text">0/10</span>
+            </div>
+          </button>
+        </div>
+        <hr style="border: solid 1px #E5E5E5;">    
+
+      <div class="post_title">
+         <input type="text" name="post_title" placeholder="글 제목">
+        </div>
+        <hr style="border: solid 1px #E5E5E5;">
+
+      <div class="post_category">
+        <a class="category_btn" href="">카테고리 선택
+        <span class='right_icon'><i class="fas fa-chevron-right"></i></span>
+        </a>
+     </div>
+     <hr style="border: solid 1px #E5E5E5;">
+
+    <div class='post_price'>
+      <input type="text" name="post_price" placeholder="₩ 가격 (선택사항)" >
+      <div class="post_option">
+        <button  class="price_btn" type="button">
+          <i class="fas fa-check-circle"></i>
+          <span>가격 제안받기</span>
+        </button>
+      </div>
+    </div>
+    <hr style="border: solid 1px #E5E5E5;">
+
+    <div class="post_content">
+      <textarea class="area_text" name="post_area" id="" cols="50" rows="10" placeholder="안녕하세요 코다마켓 입니다. 상품 게시글의 내용을 작성해주세요. (가품 및 판매금지 품목은 게시가 제한될 수 있어요.)"></textarea>
+    </div>
+    <hr style="border: solid 1px #E5E5E5;">
+
+  </div>
+</form>
+
+  <%- include("../layout/nav_bottom") %>
+</body>
+</html>
