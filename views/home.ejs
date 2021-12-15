@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/home.css" />
+    <%- include("./layout/head") %>
+
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+    crossorigin="anonymous"
+    />
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/nav_logo.css" />
+
     <title>Home</title>
   </head>
 
   <body>
-    home
+    <%- include("./layout/nav_top") %>
+    <br>
+    <div class="container">
+        <div>
+          상품1
+        </div>
+        <div>
+          상품2
+        </div>
+        <div>
+          상품3
+        </div>
+        <div>
+          상품4
+        </div>
+        <div>
+          상품5
+        </div>
+        <div>
+          상품6
+        </div>
+    </div>
+    <%- include("./layout/nav_bottom") %>
   </body>
 </html>
