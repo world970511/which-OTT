@@ -1,17 +1,16 @@
 /* import */
 import express from 'express';
+import connectDB from './db/connectDB.js';
 import dotenv from 'dotenv';
+import siginup from './routes/signup.js';
+import post from './routes/post.js';
 import path from 'path';
 
-/* setting */
 dotenv.config();
 
-const app = express();
 const __dirname = path.resolve();
+
 app.set('view engine', 'ejs');
-
-/* DB */
-
 
 /* middle ware */
 app.use(express.static(__dirname + '/static'));
@@ -19,12 +18,23 @@ app.use(express.static(__dirname + '/static'));
 /* main */
 app.get('/', (req, res) => res.render('./home'));
 
+const app = express();
 
-/* router */
+app.use(express.json());
+app.use('/signup', siginup);
+app.use('/post', post);
 
+const start = async () => {
+  try {    
+    /* DB */
+    await connectDB(process.env.MONGODB);
 
-/* server */
-app.listen(process.env.PORT, () =>
-  console.log(`Example app listening on port ${process.env.PORT}!`),
-);
+    app.listen(3000, () => {
+      console.log(`Example app listening on port ${3000}!`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+start();
