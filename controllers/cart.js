@@ -3,12 +3,13 @@ import User from '../models/User.js';
 
 export const addItemToCart = async (req, res) => {
   const postId = Number(req.params.postId);
+  console.log(postId);
   const post = await Post.findOne({ post_id: postId });
   const user_id = req.user.user_id;
   const user = await User.findOne({ user_id }).populate('cart');
   const filterdCart = user.cart.filter(post => post.post_id !== postId);
   const isClick = cartValidate(filterdCart, user.cart);
-
+  console.log(user, post);
   if (cartValidate(filterdCart, user.cart)) {
     user.cart.push(post);
     post.like_num += 1;

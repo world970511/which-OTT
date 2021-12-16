@@ -31,6 +31,7 @@ app.use(passport.initialize());
 app.use(getUserFromJwt);
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
+app.get('/test', (req, res) => res.render('./account/test'));
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
