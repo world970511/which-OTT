@@ -34,16 +34,22 @@ app.use(express.static(__dirname + '/static'));
 app.use(passport.initialize());
 app.use(getUserFromJwt);
 
-app.get('/', (req, res) => res.render('./home'));
-app.get('/login', (req, res) => res.render('./account/login'));
-app.get('/signup', (req, res) => res.render('./account/signup'));
-app.use('/', homeRouter);
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/search', searchRouter);
 
+app.use('/', homeRouter);
+
+app.get('/', (req, res) => res.render('./home'));
+app.get('/login', (req, res) => res.render('./account/login'));
+app.get('/signup', (req, res) => res.render('./account/signup'));
+app.get('/mypage', (req, res) => res.render('./mypage'));
+app.get('/post', (req, res) => res.render('./product/post'));
+app.get('/detail', (req, res) => res.render('./product/detail'));
+app.get('/chat', (req, res) => res.render('./chat-list'));
+app.get('/category', (req, res) => res.render('./category'));
 
 
 /* server */
@@ -51,8 +57,8 @@ const start = async () => {
   try {
     /* DB */
     await connectDB(process.env.MONGODB);
-    app.listen(3000, () => {
-      console.log(`Example app listening on port ${3000}!`);
+    app.listen(process.env.PORT, () => {
+      console.log(`Example app listening on port ${process.env.PORT}!`);
     });
   } catch (error) {
     console.log(error);
