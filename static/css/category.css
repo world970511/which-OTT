@@ -38,7 +38,6 @@ main .item {
   justify-content: center;
   align-items: center;
   height: 100px;
-  /* border: 1px solid blueviolet; */
 }
 
 main .item span {
