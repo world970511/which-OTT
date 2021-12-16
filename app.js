@@ -33,6 +33,8 @@ app.use(getUserFromJwt);
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
 app.get('/signup', (req, res) => res.render('./account/signup'));
+app.get('/post', (req, res) => res.render('./product/post'));
+app.get('/detail', (req, res) => res.render('./product/detail'));
 
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
@@ -43,8 +45,8 @@ const start = async () => {
   try {
     /* DB */
     await connectDB(process.env.MONGODB);
-    app.listen(3000, () => {
-      console.log(`Example app listening on port ${3000}!`);
+    app.listen(process.env.PORT, () => {
+      console.log(`Example app listening on port ${process.env.PORT}!`);
     });
   } catch (error) {
     console.log(error);
