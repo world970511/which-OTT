@@ -6,11 +6,11 @@ const LocalStrategy = passportLocal.Strategy;
 const config = {
   usernameField: 'user_id',
   passwordField: 'password',
+  locationField: 'location',
 };
 
 const local = new LocalStrategy(config, async (user_id, password, done) => {
   try {
-    console.log(user_id, password);
     const user = await User.findOne({ user_id });
 
     if (!user) {
