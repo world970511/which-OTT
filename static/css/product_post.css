@@ -1,3 +1,4 @@
+
 .post_main {
   margin: 0 15px 0 15px;
 }
@@ -15,7 +16,7 @@
   font-weight: bold;
   border: none;
   background-color: white;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .post_img_line {
@@ -45,13 +46,14 @@
 .post_title {
   margin: 20px 0 20px 0;
   padding: 10px;
-  background-color: white;
+  background-color: var(--body-color);
 }
 
 .post_title > input {
   font-size: 18px;
   border: none;
   outline: none;
+  background-color: var(--body-color);
 }
 
 .post_category {
@@ -81,6 +83,7 @@
   border: none;
   outline: none;
   font-size: 18px;
+  background-color: var(--body-color);
 }
 
 .post_option span {
@@ -104,15 +107,20 @@
   outline: none;
   font-size: 15px;
   height: 360px;
-  width: 590px;
+  width: 100%;
+  background-color: var(--body-color)
+
 }
 
 input::placeholder {
   color: #E5E5E5;
   font-style: bold;
+  width: 100%;
 }
 
 textarea::placeholder {
   color: #E5E5E5;
   font-weight: bold;
+  width: 100%;
 }
+
