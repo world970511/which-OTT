@@ -1,5 +1,9 @@
+main {
+  padding-top: 70px;
+}
+
 main ul {
-  padding: 0 12px;
+  padding: 0 14px;
 }
 
 main ul li a {
@@ -62,4 +66,10 @@ main ul li a .chat-and-like .chat-num span,
 main ul li a .chat-and-like .like-num span {
   margin-left: 4px;
   margin-bottom: 4px;
+}
+
+.post-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 12px;
 }
