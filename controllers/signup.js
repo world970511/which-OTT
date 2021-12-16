@@ -14,5 +14,6 @@ export const postSignup = asyncHandler(async (req, res) => {
 });
 
 export const getSignup = (req, res) => {
-  res.redirect('user/singup');
+  console.log(req.user);
+  res.render('./account/signup');
 };

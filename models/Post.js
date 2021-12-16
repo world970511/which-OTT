@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
+import autoIncrement from 'mongoose-auto-increment';
+autoIncrement.initialize(mongoose.connection);
 
 const { Schema, model } = mongoose;
 
 const PostSchema = new Schema({
-  post_id: { type: Number, required: true },
+  post_id: { type: Number, default: 0 },
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: { type: String, required: true },
   location: { type: Array, required: true },
@@ -14,6 +16,13 @@ const PostSchema = new Schema({
   isSoldOut: { type: Boolean, default: false },
   createAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
+});
+
+PostSchema.plugin(autoIncrement.plugin, {
+  model: 'Post',
+  field: 'post_id',
+  startAt: 1,
+  increment: 1,
 });
 
 export default model('Post', PostSchema);
