@@ -67,3 +67,9 @@ main ul li a .chat-and-like .like-num span {
   margin-left: 4px;
   margin-bottom: 4px;
 }
+
+.post-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 12px;
+}
