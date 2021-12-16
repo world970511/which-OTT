@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import signupRouter from './routes/signup.js';
 import authRouter from './routes/auth.js';
 import postRouter from './routes/post.js';
+import cartRouter from './routes/cart.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -16,10 +17,9 @@ passportInit();
 /* setting */
 dotenv.config();
 
-const __dirname = path.resolve();
-
 const app = express();
 
+const __dirname = path.resolve();
 app.set('view engine', 'ejs');
 
 app.use(express.json());
@@ -29,14 +29,13 @@ app.use(express.static(__dirname + '/static'));
 
 app.use(passport.initialize());
 app.use(getUserFromJwt);
-
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
 app.get('/signup', (req, res) => res.render('./account/signup'));
-
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
+app.use('/cart', cartRouter);
 
 /* server */
 const start = async () => {
