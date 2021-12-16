@@ -1,5 +1,6 @@
 import express from 'express';
-import multer from 'multer';
+import store from '../passport/middlewares/multer.js';
+
 import {
   postDelete,
   postEdit,
@@ -8,18 +9,16 @@ import {
   postUpload,
 } from '../controllers/post.js';
 
-const upload = multer({
-  dest: 'uploads/',
-  limits: { fileSize: 5 * 1024 * 1024 },
-});
+// const upload = multer({
+//   dest: 'uploads/',
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });
 
 const router = express.Router();
 
 // localhost:3000/post/:userId
-router
-  .route('/:userId', upload.array('image', 5))
-  .get(postGetAll)
-  .post(postUpload);
+router.route('/:userId').get(postGetAll);
+router.post('/:userId', store.array('images', 5), postUpload);
 
 // localhost:3000/post/:userId/:productId
 router

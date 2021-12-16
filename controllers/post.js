@@ -1,14 +1,22 @@
 import postModel from '../models/Post.js';
 import userModel from '../models/User.js';
-import multer from 'multer';
+import fs from 'fs';
 
-export const postUpload = async (req, res) => {
+export const postUpload = async (req, res, next) => {
   const { userId } = req.params;
   const { title, content, author, location, category, price } = req.body;
-  const image = req.files.path;
+  const files = req.files;
+  console.log(req.files);
+  if (!files) {
+    const err = new Error('선택된 파일이 없습니다.');
+    return next(err);
+  }
+
+  const imageArray = files.map(file => file.path);
 
   const post = await postModel.create({
     author: userId,
+    image: imageArray,
     title,
     content,
     location,

@@ -8,7 +8,6 @@ router.post(
   '/',
   passport.authenticate('local', { session: false }),
   (req, res) => {
-    setUserToken(res, req.user);
     res.redirect('/');
   },
 );

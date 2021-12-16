@@ -4,13 +4,13 @@ import getHash from '../utils/hash-password.js';
 
 export const postSignup = asyncHandler(async (req, res) => {
   const { user_id, pwd, name, email } = req.body;
-  console.log(req.body);
   const user = await UserModel.create({
     user_id,
     pwd: getHash(pwd),
     name,
     email,
   });
+
   res.status(200).json({ user });
 });
 

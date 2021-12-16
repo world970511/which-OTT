@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   pwd: { type: String, required: true },
   name: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true },
+  location: { type: String, required: true },
   star: { type: Number, default: 0 },
   cart: { type: [Schema.Types.ObjectId], ref: 'Post' },
   purchased_list: { type: [Schema.Types.ObjectId], ref: 'Post' },

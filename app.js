@@ -31,9 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(__dirname + '/static'));
 
-app.use(passport.initialize());
-app.use(getUserFromJwt);
-
 app.use('/', homeRouter);
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
@@ -42,8 +39,11 @@ app.use('/search', searchRouter);
 
 app.get('/', (req, res) => res.render('./home'));
 app.get('/login', (req, res) => res.render('./account/login'));
-app.get('/signup', (req, res) => res.render('./account/signup'));
-
+app.get('/signup', (req, res) => {
+  res.render('./account/signup');
+});
+app.use(passport.initialize());
+app.use(getUserFromJwt);
 /* server */
 const start = async () => {
   try {
