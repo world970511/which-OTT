@@ -1,5 +1,6 @@
 /* header */
 header {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,6 +8,7 @@ header {
   height: 70px;
   padding: 0 16px 0 20px;
   border-bottom: 1px solid #E5E5E5;
+  background-color: white;
 }
 
 header h1 {
@@ -33,6 +35,10 @@ header .btn-list .alarm-btn .alarm-remain {
 }
 
 /* list */
+main {
+  padding-top: 70px;
+}
+
 main ul {
   padding: 0 14px;
 }
