@@ -1,9 +1,11 @@
 import postModel from '../models/Post.js';
 import userModel from '../models/User.js';
+import multer from 'multer';
 
 export const postUpload = async (req, res) => {
   const { userId } = req.params;
   const { title, content, author, location, category, price } = req.body;
+  const image = req.files.path;
 
   const post = await postModel.create({
     author: userId,

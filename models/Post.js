@@ -7,6 +7,7 @@ const PostSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: 'User' },
     title: { type: String, required: true },
     location: { type: Array, required: true },
+
     content: { type: String, required: true },
     category: { type: Array, required: true },
     price: { type: Number, required: true },
