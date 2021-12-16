@@ -6,6 +6,7 @@ const LocalStrategy = passportLocal.Strategy;
 const config = {
   usernameField: 'user_id',
   passwordField: 'password',
+  locationField: 'location',
 };
 
 const local = new LocalStrategy(config, async (user_id, password, done) => {

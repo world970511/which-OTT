@@ -10,6 +10,7 @@ export const postSignup = asyncHandler(async (req, res) => {
     name,
     email,
   });
+
   res.status(200).json({ user });
 });
 
