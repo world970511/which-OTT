@@ -5,6 +5,5 @@ export default (req, res, next) => {
     next();
     return;
   }
-
   return passport.authenticate('jwt', { session: false })(req, res, next);
 };
