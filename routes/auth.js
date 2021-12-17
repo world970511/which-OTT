@@ -8,10 +8,9 @@ router.post(
   '/',
   passport.authenticate('local', { session: false }),
   (req, res) => {
-    const userIdValidation = req.user.userIdValidation;
-    const userPwdValidation = req.user.userPwdValidation;
-    if (!userIdValidation || !userPwdValidation) {
-      res.render('./account/login', { userIdValidation, userPwdValidation });
+    const loginFailed = req.user.loginFailed;
+    if (loginFailed) {
+      res.render('./account/login', { loginFailed });
     } else {
       const user_id = req.user.userId;
       const name = req.user.name;

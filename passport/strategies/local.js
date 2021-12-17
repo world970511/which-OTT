@@ -11,21 +11,22 @@ const config = {
 
 const local = new LocalStrategy(config, async (user_id, password, done) => {
   const user = await User.findOne({ user_id });
-  let userIdValidation = true;
-  let userPwdValidation = true;
-  if (!user) {
-    userIdValidation = false;
-  }
+  let loginFailed = false;
 
-  if (user.pwd !== hashPassword(password)) {
-    userPwdValidation = false;
+  if (!user) {
+    done(null, {
+      loginFailed: true,
+    });
+  } else {
+    if (user.pwd !== hashPassword(password)) {
+      loginFailed = true;
+    }
+    done(null, {
+      user_id,
+      name: user.name,
+      loginFailed,
+    });
   }
-  done(null, {
-    user_id,
-    name: user.name,
-    userIdValidation,
-    userPwdValidation,
-  });
 });
 
 export default local;
