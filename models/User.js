@@ -9,8 +9,8 @@ const UserSchema = new Schema({
   email: { type: String, required: true, trim: true },
   posts: { type: [Schema.Types.ObjectId] },
   // cart: { type: [Schema.Types.ObjectId], ref: 'Post' },
-  purchased_list: { type: [Schema.Types.ObjectId], ref: 'Post' },
-  selled_list: { type: [Schema.Types.ObjectId], ref: 'Post' },
+  purchased_list: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  selled_list: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   user_thumnail: { type: String },
 });
 

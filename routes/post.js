@@ -29,7 +29,7 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
 
   const imageArray = files.map(file => file.path);
   const post = await Post.create({
-    author: req.user.user_id,
+    // author: req.user.user_id,
     image: imageArray,
     title,
     content,
@@ -64,6 +64,23 @@ router.patch('/:postId', async (req, res) => {
     upsert: true,
     timestamps: { createdAt: false, updatedAt: true },
   });
+
+  res.status(200).json({ post });
+});
+
+//판매완료 후 게시물 업데이트
+router.patch('/:postId/soldout', async (req, res) => {
+  const { postId } = req.params;
+
+  const post = await Post.findOneAndUpdate(
+    { _id: postId },
+    { isSoldOut: true },
+    {
+      new: true,
+      upsert: true,
+      timestamps: { createdAt: false, updatedAt: true },
+    },
+  ).populate('author');
 
   res.status(200).json({ post });
 });
