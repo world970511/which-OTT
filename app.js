@@ -9,7 +9,6 @@ import cartRouter from './routes/cart.js';
 import searchRouter from './routes/search.js';
 import homeRouter from './routes/home.js';
 import mypageRouter from './routes/mypage.js';
-import paymentRouter from './routes/payment.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -49,7 +48,6 @@ app.use('/post', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/search', searchRouter);
-app.use('/payment', paymentRouter);
 
 app.use('/', homeRouter);
 
