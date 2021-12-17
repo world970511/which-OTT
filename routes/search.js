@@ -3,7 +3,7 @@ import { searchPost, searchCategoryPost } from '../controllers/search.js';
 
 const router = express.Router();
 
-router.get('/', searchPost);
-router.post('/category', searchCategoryPost);
+router.post('/', searchPost);
+router.post('/search/category/:category', searchCategoryPost);
 
 export default router;
