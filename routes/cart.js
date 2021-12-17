@@ -9,12 +9,6 @@ const cartValidate = (filteredCart, cart) => {
 };
 
 router.post('/:postId', async (req, res) => {
-  await Cart.create({
-    user_id: req.user.user_id,
-    posts: [post1, post2],
-  });
-
-  console.log(1);
   const post_id = Number(req.params.postId);
   const post = await Post.findOne({ id: post_id });
   let cart = await Cart.findOne({ user_id: req.user.user_id }).populate(
