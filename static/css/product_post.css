@@ -50,7 +50,7 @@
 }
 
 .post_title > input {
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   outline: none;
   background-color: var(--body-color);
@@ -82,20 +82,20 @@
 .post_price > input {
   border: none;
   outline: none;
-  font-size: 18px;
+  font-size: 16px;
   background-color: var(--body-color);
 }
 
 .post_option span {
   color: #E5E5E5;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .post_option i {
   color: #E5E5E5;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .post_content {
@@ -105,9 +105,10 @@
 .post_content textarea {
   border: none;
   outline: none;
-  font-size: 15px;
+  font-size: 14px;
   height: 360px;
   width: 100%;
+  padding: 10px;
   background-color: var(--body-color)
 
 }

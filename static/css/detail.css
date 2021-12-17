@@ -8,6 +8,7 @@ li {
   position: fixed;
   padding: 10px 10px 10px 10px;
   width: 100%;
+  align-items: center;
 }
 
 .menu1 li {
@@ -16,10 +17,22 @@ li {
   margin-left: 15px;
 }
 
-.menu1 i {
-  color: #7979D3;
+.menu2 li {
+  display: inline;
+  font-size: 16px;
+  margin-right: 10px;
 }
 
+/* .menu2 button {
+  display: inline;
+  margin-top: 5px;
+  font-size: 20px;
+  margin-right: 20px;
+} */
+
+.menu1 i, .menu2 i, .menu2 a {
+  color: #7979D3;
+}
 
 .detail-page {
   margin: 0 10px 0 10px;
