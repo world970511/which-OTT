@@ -29,16 +29,17 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
 
   // const imageArray = files.map(file => file.path);
   const post = await Post.create({
-    // author: req.user.user_id,
     // image: imageArray,
     title,
     content,
     location,
     category,
     price,
+    author: '61baa45a33f82cb987a10f34',
     // post_thumnail: imageArray[0],
   });
 
+  console.log(post.author._id);
   res.status(200).json({ post });
 });
 

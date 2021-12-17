@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 const PostSchema = new Schema({
-  post_id: { type: Number, default: 10 },
-  author: { type: String, ref: 'User' },
+  post_id: { type: Number, default: 100 },
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: { type: String, required: true },
   location: { type: Array, required: true },
   image: { type: [String] },
