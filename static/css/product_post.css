@@ -17,6 +17,7 @@
   border: none;
   background-color: white;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .post_img_line {
@@ -69,21 +70,19 @@
   outline: none;
   padding: 10px;
   border: 1px solid #999;
-  background: url('/img/arrow.jpg') no-repeat 95% 50%;
+  background: url('/img/arrow.png') no-repeat 95% 50%;
   border-radius: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   }
   
-  
-
-
 .category_btn {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
   color: black;
+  cursor: pointer;
 }
 
 .right_icon {
