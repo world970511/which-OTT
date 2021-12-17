@@ -57,9 +57,27 @@
 }
 
 .post_category {
-  margin: 20px 0 20px;
+  margin: 10px 0 10px 0;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
+
+.post_category select {
+  width: 150px;
+  color: #6762E0;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #999;
+  background: url('/img/arrow.jpg') no-repeat 95% 50%;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  }
+  
+  
+
 
 .category_btn {
   display: flex;
@@ -70,6 +88,7 @@
 
 .right_icon {
   font-size: 12px;
+  color: #6762E0;
 }
 
 .post_price {

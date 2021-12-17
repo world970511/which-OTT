@@ -20,7 +20,7 @@
   
 </head>
 <body>
-  <form action="#" method="POST" >
+  <form action="/post" method="post" >
     <div class="post_nav">
       <ul class="post_menu">
         <li><a href="/"><i class="fas fa-times"></a></i></li>
@@ -32,8 +32,9 @@
     
   <div class="post_main">
       <div class="post_img_line">
-        <button type="button" class="post_img_btn">
+          <button type="button" class="post_img_btn">
             <div class="post_img">
+              <input class="file_txt" type="file" name="image">
               <i class="fas fa-camera post_img_icon"></i>
                 <span class="img_count_text">0/10</span>
             </div>
@@ -42,19 +43,38 @@
         <hr style="border: solid 1px #E5E5E5;">    
 
       <div class="post_title">
-         <input type="text" name="post_title" placeholder="상품 이름">
+         <input type="text" name="title" placeholder="상품 이름">
         </div>
         <hr style="border: solid 1px #E5E5E5;">
 
       <div class="post_category">
-        <a class="category_btn" href="/category">카테고리 선택
-        <span class='right_icon'><i class="fas fa-chevron-right"></i></span>
-        </a>
+        <select name="category" class="category_btn">
+          <option value="1" selected="selected">카테고리 선택</option>
+          <option value="hotItem">인기매물</option> 
+          <option value="usedCar">중고차</option> 
+          <option value="digitalDevice">디지털기기</option> 
+          <option value="appliance">생활가전</option> 
+          <option value="furniture">가구/인테리어</option> 
+          <option value="children">유아동</option> 
+          <option value="kitchenware">생활/가공식품</option> 
+          <option value="childrenBook">유아도서</option> 
+          <option value="sports">스포츠/레저</option> 
+          <option value="womenGoods">여성잡화</option> 
+          <option value="womenClothing">여성의류</option> 
+          <option value="menGoodsAndClothing">남성패션/잡화</option> 
+          <option value="hobby">게임/취미</option> 
+          <option value="beauty">뷰티/미용</option> 
+          <option value="pet">반려동물용품</option> 
+          <option value="bookAndTicketAndRecord">도서/티켓/음반</option> 
+          <option value="plant">식물</option> 
+          <option value="others">기타 중고물품</option> 
+      </select>
+
      </div>
      <hr style="border: solid 1px #E5E5E5;">
 
     <div class='post_price'>
-      <input type="text" name="post_price" placeholder="판매금액" >
+      <input type="text" name="price" placeholder="판매금액" >
       <div class="post_option">
         <button class="price_btn" type="button">
           <i class="fas fa-check-circle"></i>
@@ -65,7 +85,7 @@
     <hr style="border: solid 1px #E5E5E5;">
 
     <div class="post_content">
-      <textarea class="area_text" name="post_area" id="" cols="50" rows="10" placeholder="안녕하세요 코다마켓 입니다. 상품 게시글의 내용을 작성해주세요. (가품 및 판매금지 품목은 게시가 제한될 수 있어요.)"></textarea>
+      <textarea class="area_text" name="content" id="" cols="50" rows="10" placeholder="안녕하세요 코다마켓 입니다. 상품 게시글의 내용을 작성해주세요. (가품 및 판매금지 품목은 게시가 제한될 수 있어요.)"></textarea>
     </div>
     <hr style="border: solid 1px #E5E5E5;">
 
@@ -73,5 +93,6 @@
 </form>
 
   <%- include("../layout/nav-bottom") %>
+
 </body>
 </html>
