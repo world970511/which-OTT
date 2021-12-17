@@ -3,6 +3,7 @@ import Post from '../models/Post.js';
 import User from '../models/User.js';
 import fs from 'fs';
 import store from '../passport/middlewares/multer.js';
+import { nanoid } from 'nanoid';
 
 const router = express.Router();
 
@@ -28,6 +29,8 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
   // }
 
   // const imageArray = files.map(file => file.path);
+  const user = await User.findOne({ user_id: req.user.user_id });
+
   const post = await Post.create({
     // image: imageArray,
     title,
@@ -35,7 +38,8 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
     location,
     category,
     price,
-    author: '61baa45a33f82cb987a10f34',
+    author: user,
+    post_id: nanoid(),
     // post_thumnail: imageArray[0],
   });
 
@@ -81,7 +85,7 @@ router.patch('/:postId/soldout', async (req, res) => {
       upsert: true,
       timestamps: { createdAt: false, updatedAt: true },
     },
-  ).populate('author');
+  );
 
   res.status(200).json({ post });
 });
