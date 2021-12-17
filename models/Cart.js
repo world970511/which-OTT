@@ -1,18 +1,9 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
-const CartSchema = new Schema(
-  {
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    post: [
-      {
-        postId: Schema.Types.ObjectId,
-        title: String,
-        price: Number,
-      },
-    ],
-  },
-  { timestamps: true },
-);
+const CartSchema = new Schema({
+  user_id: { type: Number, required: true },
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+});
 
 export default model('Cart', CartSchema);

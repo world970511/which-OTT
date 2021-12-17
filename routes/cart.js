@@ -1,57 +1,59 @@
 import express from 'express';
 import Post from '../models/Post.js';
-import User from '../models/User.js';
+import Cart from '../models/Cart.js';
 
 const router = express.Router();
 
-const cartValidate = (filterdCart, cart) => {
-  return filterdCart.length === cart.length;
+const cartValidate = (filteredCart, cart) => {
+  return filteredCart.length === cart.length;
 };
 
 router.post('/:postId', async (req, res) => {
-  const postId = Number(req.params.postId);
+  await Cart.create({
+    user_id: req.user.user_id,
+    posts: [post1, post2],
+  });
 
-  console.log(postId);
+  console.log(1);
+  const post_id = Number(req.params.postId);
+  const post = await Post.findOne({ id: post_id });
+  let cart = await Cart.findOne({ user_id: req.user.user_id }).populate(
+    'posts',
+  );
+  const filteredCart = cart.posts.filter(item => item.id !== post.id);
+  const isClick = cartValidate(filteredCart, cart.posts);
 
-  const post = await Post.findOne({ post_id: postId });
-  const user_id = req.user.user_id;
-  const user = await User.findOne({ user_id }).populate('cart');
-  const filterdCart = user.cart.filter(post => post.post_id !== postId);
-  const isClick = cartValidate(filterdCart, user.cart);
-
-  console.log(user, post);
-  if (cartValidate(filterdCart, user.cart)) {
-    user.cart.push(post);
+  if (cartValidate(filteredCart, user.cart)) {
+    cart.posts.push(post);
     post.like_num += 1;
   } else {
-    user.cart = filterdCart;
+    cart.posts = filteredCart;
     post.like_num -= 1;
   }
 
-  await User.updateOne(
-    { user_id },
-    {
-      cart: user.cart,
-    },
-  );
-
   await Post.updateOne(
-    {
-      post_id: postId,
-    },
+    { post_id },
     {
       like_num: post.like_num,
     },
   );
 
-  res.status(200).json({ isClick });
+  await Cart.updateOne(
+    { user_id },
+    {
+      posts: cart.posts,
+    },
+  );
+
+  res.render('./product/detail.ejs', { isClick });
 });
 
+// 찜 목록 리스트
 router.get('/', async (req, res) => {
   const user_id = req.user.user_id;
 
-  const user = await User.findOne({ user_id }).populate('cart');
-  res.status(200).json({ cart: user.cart });
+  const cart = await Cart.findOne({ user_id }).populate('posts');
+  res.status(200).json({ cart: cart.posts });
 });
 
 export default router;

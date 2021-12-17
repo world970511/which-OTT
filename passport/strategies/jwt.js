@@ -1,5 +1,6 @@
 import passportJwt from 'passport-jwt';
 import { secret } from '../../utils/jwt.js';
+
 const JwtStrategy = passportJwt.Strategy;
 
 const cookieExtractor = req => {
