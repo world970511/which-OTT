@@ -37,7 +37,7 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
     content,
     location,
     category,
-    price,
+    price : price.replace(" 원", "").replace(",", ""),
     author: user,
     post_id: nanoid(),
     // post_thumnail: imageArray[0],

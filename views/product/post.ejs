@@ -32,13 +32,17 @@
     
   <div class="post_main">
       <div class="post_img_line">
-          <button type="button" class="post_img_btn">
+
+        <button type="button" class="post_img_btn" onchange="change_btn()">
             <div class="post_img">
-              <input class="file_txt" type="file" name="image">
-              <i class="fas fa-camera post_img_icon"></i>
+              <label className="input-file-button" for="input-file">
+                <i class="fas fa-camera post_img_icon"></i>
                 <span class="img_count_text">0/10</span>
+              </label>
+              <input class="file_input" id="input-file" type="file" name="image" style="display: none;" multiple>
             </div>
-          </button>
+        </button>
+          
         </div>
         <hr style="border: solid 1px #E5E5E5;">    
 
@@ -74,14 +78,14 @@
      <hr style="border: solid 1px #E5E5E5;">
 
     <div class='post_price'>
-      <input type="text" name="price" placeholder="판매금액" >
+        <input type="text" name="price" onchange="getNumber(this);" onkeyup="getNumber(this);" onblur="getblur(this);" onfocus="getfocus(this);" placeholder="판매금액">
       <div class="post_option">
         <button class="price_btn" type="button">
           <i class="fas fa-check-circle"></i>
           <span>가격 제안받기</span>
         </button>
       </div>
-    </div>
+    </div>  
     <hr style="border: solid 1px #E5E5E5;">
 
     <div class="post_content">
@@ -93,6 +97,6 @@
 </form>
 
   <%- include("../layout/nav-bottom") %>
-
+  <script src="/js/post.js"></script>
 </body>
 </html>
