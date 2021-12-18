@@ -26,7 +26,7 @@ router.post('/:postId', async (req, res) => {
   }
 
   await Post.updateOne(
-    { post_id },
+    { id },
     {
       like_num: post.like_num,
     },
