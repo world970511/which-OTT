@@ -65,7 +65,7 @@ const start = async () => {
     app.listen(process.env.PORT, () => {
       // 업로드될 파일을 저장할 폴더 생성
       const dir = './uploadedFiles';
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir); 
       console.log(`Example app listening on port ${process.env.PORT}!`);
     });
   } catch (error) {

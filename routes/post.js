@@ -41,7 +41,6 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
     author: user,
     // post_thumnail: imageArray[0],
   });
-
   // console.log(post.author._id);
   // res.status(200).json({ post });
   res.render('./product/detail');
