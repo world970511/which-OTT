@@ -46,6 +46,7 @@ p {
   font-size: 15px;
   transition: all 0.2s ease;
   transform-origin: 0 0;
+  margin-left: 5px;
 }
 
 .form_group span.border {
@@ -62,11 +63,13 @@ p {
 .form_control {
   width: 100%;
   height: 43px;
+  margin-left: 2px;
   display: block;
   font-size: 15px;
   border: none;
   border-bottom: 2px solid #80959b;
   background: none;
+  margin-left: 5px;
 }
 .form_control:focus, .form_control:valid {
   border-bottom: 1px solid #584646;
@@ -100,4 +103,22 @@ textarea.form_control {
 	font-size: 16px;
 	border:none;
 	border-radius: 15px;
+}
+
+.location_box {
+  width: 100%;
+  height: 43px;
+  display: block;
+  font-size: 15px;
+  border: none;
+  border-bottom: 2px solid #80959b;
+  background: none;
+  outline: none;
+  margin-bottom: 20px;
+  color: white;
+  margin-left: 4px;
+}
+
+.location_box option {
+  color: black;
 }
