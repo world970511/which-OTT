@@ -42,9 +42,20 @@
             </select>
 
           <div class="form_group">
-            <input name="id" type="text" class="form_control" required autocomplete="off">
+            <input name="id" type="text" class="form_control" required autocomplete="off" onkeyup="id_check(this.value)">
+
+           
+
             <span>아이디</span>
             <span class="border"></span>
+
+            <span class="idCheck">
+              <i class="fas fa-check-circle"></i>
+            </span>
+            <span class="idCheckNo">
+              <i class="fas fa-times"></i>
+            </span>
+
           </div>
 
           <div class="form_group">
@@ -54,20 +65,31 @@
           </div>
 
           <div class="form_group">
-            <input name="pwd" type="password" class="form_control" required >
+            <input name="pwd" type="password" class="form_control" onkeyup="pw1_check(this.value)" required >
             <span>패스워드</span>
             <span class="border"></span>
+
+            <span class="pw1Check">
+              <i class="fas fa-check-circle"></i>
+            </span>
+            <span class="pw1CheckNo">
+              <i class="fas fa-times"></i>
+            </span>
+
           </div>
 
           <div class="form_group">
-            <input
-              name="pwd_check"
-              type="password"
-              class="form_control"
-              required
-            />
+            <input name="pwd_check" type="password" class="form_control" onkeyup="pw2_check(this.value)" required >
             <span>패스워드 확인</span>
             <span class="border"></span>
+
+            <span class="pw2Check">
+              <i class="fas fa-check-circle"></i>
+            </span>
+            <span class="pw2CheckNo">
+              <i class="fas fa-times"></i>
+            </span>
+
           </div>
 
           <div class="form_group">
@@ -82,5 +104,6 @@
         </form>
       </div>
     </div>
+    <script src="/js/signup.js"></script>
   </body>
 </html>

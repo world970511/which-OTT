@@ -122,3 +122,27 @@ textarea.form_control {
 .location_box option {
   color: black;
 }
+
+.idCheck {
+  display : none;
+}
+
+.idCheckNo {
+  display: none;
+}
+
+.pw1Check {
+  display : none;
+}
+
+.pw1CheckNo {
+  display: none;
+}
+
+.pw2Check {
+  display : none;
+}
+
+.pw2CheckNo {
+  display: none;
+}
