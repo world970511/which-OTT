@@ -8,6 +8,7 @@ import postRouter from './routes/post.js';
 import cartRouter from './routes/cart.js';
 import searchRouter from './routes/search.js';
 import homeRouter from './routes/home.js';
+import profileRouter from './routes/main.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -42,12 +43,15 @@ app.get('/post', (req, res) => res.render('./product/post'));
 app.get('/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/category', (req, res) => res.render('./category'));
+app.get('/profile', (req, res) => res.render('./profile'));
+app.get('/first', (req, res) => res.render('./first'));
 
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/search', searchRouter);
+app.use('/profile', profileRouter);
 
 app.use('/', homeRouter);
 
@@ -57,6 +61,9 @@ const start = async () => {
     /* DB */
     await connectDB(process.env.MONGODB);
     app.listen(process.env.PORT, () => {
+      // 업로드될 파일을 저장할 폴더 생성
+      const dir = './uploadedFiles';
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir);
       console.log(`Example app listening on port ${process.env.PORT}!`);
     });
   } catch (error) {
