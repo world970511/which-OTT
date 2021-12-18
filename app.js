@@ -41,6 +41,7 @@ app.get('/login', (req, res) => res.render('./account/login'));
 app.get('/signup', (req, res) => res.render('./account/signup'));
 app.get('/mypage', (req, res) => res.render('./mypage'));
 app.get('/product/post', (req, res) => res.render('./product/post'));
+app.get('/product/postedit', (req, res) => res.render('./product/postedit'));
 app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/category', (req, res) => res.render('./category'));
