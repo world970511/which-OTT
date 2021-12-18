@@ -21,7 +21,7 @@ router.post('/id', async (req, res) => {
     secure: false,
     auth: {
       user: 'clsrns1111@gmail.com',
-      pass: 'dyddus11!',
+      pass: process.env.emailPassword,
     },
   });
 
@@ -57,7 +57,9 @@ router.post('/password', async (req, res) => {
   const decipher = cryto.createDecipheriv('sha1');
   const decipherData = decipher.update(userPwd, 'hex', 'utf8');
   decipherData += decipherData.final('utf8');
+
   console.log(decipherData);
+
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -65,7 +67,7 @@ router.post('/password', async (req, res) => {
     secure: false,
     auth: {
       user: 'clsrns1111@gmail.com',
-      pass: 'dyddus11!',
+      pass: process.env.emailPassword,
     },
   });
 
