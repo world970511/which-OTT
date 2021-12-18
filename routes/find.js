@@ -21,7 +21,7 @@ router.post('/id', async (req, res) => {
     secure: false,
     auth: {
       user: 'clsrns1111@gmail.com',
-      pass: 'dyddus11!',
+      pass: process.env.emailPassword,
     },
   });
 
@@ -49,7 +49,7 @@ router.post('/password', async (req, res) => {
   let receiveruserId = req.body.id;
 
   const user = await User.findOne({
-    $and: [{ email: '123@123' }, { user_id: '123' }],
+    $and: [{ email: receiverEmail }, { id: receiveruserId }],
   });
 
   const userPwd = user.pwd;
@@ -65,7 +65,7 @@ router.post('/password', async (req, res) => {
     secure: false,
     auth: {
       user: 'clsrns1111@gmail.com',
-      pass: 'dyddus11!',
+      pass: process.env.emailPassword,
     },
   });
 
