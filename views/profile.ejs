@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./layout/head") %>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/nav-bottom.css" />
+
+    <title>Profile</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header profile__header" id="header">
+      <nav class="nav container">
+        <div class="nav__btns">
+          <a href="./mypage" class="nav__toggle" id="nav-toggle">
+            <i class="fas fa-times nav__icon"></i>
+          </a>
+        </div>
+        <a href="javascript:void(0)" class="nav__logo">프로필 수정</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main role="main" class="main">
+      <!-- Profile -->
+      <section class="profile section" id="profile">
+        <div class="profile__container container grid profile">
+          <div class="profile__content grid">
+            <div class="profile__img" id="target_img">
+              <img src="img/profile.png" alt="" class="img-profile">
+            </div>
+            <form id="form" method="post" enctype="multipart/form-data" action="./uploadFileWithOriginalFilename" >
+              <input type="file" id="file" name="attachments" >
+              <button type="submit" class="btn btn-primary">
+            </form>
+          </div>
+          <input type="text" class="profile__rename">
+          <p class="profile__alt">프로필 사진과 닉네임을 입력해주세요.</p>
+        </div>
+      </section>
+
+      <div class="done__btn">
+        완료
+      </div>
+
+      <!-- JS -->
+      <script src="./js/profile.js"></script>
+  </body>
+</html>

@@ -49,7 +49,7 @@ router.post('/password', async (req, res) => {
   let receiveruserId = req.body.id;
 
   const user = await User.findOne({
-    $and: [{ email: '123@123' }, { user_id: '123' }],
+    $and: [{ email: receiverEmail }, { id: receiveruserId }],
   });
 
   const userPwd = user.pwd;
