@@ -21,7 +21,7 @@ const local = new LocalStrategy(config, async (id, password, done) => {
       loginFailed = true;
     }
     done(null, {
-      id,
+      id: id,
       name: user.name,
       loginFailed,
     });
