@@ -11,6 +11,7 @@ const UserSchema = new Schema({
   purchased_list: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   selled_list: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   user_thumnail: { type: String },
+  location: { type: String, required: true },
 });
 
 export default model('User', UserSchema);

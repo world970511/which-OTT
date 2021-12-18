@@ -19,7 +19,7 @@ router.post('/:userId', async (req, res) => {
 });
 
 //localhost:3000/mypage/edit - patch
-router.patch('/:userId/edit', store.single('image'), async (req, res) => {
+router.post('/:userId/edit', store.single('image'), async (req, res) => {
   const { input } = req.body;
   const files = req.file;
   console.log(req.user);

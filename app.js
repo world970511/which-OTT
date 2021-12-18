@@ -14,6 +14,7 @@ import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
 import dotenv from 'dotenv';
 import path from 'path';
+import findRouter from './routes/find.js';
 
 passportInit();
 
@@ -49,6 +50,7 @@ app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/category', categoryhRouter);
 app.use('/', homeRouter);
+app.use('/user/find/', findRouter);
 
 /* server */
 const start = async () => {
