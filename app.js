@@ -15,6 +15,7 @@ import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 
 passportInit();
 
@@ -61,16 +62,11 @@ const start = async () => {
   try {
     /* DB */
     await connectDB(process.env.MONGODB);
-<<<<<<< HEAD
-    app.listen(3000, () => {
-      console.log(`Example app listening on port ${3000}!`);
-=======
     app.listen(process.env.PORT, () => {
       // 업로드될 파일을 저장할 폴더 생성
       const dir = './uploadedFiles';
       if (!fs.existsSync(dir)) fs.mkdirSync(dir);
       console.log(`Example app listening on port ${process.env.PORT}!`);
->>>>>>> origin/profile
     });
   } catch (error) {
     console.log(error);

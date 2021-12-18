@@ -10,7 +10,7 @@ const PostSchema = new Schema({
   image: { type: [String] },
   content: { type: String, required: true },
   category: { type: Array, required: true },
-  price: { type: Number, required: true },
+  price: { type: String, required: true },
   like_num: { type: Number, default: 0 },
   isSoldOut: { type: Boolean, default: false },
   post_thumnail: { type: String },

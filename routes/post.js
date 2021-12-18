@@ -37,14 +37,15 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
     content,
     location,
     category,
-    price : price.replace(" 원", "").replace(",", ""),
+    price: price.replace(' 원', '').replace(' ,', ''),
     author: user,
     post_id: nanoid(),
     // post_thumnail: imageArray[0],
   });
 
-  console.log(post.author._id);
-  res.status(200).json({ post });
+  // console.log(post.author._id);
+  // res.status(200).json({ post });
+  res.render('./product/detail');
 });
 
 //게시물 삭제
