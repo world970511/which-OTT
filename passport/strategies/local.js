@@ -10,22 +10,21 @@ const config = {
 };
 
 const local = new LocalStrategy(config, async (id, password, done) => {
-  try {
-    const user = await User.findOne({ id });
-
-    if (!user) {
-      throw new Error('회원을 찾을 수 없습니다.');
-    }
-    if (user.pwd !== hashPassword(password)) {
-      throw new Error('비밀번호가 일치하지 않습니다.');
-    }
-
+  const user = await User.findOne({ id });
+  let loginFailed = false;
+  if (!user) {
     done(null, {
-      id,
-      name: user.name,
+      loginFailed: true,
     });
-  } catch (err) {
-    done(err, null);
+  } else {
+    if (user.pwd !== hashPassword(password)) {
+      loginFailed = true;
+    }
+    done(null, {
+      id: id,
+      name: user.name,
+      loginFailed,
+    });
   }
 });
 

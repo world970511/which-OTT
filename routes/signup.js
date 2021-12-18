@@ -2,10 +2,11 @@ import express from 'express';
 import User from '../models/User.js';
 import asyncHandler from '../utils/async-handler.js';
 import getHash from '../utils/hash-password.js';
+import crypto from 'crypto';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   res.render('./account/signup');
 });
 

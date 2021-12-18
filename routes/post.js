@@ -3,6 +3,7 @@ import Post from '../models/Post.js';
 import User from '../models/User.js';
 import fs from 'fs';
 import store from '../passport/middlewares/multer.js';
+import { nanoid } from 'nanoid';
 
 const router = express.Router();
 
@@ -34,12 +35,14 @@ router.post('/new', store.array('images', 5), async (req, res, next) => {
     content,
     location,
     category,
-    price,
+    price: price.replace(' 원', '').replace(' ,', ''),
     author: user,
     // post_thumnail: imageArray[0],
   });
 
-  res.status(200).json({ post });
+  // console.log(post.author._id);
+  // res.status(200).json({ post });
+  res.render('./product/detail');
 });
 
 //게시물 삭제
