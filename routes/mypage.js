@@ -12,8 +12,8 @@ router.post('/:userId', async (req, res) => {
   //2 DB에서 꺼내서 주기
 
   const { userId } = req.params;
-  const cart = await Cart.findOne({ user: userId });
-  const user = await User.findOne({ userId });
+  const cart = await Cart.findOne({ user_id: userId });
+  const user = await User.findOne({ id });
 
   res.status(200).json({ user, cart });
 });

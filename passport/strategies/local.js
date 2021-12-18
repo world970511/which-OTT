@@ -4,14 +4,14 @@ import hashPassword from '../../utils/hash-password.js';
 const LocalStrategy = passportLocal.Strategy;
 
 const config = {
-  usernameField: 'user_id',
+  usernameField: 'id',
   passwordField: 'password',
   locationField: 'location',
 };
 
-const local = new LocalStrategy(config, async (user_id, password, done) => {
-  const user = await User.findOne({ user_id });
-  let loginFailed = false;
+const local = new LocalStrategy(config, async (id, password, done) => {
+  try {
+    const user = await User.findOne({ id });
 
   if (!user) {
     done(null, {
@@ -22,7 +22,7 @@ const local = new LocalStrategy(config, async (user_id, password, done) => {
       loginFailed = true;
     }
     done(null, {
-      user_id,
+      id,
       name: user.name,
       loginFailed,
     });

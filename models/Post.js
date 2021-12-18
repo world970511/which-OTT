@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
+import { nanoid } from 'nanoid';
 
 const { Schema, model } = mongoose;
 
 const PostSchema = new Schema({
-  post_id: { type: String },
+  id: { type: String, default: nanoid() },
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: { type: String, required: true },
   location: { type: Array, required: true },
