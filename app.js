@@ -9,6 +9,7 @@ import cartRouter from './routes/cart.js';
 import searchRouter from './routes/search.js';
 import homeRouter from './routes/home.js';
 import mypageRouter from './routes/mypage.js';
+import profileRouter from './routes/main.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -42,6 +43,8 @@ app.get('/product/post', (req, res) => res.render('./product/post'));
 app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/category', (req, res) => res.render('./category'));
+app.get('/profile', (req, res) => res.render('./profile'));
+app.get('/first', (req, res) => res.render('./first'));
 
 app.use('/mypage', mypageRouter);
 app.use('/signup', signupRouter);
@@ -49,6 +52,7 @@ app.use('/post', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/search', searchRouter);
+app.use('/profile', profileRouter);
 
 app.use('/', homeRouter);
 
@@ -57,8 +61,16 @@ const start = async () => {
   try {
     /* DB */
     await connectDB(process.env.MONGODB);
+<<<<<<< HEAD
     app.listen(3000, () => {
       console.log(`Example app listening on port ${3000}!`);
+=======
+    app.listen(process.env.PORT, () => {
+      // 업로드될 파일을 저장할 폴더 생성
+      const dir = './uploadedFiles';
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+      console.log(`Example app listening on port ${process.env.PORT}!`);
+>>>>>>> origin/profile
     });
   } catch (error) {
     console.log(error);
