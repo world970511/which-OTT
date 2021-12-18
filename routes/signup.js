@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    const { user_id, pwd, name, email } = req.body;
+    const { id, pwd, name, email } = req.body;
     const user = await User.create({
-      user_id,
+      id,
       pwd: getHash(pwd),
       name,
       email,

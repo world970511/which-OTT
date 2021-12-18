@@ -9,11 +9,8 @@ const cartValidate = (filteredCart, cart) => {
 };
 
 router.post('/:postId', async (req, res) => {
-  const post_id = Number(req.params.postId);
-  const post = await Post.findOne({ id: post_id });
-  let cart = await Cart.findOne({ user_id: req.user.user_id }).populate(
-    'posts',
-  );
+  const post = await Post.findOne({ id: req.params.postId });
+  let cart = await Cart.findOne({ user_id: req.user.id }).populate('posts');
   const filteredCart = cart.posts.filter(item => item.id !== post.id);
   const isClick = cartValidate(filteredCart, cart.posts);
 
@@ -44,9 +41,7 @@ router.post('/:postId', async (req, res) => {
 
 // 찜 목록 리스트
 router.get('/', async (req, res) => {
-  const user_id = req.user.user_id;
-
-  const cart = await Cart.findOne({ user_id }).populate('posts');
+  const cart = await Cart.findOne({ user_id: req.user.id }).populate('posts');
   res.status(200).json({ cart: cart.posts });
 });
 

@@ -3,7 +3,6 @@ import Post from '../models/Post.js';
 import User from '../models/User.js';
 import fs from 'fs';
 import store from '../passport/middlewares/multer.js';
-import { nanoid } from 'nanoid';
 
 const router = express.Router();
 
@@ -11,8 +10,8 @@ const router = express.Router();
 // localhost:3000/post/:postId -post
 router.post('/:postId', async (req, res) => {
   const { postId } = req.params;
-  const post = await Post.findOne({ postId }).populate('author');
-  const userInfo = await User.findOne({ user_id: post.author });
+  const post = await Post.findOne({ id: postId }).populate('author');
+  const userInfo = await User.findOne({ id: post.author });
   res.status(200).json({ post, userInfo });
 });
 
@@ -29,7 +28,7 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
   // }
 
   // const imageArray = files.map(file => file.path);
-  const user = await User.findOne({ user_id: req.user.user_id });
+  const user = await User.findOne({ id: req.user.id });
 
   const post = await Post.create({
     // image: imageArray,
@@ -39,7 +38,6 @@ router.post('/', store.array('images', 5), async (req, res, next) => {
     category,
     price,
     author: user,
-    post_id: nanoid(),
     // post_thumnail: imageArray[0],
   });
 
@@ -54,7 +52,7 @@ router.delete('/:postId', async (req, res) => {
   const { postId } = req.params;
   //작성자인지 인증 필요
 
-  const post = await Post.findOneAndDelete({ _id: postId });
+  const post = await Post.findOneAndDelete({ id: postId });
 
   res.status(200).json({ post });
 });
@@ -64,7 +62,7 @@ router.delete('/:postId', async (req, res) => {
 router.patch('/:postId', async (req, res) => {
   const { postId } = req.params;
 
-  const post = await Post.findOneAndUpdate({ _id: postId }, req.body, {
+  const post = await Post.findOneAndUpdate({ id: postId }, req.body, {
     new: true,
     upsert: true,
     timestamps: { createdAt: false, updatedAt: true },
@@ -78,7 +76,7 @@ router.patch('/:postId/soldout', async (req, res) => {
   const { postId } = req.params;
 
   const post = await Post.findOneAndUpdate(
-    { _id: postId },
+    { id: postId },
     { isSoldOut: true },
     {
       new: true,
