@@ -10,9 +10,8 @@ const config = {
 };
 
 const local = new LocalStrategy(config, async (id, password, done) => {
-  try {
-    const user = await User.findOne({ id });
-
+  const user = await User.findOne({ id });
+  let loginFailed = false;
   if (!user) {
     done(null, {
       loginFailed: true,

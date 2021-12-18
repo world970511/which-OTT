@@ -8,8 +8,8 @@ import postRouter from './routes/post.js';
 import cartRouter from './routes/cart.js';
 import searchRouter from './routes/search.js';
 import homeRouter from './routes/home.js';
-import mypageRouter from './routes/mypage.js';
-import profileRouter from './routes/main.js';
+import profileRouter from './routes/profile.js';
+// import mainRouter from './routes/main.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
 import getUserFromJwt from './passport/middlewares/get-user-from-jwt.js';
@@ -47,13 +47,13 @@ app.get('/category', (req, res) => res.render('./category'));
 app.get('/profile', (req, res) => res.render('./profile'));
 app.get('/first', (req, res) => res.render('./first'));
 
-app.use('/mypage', mypageRouter);
+app.use('/profile', profileRouter);
 app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/search', searchRouter);
-app.use('/profile', profileRouter);
+// app.use('/main', mainRouter);
 
 app.use('/', homeRouter);
 
