@@ -1,14 +1,32 @@
 import express from 'express';
 import Post from '../models/Post.js';
 import User from '../models/User.js';
-import fs from 'fs';
 import store from '../passport/middlewares/multer.js';
-import { nanoid } from 'nanoid';
 
 const router = express.Router();
 
+//localhost:3000/posts/search?title=
+router.get('/search', async (req, res) => {
+  const { title } = req.query;
+
+  const posts = await Post.find({
+    $and: [{ location: req.user.location }, { title }],
+  });
+  res.render('./home.ejs', { posts });
+});
+
+//localhost:3000/posts/category?category=
+router.get('/category', async (req, res) => {
+  const { category } = req.query;
+
+  const posts = await Post.find({
+    $and: [{ location: req.user.location }, { category }],
+  });
+  res.render('./home.ejs', { posts });
+});
+
 //등록된 게시물 가져오기 (detail)
-// localhost:3000/post/:postId -post
+// localhost:3000/posts/:postId
 router.get('/:post_id', async (req, res) => {
   const { post_id } = req.params;
   const post = await Post.findOne({ id: post_id }).populate('author');
@@ -40,14 +58,13 @@ router.post('/new', store.array('images', 5), async (req, res, next) => {
     // post_thumnail: imageArray[0],
   });
 
-  // console.log(post.author._id);
   // res.status(200).json({ post });
   res.render('./product/detail');
 });
 
 //게시물 삭제
 //localhost:3000/post/:postId - delete
-router.post('/:post_id/delete', async (req, res) => {
+router.delete('/:post_id', async (req, res) => {
   //게시물 아이디
   const { post_id } = req.params;
   //작성자인지 인증 필요
@@ -60,26 +77,28 @@ router.post('/:post_id/delete', async (req, res) => {
 
 //게시물 업데이트
 //localhost:3000/post/:postId - patch
-router.patch('/:post_id/edit', async (req, res) => {
+router.patch('/:post_id', async (req, res) => {
   const { post_id } = req.params;
 
-  const post = await Post.findOneAndUpdate({ id: post_Id }, req.body, {
+  const post = await Post.findOneAndUpdate({ id: post_id }, req.body, {
     new: true,
     upsert: true,
     timestamps: { createdAt: false, updatedAt: true },
   });
 
-  res.status(200).json({ post });
   res.redirect(`/${post_id}`);
 });
 
 //판매완료 후 게시물 업데이트
 router.patch('/:post_id/soldout', async (req, res) => {
-  const { post_id } = req.params;
+  const {
+    params: { post_id },
+    query: { state },
+  } = req;
 
   const post = await Post.findOneAndUpdate(
     { id: post_id },
-    { isSoldOut: true },
+    { isSoldOut: !Boolean(state) },
     {
       new: true,
       upsert: true,

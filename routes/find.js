@@ -47,18 +47,17 @@ router.post('/id', async (req, res) => {
 router.post('/password', async (req, res) => {
   let receiverEmail = req.body.email;
   let receiveruserId = req.body.id;
-
+  console.log(receiverEmail);
   const user = await User.findOne({
     $and: [{ email: receiverEmail }, { id: receiveruserId }],
   });
 
   const userPwd = user.pwd;
+  const decipher = crypto.createDecipher('aes-256-cbc', '열쇠');
 
-  const decipher = cryto.createDecipheriv('sha1');
-  const decipherData = decipher.update(userPwd, 'hex', 'utf8');
-  decipherData += decipherData.final('utf8');
-
-  console.log(decipherData);
+  let result2 = decipher.update(userPwd, 'base64', 'utf8');
+  result2 += decipher.final('utf8');
+  console.log(result2);
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',

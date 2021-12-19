@@ -6,7 +6,6 @@ import signupRouter from './routes/signup.js';
 import authRouter from './routes/auth.js';
 import postRouter from './routes/post.js';
 import cartRouter from './routes/cart.js';
-import categoryhRouter from './routes//category.js';
 import homeRouter from './routes/home.js';
 import profileRouter from './routes/profile.js';
 // import mainRouter from './routes/main.js';
@@ -42,27 +41,24 @@ app.get('/mypage', (req, res) => res.render('./mypage'));
 app.get('/product/post', (req, res) => res.render('./product/post'));
 app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
-app.get('/category', (req, res) => res.render('./category'));
 app.get('/profile', (req, res) => res.render('./profile'));
 app.get('/first', (req, res) => res.render('./first'));
 
+app.use('/', homeRouter);
 app.use('/profile', profileRouter);
 app.use('/signup', signupRouter);
 app.use('/posts', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
-app.use('/category', categoryhRouter);
-app.use('/search', searchRouter);
-// app.use('/main', mainRouter);
-app.use('/', homeRouter);
 app.use('/user/find/', findRouter);
+// app.use('/main', mainRouter);
 
 /* server */
 const start = async () => {
   try {
     /* DB */
     await connectDB(process.env.MONGODB);
-    app.listen(process.env.PORT, () => {
+    app.listen(3000, () => {
       // 업로드될 파일을 저장할 폴더 생성
       const dir = './uploadedFiles';
       if (!fs.existsSync(dir)) fs.mkdirSync(dir);
