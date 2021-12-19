@@ -6,7 +6,6 @@ const router = express.Router();
 //홈화면에서 updateAt 순으로 게시물 나열
 //loaclhost:3000 - get
 router.get('/', async (req, res) => {
-  console.log('home get');
   const posts = await Post.find({}).sort({ updatedAt: 'desc' }).exec();
   res.render('./home', { posts });
 });

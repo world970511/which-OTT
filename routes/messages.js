@@ -9,9 +9,11 @@ const router = express.Router();
 router.post('/:conversation_id', async (req, res) => {
   const { text } = req.body;
   const { conversation_id } = req.params;
-  const user = await User.findOne({ id: '123' });
+  const user = await User.findOne({ id: '123' }); //req.user.user_id
+  const io = req.app.get('socketio');
 
   try {
+    //socket io 통신
     const newMessage = await Message.create({
       text,
       conversationId: conversation_id,
