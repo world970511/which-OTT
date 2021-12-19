@@ -9,16 +9,18 @@ router.get('/', async (req, res) => {
   res.render('./mypage');
 });
 
-router.get('/edit', (req, res) => {
-  res.render('./profile', { name: req.user.name });
+router.get('/edit', async (req, res) => {
+  const user = await User.findOne({ id: req.user.id });
+  res.render('./profile', { name: req.user.name, location: user.location });
 });
 
 router.post('/edit', async (req, res) => {
-  const { name } = req.body;
+  const { name, location } = req.body;
   const user = await User.updateOne(
     { id: req.user.id },
     {
       name,
+      location,
     },
   );
   res.render('./mypage', { name: user.name });
