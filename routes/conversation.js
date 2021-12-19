@@ -18,10 +18,9 @@ router.post('/:user_id', async (req, res) => {
 
   try {
     const newConversation = await Conversation.create({
-      memebers: [seller, buyer],
+      members: [seller, buyer],
     });
 
-    console.log(newConversation);
     res.status(200).json({ newConversation });
   } catch (error) {
     console.log(error);
@@ -29,13 +28,14 @@ router.post('/:user_id', async (req, res) => {
   }
 });
 
-// 생성된 대화창 데이터 가져오기
-router.get('/:user_id', async (req, res) => {
+// 생성된 모든 대화창 데이터 가져오기
+router.get('/', async (req, res) => {
   try {
+    const user = await User.find({ id: '123' });
     const conversation = await Conversation.find({
-      members: { $in: [req.params.user_id] },
-    });
-    res.status(200).json(conversation);
+      members: { $in: user },
+    }).populate('members');
+    res.json({ conversation });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

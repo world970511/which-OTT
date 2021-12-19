@@ -9,6 +9,7 @@ import cartRouter from './routes/cart.js';
 import homeRouter from './routes/home.js';
 import conversationRouter from './routes/conversation.js';
 import profileRouter from './routes/profile.js';
+import messagesRouter from './routes/messages.js';
 // import mainRouter from './routes/main.js';
 import passport from 'passport';
 import passportInit from './passport/index.js';
@@ -60,6 +61,7 @@ app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/user/find/', findRouter);
 app.use('/conversation', conversationRouter);
+app.use('/messages', messagesRouter);
 // app.use('/main', mainRouter);
 
 /* server */
