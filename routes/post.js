@@ -3,7 +3,6 @@ import Post from '../models/Post.js';
 import User from '../models/User.js';
 import fs from 'fs';
 import store from '../passport/middlewares/multer.js';
-import { nanoid } from 'nanoid';
 
 const router = express.Router();
 

@@ -43,8 +43,6 @@ app.get('/product/post', (req, res) => res.render('./product/post'));
 app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/category', (req, res) => res.render('./category'));
-app.get('/profile', (req, res) => res.render('./profile'));
-app.get('/first', (req, res) => res.render('./first'));
 
 app.use('/profile', profileRouter);
 app.use('/signup', signupRouter);
@@ -52,7 +50,6 @@ app.use('/posts', postRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 app.use('/category', categoryhRouter);
-app.use('/search', searchRouter);
 // app.use('/main', mainRouter);
 app.use('/', homeRouter);
 app.use('/user/find/', findRouter);

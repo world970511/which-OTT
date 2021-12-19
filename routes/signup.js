@@ -18,6 +18,7 @@ router.post(
       id,
       pwd: getHash(pwd),
       name,
+      location: '서울',
       email,
     });
     res.status(200).json({ user });

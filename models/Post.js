@@ -14,6 +14,7 @@ const PostSchema = new Schema(
     category: { type: Array, required: true },
     price: { type: Number, required: true },
     like_num: { type: Number, default: 0 },
+    purchased_user: { type: String, default: false },
     isSoldOut: { type: Boolean, default: false },
     post_thumnail: { type: String },
   },

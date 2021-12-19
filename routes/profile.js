@@ -1,23 +1,16 @@
 import express from 'express';
 import User from '../models/User.js';
 import Cart from '../models/Cart.js';
+import Post from '../models/Post.js';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.render('./mypage.ejs');
-});
-
-router.get('/:nickname', (req, res) => {
-  if (req.user.name !== req.params.nickname) {
-    res.render(res.render('./mypage.ejs'), { isOwner: false });
-  } else {
-    res.render(res.render('./mypage.ejs'));
-  }
+  res.render('./mypage');
 });
 
 router.get('/edit', (req, res) => {
-  res.render('./profile.ejs', { name: req.user.name });
+  res.render('./profile', { name: req.user.name });
 });
 
 router.post('/edit', async (req, res) => {
@@ -28,32 +21,35 @@ router.post('/edit', async (req, res) => {
       name,
     },
   );
-  res.render('./mypage.ejs', { name: user.name });
+  res.render('./mypage', { name: user.name });
 });
 
-router.post('/logout', async (req, res) => {
-  req.cookies('token', null, {
-    maxAge: 0,
-  });
-  res.render('./first');
+router.get('/logout', (req, res) => {
+  res.cookie('token', null, { maxAge: 0 }).render('./first');
 });
 
 router.get('/tranaction-list', async (req, res) => {
   const user = await User.findOne({ id: req.user.id });
-  const posts = await post.find({ author: user }).populate('author');
-  res.status(200).json({ list: posts });
+  const posts = await Post.find({ author: user }).populate('author');
+  const list = await res.status(200).json({ list: posts });
 });
 
 router.get('/purchased-list', async (req, res) => {
-  const user = await User.findOne({ id: req.user.id }).populate(
-    'purchased_list',
-  );
-  res.status(200).json({ list: user.purchased_list });
+  const posts = await Post.find({ purchased_user: req.user.id });
+  res.status(200).json({ list: posts });
 });
 
 router.get('/cart-list', async (req, res) => {
   const cart = await Cart.find({ user_id: req.user.id }).populate('posts');
   res.status(200).json({ list: cart.posts });
+});
+
+router.get('/:nickname', (req, res) => {
+  if (req.user.name !== req.params.nickname) {
+    res.render('./mypage', { isOwner: false });
+  } else {
+    res.render('./mypage');
+  }
 });
 
 export default router;
