@@ -11,6 +11,10 @@ router.get('/', async (req, res) => {
   res.render('./home', { posts });
 });
 
+router.get('/first', (req, res) => {
+  res.render('./first');
+});
+
 router.get('/search/:post_id', async (req, res) => {
   const { post_id } = req.params;
 

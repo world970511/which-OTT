@@ -43,6 +43,7 @@ app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/profile', (req, res) => res.render('./profile'));
 app.get('/first', (req, res) => res.render('./first'));
+app.get('/category', (req, res) => res.render('./category'));
 
 app.use('/', homeRouter);
 app.use('/profile', profileRouter);
