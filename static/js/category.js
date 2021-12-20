@@ -3,7 +3,7 @@ const items = document.querySelectorAll('main .item');
 items.forEach(item => {
   item.addEventListener('click', async () => {
     const category = item.querySelector('span').getAttribute('value');
-    console.log(category);
+
     await fetch(`http://localhost:3000/posts/category?category=${category}`, {
       method: 'get',
     })

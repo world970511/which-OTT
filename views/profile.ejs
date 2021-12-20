@@ -31,9 +31,12 @@
             <div class="profile__img" id="target_img">
               <img src="/img/profile.png" alt="" class="img-profile">
             </div>
-            <form id="form" method="post" enctype="multipart/form-data" action="./uploadFileWithOriginalFilename" >
+            <form id="form" method="post" enctype="multipart/form-data" action="/profile/edit" >
               <input type="file" id="file" name="attachments" >
               <button type="submit" class="btn btn-primary">
+                <button type="submit" class="done__btn">
+                  완료
+                </button>
             </form>
           </div>
           <input type="text" class="profile__rename">
@@ -41,9 +44,7 @@
         </div>
       </section>
 
-      <div class="done__btn">
-        완료
-      </div>
+
 
       <!-- JS -->
       <script src="./js/profile.js"></script>
