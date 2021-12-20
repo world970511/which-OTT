@@ -1,27 +1,39 @@
 const targetImg = document.querySelector('#target_img');
 const profileImg = document.querySelector('.img-profile');
-const file = document.getElementById('file');
-
-file.addEventListener('change', e => {
-  setThumnail(e);
-});
 
 targetImg.addEventListener('click', function (e) {
-  // document.signform.target_url.value = document.getElementById('target_img').src;
   document.querySelector('#file').click();
+  console.log(e);
+});
 
-  document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    console.log(file);
-  });
-  /*
-  
-  if (file) {
-    console.log(file.value);
-    document.querySelector('.btn-primary').click();
-    
-  }
-  */
+function loadFile(input) {
+  let file = input.files[0];
+  let newImage = document.querySelector('.img-profile');
+
+  newImage.src = URL.createObjectURL(file);
+}
+
+document.getElementById('submit').addEventListener('click', e => {
+  let file = document.querySelector('#file').files[0];
+  let imgURL = URL.createObjectURL(file);
+  let name = document.querySelector('.profile__rename').value;
+  let location = document.querySelector('#addressDo2').value;
+
+  let profileData = {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      location,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  // fetch(`profile/edit`, profileData)
+  // .catch(err => {
+  //   alert('에러');
+  // });
 });
 
 /*

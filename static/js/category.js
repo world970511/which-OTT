@@ -6,9 +6,12 @@ items.forEach(item => {
 
     await fetch(`http://localhost:3000/posts/category?category=${category}`, {
       method: 'get',
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    });
+
+    window.location.replace(
+      `http://localhost:3000/posts/category?category=${category}`,
+    );
+
     // location.href = 'search/category/:category';
   });
 });

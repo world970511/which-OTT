@@ -2,11 +2,14 @@ import express from 'express';
 import User from '../models/User.js';
 import Cart from '../models/Cart.js';
 import Post from '../models/Post.js';
+import store from '../passport/middlewares/multer.js';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.render('./mypage');
+  console.log(req.user.name);
+  console.log('hello');
+  res.render('./mypage', { name: req.user.name });
 });
 
 router.get('/edit', async (req, res) => {
@@ -14,16 +17,17 @@ router.get('/edit', async (req, res) => {
   res.render('./profile', { name: req.user.name, location: user.location });
 });
 
-router.post('/edit', async (req, res) => {
-  const { name, location } = req.body;
+router.post('/edit', store.single('image'), async (req, res) => {
+  const { name } = req.body;
+  console.log(req.file);
   const user = await User.findOneAndUpdate(
     { id: req.user.id },
     {
       name,
-      location,
+      // location,
     },
   );
-  console.log(user);
+
   res.render('./mypage', { name: user.name });
 });
 

@@ -18,11 +18,13 @@ router.get('/search', async (req, res) => {
 //localhost:3000/posts/category?category=
 router.get('/category', async (req, res) => {
   const { category } = req.query;
-  console.log(category);
+
   const posts = await Post.find({
-    $and: [{ location: req.user.location }, { category }],
+    category,
   });
-  res.status(200).json({ posts });
+
+  // $and: [{ location: req.user.location }, { category }],
+  res.render('./home.ejs', { posts });
 });
 
 //등록된 게시물 가져오기 (detail)
@@ -57,7 +59,7 @@ router.post('/new', store.array('images', 5), async (req, res, next) => {
     author: user,
     post_thumnail: imageArray[0],
   });
-  console.log(post);
+
   res.render('./product/detail', post);
 });
 

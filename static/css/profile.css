@@ -58,8 +58,8 @@
 
 .profile__img {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   margin-right: var(--mb-0-25);
   overflow: hidden;
@@ -91,6 +91,20 @@
   text-align: center;
 }
 
-.none {
+#file {
   display: none;
+}
+
+.selectbox {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: var(--mb-0-5) 0;
+}
+
+.selectbox select {
+  padding: var(--mb-0-75);
+  border: 1px solid var(--first-color);
+  border-radius: var(--mb-0-5);
+  font-size: var(--h3-font-size);
 }
