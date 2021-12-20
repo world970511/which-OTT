@@ -48,6 +48,7 @@ app.use(getUserFromJwt);
 app.get('/login', (req, res) => res.render('./account/login'));
 app.get('/mypage', (req, res) => res.render('./mypage'));
 app.get('/product/post', (req, res) => res.render('./product/post'));
+app.get('/product/postedit', (req, res) => res.render('./product/postedit'));
 app.get('/product/detail', (req, res) => res.render('./product/detail'));
 app.get('/chat', (req, res) => res.render('./chat-list'));
 app.get('/profile', (req, res) => res.render('./profile'));
@@ -112,8 +113,10 @@ const start = async () => {
     server.listen(3000, () => {
       // 업로드될 파일을 저장할 폴더 생성
       const dir = './uploadedFiles';
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-      console.log(`express,socket server connected`);
+
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir); 
+      console.log(`Example app listening on port ${process.env.PORT}!`);
+
     });
   } catch (error) {
     console.log(error);
