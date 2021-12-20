@@ -8,8 +8,16 @@ router.post(
   '/',
   passport.authenticate('local', { session: false }),
   (req, res) => {
-    setUserToken(res, req.user);
-    res.redirect('/');
+    const loginFailed = req.user.loginFailed;
+    if (loginFailed) {
+      res.render('./account/login', { loginFailed });
+    } else {
+      const id = req.user.id;
+      const name = req.user.name;
+      const user = { id, name };
+      setUserToken(res, user);
+      res.redirect('/');
+    }
   },
 );
 
