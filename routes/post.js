@@ -18,11 +18,11 @@ router.get('/search', async (req, res) => {
 //localhost:3000/posts/category?category=
 router.get('/category', async (req, res) => {
   const { category } = req.query;
-
+  console.log(category);
   const posts = await Post.find({
     $and: [{ location: req.user.location }, { category }],
   });
-  res.render('./home.ejs', { posts });
+  res.status(200).json({ posts });
 });
 
 //등록된 게시물 가져오기 (detail)
@@ -79,7 +79,7 @@ router.delete('/:post_id', async (req, res) => {
 
 //게시물 업데이트
 //localhost:3000/post/:postId - patch
-router.patch('/:post_id', async (req, res) => {
+router.post('/:post_id', async (req, res) => {
   const { post_id } = req.params;
 
   const post = await Post.findOneAndUpdate({ id: post_id }, req.body, {
