@@ -4,13 +4,11 @@ items.forEach(item => {
   item.addEventListener('click', async () => {
     const category = item.querySelector('span').getAttribute('value');
 
-    await fetch(`http://localhost:3000/posts/category?category=${category}`, {
+    await fetch(`/posts/category?category=${category}`, {
       method: 'get',
     });
 
-    window.location.replace(
-      `http://localhost:3000/posts/category?category=${category}`,
-    );
+    window.location.replace(`/posts/category?category=${category}`);
 
     // location.href = 'search/category/:category';
   });
