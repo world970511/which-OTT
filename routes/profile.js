@@ -33,7 +33,8 @@ router.get('/logout', (req, res) => {
 router.get('/tranaction-list', async (req, res) => {
   const user = await User.findOne({ id: req.user.id });
   const posts = await Post.find({ author: user }).populate('author');
-  const list = await res.status(200).json({ list: posts });
+
+  res.status(200).json({ list: posts });
 });
 
 router.get('/purchased-list', async (req, res) => {

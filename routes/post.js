@@ -39,11 +39,11 @@ router.get('/:post_id', async (req, res) => {
 router.post('/new', store.array('images', 5), async (req, res, next) => {
   const { title, content, location, category, price } = req.body;
   const files = req.files;
-  // if (!files) {
-  //   const err = new Error('선택된 파일이 없습니다.');
-  //   return next(err);
-  // }
-  console.log(files);
+  if (!files) {
+    const err = new Error('선택된 파일이 없습니다.');
+    return next(err);
+  }
+
   const imageArray = files.map(file => file.path);
   const user = await User.findOne({ id: req.user.id });
 
@@ -51,16 +51,13 @@ router.post('/new', store.array('images', 5), async (req, res, next) => {
     image: imageArray,
     title,
     content,
-    location,
+    location: user.location,
     category,
     price: price.replace(' 원', '').replace(' ,', ''),
     author: user,
     post_thumnail: imageArray[0],
   });
-
-  // console.log(post.author._id);
-
-  // res.status(200).json({ post });
+  console.log(post);
   res.render('./product/detail', post);
 });
 
