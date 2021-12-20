@@ -14,10 +14,9 @@ router.get('/first', (req, res) => {
   res.render('./first');
 });
 
-router.get('/search/:post_id', async (req, res) => {
-  const { post_id } = req.params;
-
-  const posts = await Post.find({ title: post_id });
+router.get('/search', async (req, res) => {
+  const { input } = req.query;
+  const posts = await Post.find({ title: { $regex: input, $options: 'gi' } });
 
   res.render('./home', { posts });
 });

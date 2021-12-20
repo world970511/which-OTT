@@ -43,25 +43,25 @@ router.post('/new', store.array('images', 5), async (req, res, next) => {
   //   const err = new Error('선택된 파일이 없습니다.');
   //   return next(err);
   // }
-
-  // const imageArray = files.map(file => file.path);
+  console.log(files);
+  const imageArray = files.map(file => file.path);
   const user = await User.findOne({ id: req.user.id });
 
   const post = await Post.create({
-    // image: imageArray,
+    image: imageArray,
     title,
     content,
     location,
     category,
     price: price.replace(' 원', '').replace(' ,', ''),
     author: user,
-    // post_thumnail: imageArray[0],
+    post_thumnail: imageArray[0],
   });
 
   // console.log(post.author._id);
 
   // res.status(200).json({ post });
-  res.render('./product/detail');
+  res.render('./product/detail', post);
 });
 
 //게시물 삭제
