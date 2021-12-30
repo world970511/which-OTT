@@ -3,3 +3,4 @@ __pycache__/
 venv
 personalkey.py
 sql.sql
+csv_to_sql.ipynb
