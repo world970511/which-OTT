@@ -34,12 +34,15 @@ def register():
                 resp.status_code = 200
                 resp.set_data(json.dumps({'result': "회원가입 성공"}))
                 return resp
-                # return json.dumps({'result': "회원가입 성공"}), 200
             else:
-                return json.dumps({'result': "이미 가입된 아이디입니다."}), 400
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "이미 가입된 아이디입니다."}))
+                return resp
     except Exception as e:
         print(e)
-        return json.dumps({'result': "서버 에러"}), 500
+        resp.status_code = 500
+        resp.set_data(json.dumps({'result': "서버 에러"}))
+        return resp
 
 
 @bp.route('/login', methods=('POST',))
@@ -54,15 +57,23 @@ def login():
             user_data = tb_user.query.filter_by(user_id=user_id).first()
 
             if not user_data:
-                return json.dumps({'result': "없는 아이디입니다."}), 400
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "없는 아이디입니다."}))
+                return resp
             elif not check_password_hash(user_data.password, password):
-                return json.dumps({'result': "비밀번호가 틀렸습니다."}), 400
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "비밀번호가 틀렸습니다."}))
+                return resp
             else:
                 # JWT 로그인 로직
-                return json.dumps({'result': "로그인 성공"}), 200
+                resp.status_code = 200
+                resp.set_data(json.dumps({'result': "로그인 성공"}))
+                return resp
     except Exception as e:
         print(e)
-        return json.dumps({'result': "서버 에러"}), 500
+        resp.status_code = 500
+        resp.set_data(json.dumps({'result': "서버 에러"}))
+        return resp
 
 
 @bp.route('/logout')
@@ -70,7 +81,11 @@ def login():
 def logout():
     try:
         # JWT 로그아웃 로직
-        return json.dumps({'result': "로그아웃 성공"}), 200
+        resp.status_code = 200
+        resp.set_data(json.dumps({'result': "로그아웃 성공"}))
+        return resp
     except Exception as e:
         print(e)
-        return json.dumps({'result': "서버 에러"}), 500
+        resp.status_code = 500
+        resp.set_data(json.dumps({'result': "서버 에러"}))
+        return resp
