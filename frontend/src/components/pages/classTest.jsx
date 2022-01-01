@@ -59,7 +59,6 @@ const ClassTest = () => {
       let count = userCheck >= 1 ? 1 : 0;
       setUserCheck(count);
     } else if (useTime !== "" && useCycle !== "") {
-      // const add = 2;
       setUserCheck(checkTwo);
     }
   }, [useTime, useCycle]);

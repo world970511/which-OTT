@@ -13,9 +13,7 @@ body {
 
 .headerContainer {
   display: flex;
-  position: fixed;
   background-color: #212121;
-  width: 1903px;
   padding: 100px 80px 0;
   justify-content: space-around;
   align-items: center;
@@ -26,7 +24,11 @@ body {
 }
 
 .viewContainer {
+  display: flex;
   width: 1903px;
   height: 925px;
+  padding: 0px 200px;
   background-color: #fff8e1;
+  flex-wrap: wrap;
+  justify-content: center;
 }

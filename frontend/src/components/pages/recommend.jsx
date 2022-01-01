@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../nav/nav.jsx";
+import Movie from "../movie/movies.jsx";
+import Loading from "../loading/loading.jsx";
 import styles from "./recommend.module.css";
 
 const Recommend = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    var myHeaders = new Headers();
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch("https://yts.mx/api/v2/list_movies.json", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setMovies(result.data.movies))
+      .catch((error) => console.log("error", error));
+  }, []);
+
+  console.log(movies.length !== 0);
+
+  useEffect(() => {
+    if (movies.length !== 0) {
+      setLoading(true);
+    }
+  }, [movies]);
+
   return (
-    <div>
+    <>
       <Nav></Nav>
       <div className={styles.headerContainer}>
         <h1>추천 플랫폼</h1>
@@ -20,8 +48,22 @@ const Recommend = () => {
           </div>
         </div>
       </div>
-      <div className={styles.viewContainer}></div>
-    </div>
+
+      <div className={styles.viewContainer}>
+        {loading ? (
+          movies.map((movie) => (
+            <Movie
+              key={movie.id}
+              title={movie.title}
+              year={movie.year}
+              poster={movie.medium_cover_image}
+            />
+          ))
+        ) : (
+          <Loading />
+        )}
+      </div>
+    </>
   );
 };
 
