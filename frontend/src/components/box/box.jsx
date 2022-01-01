@@ -6,7 +6,7 @@ const Box = (props) => {
   let height = props.height;
   let title = props.title;
   let most = props.most;
-  let color = props.color;
+  // let color = props.color;
   let backgroundColor = props.backgroundColor;
 
   return (

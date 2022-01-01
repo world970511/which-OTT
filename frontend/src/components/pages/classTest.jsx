@@ -85,8 +85,8 @@ const ClassTest = () => {
         <div className={styles.backdrop}>
           <div className={styles.testBox}>
             <div
-              className={`${styles.testtt} ${
-                checkTest ? styles.dd : styles.ss
+              className={`${styles.moveText} ${
+                checkTest ? styles.rightMove : styles.leftMove
               }`}
             >
               <p>이름</p>
@@ -112,8 +112,8 @@ const ClassTest = () => {
               />
             </div>
             <div
-              className={`${styles.testtt} ${
-                checkTest ? styles.dd : styles.ss
+              className={`${styles.moveText} ${
+                checkTest ? styles.rightMove : styles.leftMove
               }`}
             >
               <p>이용시간</p>

@@ -111,19 +111,19 @@ option {
   opacity: 0.5;
 }
 
-.testtt {
+.moveText {
   position: relative;
   left: 210px;
   padding: 50px 100px;
 }
 
-.dd {
+.rightMove {
   -webkit-transition-duration: 300ms;
   -webkit-transform: translateX(-420px);
   -webkit-transition-timing-function: linear;
 }
 
-.ss {
+.leftMove {
   -webkit-transition-duration: 300ms;
   -webkit-transform: translateX(0px);
   -webkit-transition-timing-function: linear;
