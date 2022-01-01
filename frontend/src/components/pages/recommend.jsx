@@ -23,13 +23,15 @@ const Recommend = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
-  console.log(movies.length !== 0);
-
   useEffect(() => {
     if (movies.length !== 0) {
       setLoading(true);
     }
   }, [movies]);
+
+  // const handleSelectMovie = (e) => {
+  //   console.log(e.target.value);
+  // };
 
   return (
     <>

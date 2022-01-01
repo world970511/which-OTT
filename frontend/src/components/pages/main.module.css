@@ -15,6 +15,12 @@ body {
   height: 60%;
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
+  padding: 50px;
   background-color: #fff8e1;
+}
+
+.mainGraphTitle {
+  font-size: 30px;
+  color: black;
+  padding-bottom: 50px;
 }
