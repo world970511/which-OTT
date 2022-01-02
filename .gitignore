@@ -2,5 +2,6 @@ __pycache__/
 *.py[cod]
 venv
 personalkey.py
-sql.sql
-csv_to_sql.ipynb
+*.sql
+*.ipynb
+*.csv
