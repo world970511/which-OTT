@@ -1,5 +1,11 @@
 import json
+
 from sqlalchemy.ext.declarative import DeclarativeMeta
+
+'''
+utility.py
+이 파일은 라이브러리에 없는 커스텀 기능을 위한 파일입니다.
+'''
 
 
 class AlchemyEncoder(json.JSONEncoder):
