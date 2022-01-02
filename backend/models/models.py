@@ -6,7 +6,7 @@ model.py
 '''
 
 
-class tb_user(db.Model):
+class User(db.Model):
     __tablename__ = 'tb_user'
     user_id = db.Column(db.String(20), primary_key=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
