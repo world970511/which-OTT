@@ -7,8 +7,31 @@ model.py
 
 
 class User(db.Model):
-    __tablename__ = 'tb_user'
-    user_id = db.Column(db.String(20), primary_key=True, nullable=False)
+    __tablename__ = 'users'
+    id = db.Column(db.String(20), primary_key=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     nickname = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(100), nullable=False)
+
+
+class ott_usage_time_statistics(db.Model):
+    __tablename__ = 'ott_usage_time_statistics'
+    id = db.Column(db.String(10), primary_key=True, nullable=False)
+    five_m = db.Column(db.Float, nullable=False)
+    ten_m = db.Column(db.Float, nullable=False)
+    thirty_m = db.Column(db.Float, nullable=False)
+    one_h = db.Column(db.Float, nullable=False)
+    two_h = db.Column(db.Float, nullable=False)
+    over = db.Column(db.Float, nullable=False)
+
+
+class ott_frequency_of_use_statistics(db.Model):
+    __tablename__ = 'ott_frequency_of_use_statistics'
+    id = db.Column(db.String(10), primary_key=True, nullable=False)
+    month_one = db.Column(db.Float, nullable=False)
+    month_three = db.Column(db.Float, nullable=False)
+    week_six = db.Column(db.Float, nullable=False)
+    week_four = db.Column(db.Float, nullable=False)
+    week_two = db.Column(db.Float, nullable=False)
+    every = db.Column(db.Float, nullable=False)
+    many = db.Column(db.Float, nullable=False)

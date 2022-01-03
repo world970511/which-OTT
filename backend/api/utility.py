@@ -9,7 +9,6 @@ utility.py
 
 
 class AlchemyEncoder(json.JSONEncoder):
-    # AlchemyEncoder 사용 예제: res = json.dumps(object, cls=AlchemyEncoder, ensure_ascii=False)
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             # an SQLAlchemy class
