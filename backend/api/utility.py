@@ -13,7 +13,7 @@ class AlchemyEncoder(json.JSONEncoder):
         if isinstance(obj.__class__, DeclarativeMeta):
             # an SQLAlchemy class
             fields = {}
-            for field in [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']:
+            for field in [x for x in dir(obj) if not x.startswith('_') and x not in ('metadata', 'query', 'query_class', 'registry')]:
                 data = obj.__getattribute__(field)
                 try:
                     # this will fail on non-encodable values, like other classes

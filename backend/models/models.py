@@ -35,3 +35,10 @@ class ott_frequency_of_use_statistics(db.Model):
     week_two = db.Column(db.Float, nullable=False)
     every = db.Column(db.Float, nullable=False)
     many = db.Column(db.Float, nullable=False)
+
+
+usage_time_column_list = ['id', 'five_m', 'ten_m',
+                          'thirty_m', 'one_h', 'two_h', 'over']
+
+frequency_of_use_column_list = ['id', 'month_one', 'month_three',
+                                'week_six', 'week_four', 'week_two', 'every', 'many']
