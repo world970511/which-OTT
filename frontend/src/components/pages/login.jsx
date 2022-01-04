@@ -1,39 +1,29 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./login.module.css";
 import Nav from "../nav/nav.jsx";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [userId, setUserId] = useState("");
-  const [userPw, setUserPw] = useState("");
-  const idRef = useRef();
-  const pwRef = useRef();
+  const [userNickname, setUserNickname] = useState(null);
+  const [token, setToken] = useState(null);
 
-  const handleInput = () => {
-    let idValue;
-    let pwValue;
+  const { handleLogin } = useContext(AuthContext);
 
-    idValue = idRef.current.value;
-    pwValue = pwRef.current.value;
+  const [form, setForm] = useState({
+    userId: "",
+    userPw: "",
+  });
 
-    setUserId(idValue);
-    setUserPw(pwValue);
-  };
-
-  const onClick = () => {
-    navigate("/signup");
-  };
-
-  const login_ok = () => {
-    let token = localStorage.getItem("token");
+  const onSubmit = () => {
     var axios = require("axios");
     var data = JSON.stringify({
-      user_id: `${userId}`,
-      password: `${userPw}`,
+      user_id: `${form.userId}`,
+      password: `${form.userPw}`,
     });
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/register"}`;
+    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/login"}`;
 
     var config = {
       method: "post",
@@ -47,18 +37,78 @@ const Login = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        // localStorage.setItem(
+        //   "token",
+        //   JSON.stringify(response.data.access_token)
+        // );
+        setToken(JSON.stringify(response.data.access_token));
+        // localStorage.setItem(
+        //   "nickname",
+        //   JSON.stringify(response.data.nickname)
+        // );
       })
       // .then((res) => {
-      //   // 토큰 저장
-      //   if (res.status === 200) {
-      //     let user = res.data.token;
-      //     localStorage.setItem("token", user);
-
-      //     // 페이지 이동
-      //     navigate("/");
-      //   }
+      //   // 페이지 이동
+      //   navigate("/");
       // })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    console.log("called");
+
+    handleLogin({
+      newToken: token,
+      loggedUser: userNickname,
+    });
+  };
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onClick = () => {
+    navigate("/signup");
+  };
+
+  const login_ok = () => {
+    var axios = require("axios");
+    var data = JSON.stringify({
+      user_id: `${form.userId}`,
+      password: `${form.userPw}`,
+    });
+
+    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/login"}`;
+
+    var config = {
+      method: "post",
+      url: url,
+      headers: {
+        "Content-Type": "application/json",
+        // `Authorization`: `Bearer ${token}`,
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.access_token)
+        );
+        localStorage.setItem(
+          "nickname",
+          JSON.stringify(response.data.nickname)
+        );
+      })
+      .then((res) => {
+        // 페이지 이동
+        navigate("/");
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -73,22 +123,22 @@ const Login = () => {
           <p>아이디</p>
           <input
             type="text"
-            value={userId}
-            ref={idRef}
+            value={form.userId}
+            name="userId"
             onChange={handleInput}
             placeholder=" ID를 입력해주세요"
           />
           <p>비밀번호</p>
           <input
             type="text"
-            value={userPw}
-            ref={pwRef}
+            value={form.userPw}
+            name="userPw"
             onChange={handleInput}
             placeholder=" 비밀번호를 입력해주세요."
           />
         </div>
         <div className={styles.btnContainer}>
-          <button onClick={login_ok}>로그인</button>
+          <button onClick={onSubmit}>로그인</button>
           <button onClick={onClick}>회원가입</button>
         </div>
       </div>

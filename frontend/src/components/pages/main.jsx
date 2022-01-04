@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./main.module.css";
 import Nav from "../nav/nav.jsx";
 import Guide from "../guide/guide.jsx";

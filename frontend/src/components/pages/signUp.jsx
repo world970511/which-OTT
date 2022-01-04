@@ -65,11 +65,8 @@ const SignUp = () => {
         console.log(JSON.stringify(response.data));
       })
       // .then((result) => {
-      //   result.message === "SUCCESS"
-      //     ? alert("회원가입 성공")
-      //     : alert("회원가입 실패");
+      //   result.status === 200 ? alert("회원가입 성공") : alert("회원가입 실패");
       // })
-
       .catch(function (error) {
         console.log(error);
       });

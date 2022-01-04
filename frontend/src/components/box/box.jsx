@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./box.module.css";
 
 const Box = (props) => {
-  let width = props.width;
-  let height = props.height;
-  let title = props.title;
-  let most = props.most;
+  const width = props.width;
+  const height = props.height;
+  const title = props.title;
+  const most = props.most;
   // let color = props.color;
-  let backgroundColor = props.backgroundColor;
+  const backgroundColor = props.backgroundColor;
 
   return (
     <>

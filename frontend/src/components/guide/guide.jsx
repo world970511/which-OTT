@@ -5,6 +5,24 @@ import { useNavigate } from "react-router-dom";
 const Guide = () => {
   const navigate = useNavigate();
 
+  const handleSelectPage = (e) => {
+    if (localStorage.getItem("token")) {
+      switch (e.target.value) {
+        case "1":
+          navigate("/test");
+          break;
+        case "2":
+          navigate("/recommend");
+          break;
+        default:
+          navigate("/stat");
+      }
+    } else {
+      alert("로그인 후 이용이 가능합니다^^.");
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <div className={styles.guideContainer}>
@@ -25,25 +43,22 @@ const Guide = () => {
           </p>
           <button
             className={styles.testBtn}
-            onClick={() => {
-              navigate("/test");
-            }}
+            value={1}
+            onClick={handleSelectPage}
           >
             사용등급검사
           </button>
           <button
             className={styles.testBtn}
-            onClick={() => {
-              navigate("/recommend");
-            }}
+            value={2}
+            onClick={handleSelectPage}
           >
             플랫폼추천
           </button>
           <button
             className={styles.statBtn}
-            onClick={() => {
-              navigate("/stat");
-            }}
+            value={3}
+            onClick={handleSelectPage}
           >
             통계
           </button>

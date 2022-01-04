@@ -122,11 +122,11 @@ const ClassTest = () => {
                 ref={useTimeRef}
               >
                 <option value="none">--- 선택 ---</option>
-                <option value="5m">5분 미만</option>
-                <option value="10m">5분 이상 10분 미만</option>
-                <option value="30m">10분 이상 30분 미만</option>
-                <option value="1h">30분 이상 1시간 미만</option>
-                <option value="2h">1시간 이상 2시간 미만</option>
+                <option value="five_m">5분 미만</option>
+                <option value="ten_m">5분 이상 10분 미만</option>
+                <option value="thirty_m">10분 이상 30분 미만</option>
+                <option value="one_h">30분 이상 1시간 미만</option>
+                <option value="two_h">1시간 이상 2시간 미만</option>
                 <option value="over">2시간 이상</option>
               </select>
               <p>이용빈도</p>

@@ -6,7 +6,15 @@ import styles from "./recommend.module.css";
 
 const Recommend = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const [selectedVideoTitle, setSelectedVideoTitle] = useState(null);
+  const [selectedVideoYear, setSelectedVideoYear] = useState(null);
+
+  const handleSelectedVideo = (title, year) => {
+    setSelectedVideoTitle(title);
+    setSelectedVideoYear(year);
+  };
 
   useEffect(() => {
     var myHeaders = new Headers();
@@ -19,19 +27,15 @@ const Recommend = () => {
 
     fetch("https://yts.mx/api/v2/list_movies.json", requestOptions)
       .then((response) => response.json())
-      .then((result) => setMovies(result.data.movies))
-      .catch((error) => console.log("error", error));
+      .then((result) => {
+        setMovies(result.data.movies);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("error", error);
+        setLoading(false);
+      });
   }, []);
-
-  useEffect(() => {
-    if (movies.length !== 0) {
-      setLoading(true);
-    }
-  }, [movies]);
-
-  // const handleSelectMovie = (e) => {
-  //   console.log(e.target.value);
-  // };
 
   return (
     <>
@@ -53,16 +57,17 @@ const Recommend = () => {
 
       <div className={styles.viewContainer}>
         {loading ? (
+          <Loading />
+        ) : (
           movies.map((movie) => (
             <Movie
               key={movie.id}
               title={movie.title}
               year={movie.year}
               poster={movie.medium_cover_image}
+              onVideoClick={handleSelectedVideo}
             />
           ))
-        ) : (
-          <Loading />
         )}
       </div>
     </>
