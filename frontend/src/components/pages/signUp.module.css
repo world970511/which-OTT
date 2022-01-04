@@ -1,0 +1,70 @@
+h1 {
+  padding-top: 30px;
+  font-size: 48px;
+}
+
+p {
+  padding: 20px 0;
+}
+
+input {
+  margin-bottom: 8px;
+  width: 220px;
+  height: 28px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: white;
+}
+
+.basicContainer {
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.loginTitle {
+  text-align: center;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basicContainer {
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.signbackdrop {
+  width: 500px;
+  height: 750px;
+  border-radius: 30px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 200, 145, 0.7) 100%
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
+}

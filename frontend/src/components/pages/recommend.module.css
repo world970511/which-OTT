@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+}
+
+.headerContainer {
+  display: flex;
+  background-color: #212121;
+  padding: 100px 80px 0;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.selectOption {
+  padding-top: 50px;
+}
+
+.viewContainer {
+  display: flex;
+  width: 1903px;
+  height: 925px;
+  padding: 0px 200px;
+  background-color: #fff8e1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
