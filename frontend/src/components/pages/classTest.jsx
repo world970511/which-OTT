@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Nav from "../nav/nav.jsx";
 import styles from "./classTest.module.css";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const ClassTest = () => {
-  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [userGender, setUserGender] = useState("");
   const [userAge, setUserAge] = useState("");
@@ -13,6 +12,10 @@ const ClassTest = () => {
 
   const [checkTest, setCheckTest] = useState(false);
   const [userCheck, setUserCheck] = useState(0);
+  const [oneCheck, setOneCheck] = useState(false);
+  const [twoCheck, setTwoCheck] = useState(false);
+
+  const { handleUserClass } = useContext(AuthContext);
 
   const nameRef = useRef();
   const genderRef = useRef();
@@ -26,42 +29,70 @@ const ClassTest = () => {
   const handleInput = () => {
     let nameValue;
     let genderValue;
-    let ageValue;
 
     nameValue = nameRef.current.value;
     genderValue = genderRef.current.value;
-    ageValue = ageRef.current.value;
 
     setUserName(nameValue);
     setUserGender(genderValue);
-    setUserAge(ageValue);
   };
 
   const handleSelected = () => {
     let useTimes = useTimeRef.current.value;
     let useCycles = useCycleRef.current.value;
+    let ageValue = ageRef.current.value;
 
     setUseTime(useTimes);
     setUseCycle(useCycles);
+    setUserAge(ageValue);
   };
 
   useEffect(() => {
+    console.log(userAge);
     if (userName !== "" && userGender !== "" && userAge !== "") {
-      setUserCheck(checkOne);
-    } else {
-      let count = userCheck <= 0 ? userCheck - 1 : 0;
-      setUserCheck(count);
+      setOneCheck(true);
+    } else if (userName === "" || userGender === "" || userAge === "none") {
+      setOneCheck(false);
     }
   }, [userName, userGender, userAge]);
 
   useEffect(() => {
     if (useTime === "none" || useCycle === "none") {
-      let count = userCheck >= 1 ? 1 : 0;
-      setUserCheck(count);
+      setTwoCheck(false);
     } else if (useTime !== "" && useCycle !== "") {
-      setUserCheck(checkTwo);
+      setTwoCheck(true);
     }
   }, [useTime, useCycle]);
+
+  const result_ok = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      age: parseInt(`${userAge}`),
+      usage_time: `${useTime}`,
+      frequency_of_use: `${useCycle}`,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/usage_survey"}`;
+
+    fetch(url, requestOptions)
+      .then((response) => response.json())
+      .then((result) =>
+        handleUserClass({
+          classTest: result,
+          userAge: parseInt(`${userAge}`),
+        })
+      )
+      .catch((error) => console.log("error", error));
+  };
 
   return (
     <>
@@ -72,12 +103,12 @@ const ClassTest = () => {
         <div className={styles.signalContainer}>
           <div
             className={`${styles.signal_Black} ${
-              userCheck >= 1 ? styles.signal_Light : styles.signal_Black
+              oneCheck ? styles.signal_Light : styles.signal_Black
             }`}
           ></div>
           <div
             className={`${styles.signal_Black} ${
-              userCheck === 2 ? styles.signal_Light : styles.signal_Black
+              twoCheck ? styles.signal_Light : styles.signal_Black
             }`}
           ></div>
         </div>
@@ -103,12 +134,27 @@ const ClassTest = () => {
                 type="text"
               />
               <p>나이</p>
-              <input
+              {/* <input
                 value={userAge}
                 ref={ageRef}
                 onChange={handleInput}
                 type="text"
-              />
+              /> */}
+              <select
+                className={styles.playTime}
+                onChange={handleSelected}
+                ref={ageRef}
+              >
+                <option value="none">--- 선택 ---</option>
+                <option value="9">만 10세 미만</option>
+                <option value="19">만 20세 미만</option>
+                <option value="29">만 30세 미만</option>
+                <option value="39">만 40세 미만</option>
+                <option value="49">만 50세 미만</option>
+                <option value="59">만 60세 미만</option>
+                <option value="69">만 70세 미만</option>
+                <option value="79">만 70세 이상</option>
+              </select>
             </div>
             <div
               className={`${styles.moveText} ${
@@ -163,13 +209,7 @@ const ClassTest = () => {
             >
               다음
             </button>
-            <button
-              onClick={() => {
-                navigate("/result");
-              }}
-            >
-              완료
-            </button>
+            <button onClick={result_ok}>완료</button>
           </div>
         </div>
       </div>

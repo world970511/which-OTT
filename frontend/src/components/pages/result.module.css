@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  color: white;
 }
 
 body {
@@ -62,7 +61,7 @@ body {
   width: 100%;
   padding-top: 60px;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 
   align-items: center;
   overflow: hidden;
@@ -101,7 +100,7 @@ body {
 
 .rightMove {
   -webkit-transition-duration: 500ms;
-  -webkit-transform: translateX(-1070px);
+  -webkit-transform: translateX(-1060px);
   -webkit-transition-timing-function: ease-out;
 }
 
@@ -154,4 +153,42 @@ body {
 
 .grayBtn {
   color: #757575;
+}
+
+.ageContainer {
+  position: relative;
+  left: 510px;
+  display: inline-block;
+  width: 80%;
+  height: 600px;
+  border-radius: 30px;
+  background: rgb(255, 100, 23);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 100, 23, 0.1) 0%,
+    rgba(33, 33, 33, 0.8) 100%
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
+  margin: 0 100px 100px;
+}
+
+.ageStat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.age_rightMove {
+  -webkit-transition-duration: 500ms;
+  -webkit-transform: translateX(-1050px);
+  -webkit-transition-timing-function: ease-out;
+}
+
+.age_leftMove {
+  -webkit-transition-duration: 500ms;
+  -webkit-transform: translateX(0px);
+  -webkit-transition-timing-function: ease-out;
 }

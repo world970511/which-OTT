@@ -18,33 +18,38 @@ const RenderBarChart = (props) => {
 
   const data = [
     {
-      name: "5분 미만",
-      시간: `${age[1]}`,
+      name: "여러번",
+      빈도: `${age[7]}`,
       amt: 2400,
     },
     {
-      name: "10분 미만",
-      시간: `${age[2]}`,
+      name: "하루1번",
+      빈도: `${age[6]}`,
       amt: 2210,
     },
     {
-      name: "30분 미만",
-      시간: `${age[3]}`,
+      name: "1주 5~6회",
+      빈도: `${age[5]}`,
       amt: 2290,
     },
     {
-      name: "1시간 미만",
-      시간: `${age[4]}`,
+      name: "1주 3~4회",
+      빈도: `${age[4]}`,
       amt: 2000,
     },
     {
-      name: "2시간 미만",
-      시간: `${age[5]}`,
+      name: "1주 1~2회",
+      빈도: `${age[3]}`,
       amt: 2181,
     },
     {
-      name: "2시간 이상",
-      시간: `${age[6]}`,
+      name: "월1~3회",
+      빈도: `${age[2]}`,
+      amt: 2500,
+    },
+    {
+      name: "월1회",
+      빈도: `${age[1]}`,
       amt: 2500,
     },
   ];
@@ -68,7 +73,7 @@ const RenderBarChart = (props) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="시간" stackId="a" fill="#82ca9d" />
+          <Bar dataKey="빈도" stackId="a" fill="#ffab91" />
         </BarChart>
       </ResponsiveContainer>
     </div>

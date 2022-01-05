@@ -112,6 +112,7 @@ ul {
   margin: 0 4px;
   text-align: center;
   cursor: pointer;
+  color: white;
   border: 1px solid #ff6f00;
   border-radius: var(--size-border-radius);
 }
@@ -137,6 +138,7 @@ ul {
   margin: 0 4px;
   text-align: center;
   cursor: pointer;
+  color: white;
   border: 1px solid #ffae70;
   border-radius: var(--size-border-radius);
 }

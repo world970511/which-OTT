@@ -6,8 +6,6 @@ import { AuthContext } from "../context/AuthContext.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [userNickname, setUserNickname] = useState(null);
-  const [token, setToken] = useState(null);
 
   const { handleLogin } = useContext(AuthContext);
 
@@ -37,30 +35,13 @@ const Login = () => {
 
     axios(config)
       .then(function (response) {
-        // localStorage.setItem(
-        //   "token",
-        //   JSON.stringify(response.data.access_token)
-        // );
-        setToken(JSON.stringify(response.data.access_token));
-        // localStorage.setItem(
-        //   "nickname",
-        //   JSON.stringify(response.data.nickname)
-        // );
+        handleLogin({
+          newToken: JSON.stringify(response.data.access_token),
+        });
       })
-      // .then((res) => {
-      //   // 페이지 이동
-      //   navigate("/");
-      // })
       .catch(function (error) {
         console.log(error);
       });
-
-    console.log("called");
-
-    handleLogin({
-      newToken: token,
-      loggedUser: userNickname,
-    });
   };
 
   const handleInput = (e) => {

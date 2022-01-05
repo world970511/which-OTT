@@ -9,8 +9,8 @@ body {
   cursor: default;
 }
 
-p {
-  padding-bottom: 21px;
+h1 {
+  color: white;
 }
 
 button {
@@ -36,6 +36,11 @@ button:hover {
     rgba(255, 111, 0, 1) 100%
   );
   color: black;
+}
+
+.guide_word {
+  padding-bottom: 21px;
+  color: white;
 }
 
 .guideContainer {

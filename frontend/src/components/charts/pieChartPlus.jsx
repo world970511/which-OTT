@@ -7,12 +7,13 @@ const RenderPieChart = (props) => {
   const d = props.data;
 
   const data = [
-    { name: "5분 미만", value: d[1] },
-    { name: "5분 이상 10분 미만", value: d[2] },
-    { name: "10분 이상 30분 미만", value: d[3] },
-    { name: "30분 이상 1시간 미만", value: d[4] },
-    { name: "1시간 이상 2시간 미만", value: d[5] },
-    { name: "2시간 이상", value: d[6] },
+    { name: "하루에도 여러번", value: d[1] },
+    { name: "하루1번(매일)", value: d[2] },
+    { name: "1주일에 5~6회", value: d[3] },
+    { name: "1주일에 3~4회", value: d[4] },
+    { name: "1주일에 1~2회", value: d[5] },
+    { name: "월1~3회", value: d[6] },
+    { name: "월1회", value: d[7] },
   ];
 
   return (

@@ -28,7 +28,7 @@ const Guide = () => {
       <div className={styles.guideContainer}>
         <div className={styles.guides__left}>
           <h1>웹 서비스 가이드</h1>
-          <p>
+          <p className={styles.guide_word}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint enim
             ad saepe cupiditate, eligendi odit porro nam sunt culpa iure beatae
             vero numquam! Et quibusdam dolores aspernatur error harum asperiores

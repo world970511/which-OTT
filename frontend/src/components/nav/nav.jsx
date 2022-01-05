@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./nav.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
 const Nav = () => {
-  const [userNickname, setUserNickname] = useState(null);
+  // const [userNickname, setUserNickname] = useState(null);
   const { logout } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    localStorage.getItem("nickname") &&
-      setUserNickname(localStorage.getItem("nickname"));
-  }, []);
+  // useEffect(() => {
+  //   localStorage.getItem("nickname") &&
+  //     setUserNickname(localStorage.getItem("nickname"));
+  // }, []);
 
   // const getToken = localStorage.getItem("token");
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./box.module.css";
+import ActivePie from "../charts/ActivePieChart.jsx";
 
 const Box = (props) => {
   const width = props.width;
@@ -9,6 +10,8 @@ const Box = (props) => {
   // let color = props.color;
   const backgroundColor = props.backgroundColor;
 
+  const data = 100;
+
   return (
     <>
       <div className={styles.box} style={{ width, height }}>
@@ -16,6 +19,7 @@ const Box = (props) => {
         <div className={styles.line}></div>
         <div className={styles.resultContainer} style={{ backgroundColor }}>
           <p className={styles.boxResult}>{most}</p>
+          {/* <ActivePie data={data}></ActivePie> */}
         </div>
       </div>
     </>

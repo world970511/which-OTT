@@ -6,6 +6,8 @@ const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [userClass, setUserClass] = useState({});
+  const [userAge, setUserAge] = useState("");
   const navigate = useNavigate();
 
   const logout = useCallback(() => {
@@ -47,12 +49,22 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = ({ newToken }) => {
     newToken && console.log("newToken");
-    console.log("newToken : ", newToken);
+    // console.log("newToken : ", newToken);
     if (!newToken) {
       console.error("no new token");
     }
     localStorage.setItem("token", newToken);
     loadUser();
+  };
+
+  const handleUserClass = ({ classTest, userAge }) => {
+    console.log("classTest :", classTest);
+    if (!classTest) {
+      console.log("new classTest");
+    }
+    setUserClass(classTest);
+    setUserAge(userAge);
+    userClass && navigate("/result");
   };
 
   console.log("user", user);
@@ -68,9 +80,12 @@ const AuthProvider = ({ children }) => {
   const store = {
     user,
     loading,
+    userClass,
+    userAge,
     handleLogin,
     logout,
     setUser,
+    handleUserClass,
   };
 
   return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
