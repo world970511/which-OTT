@@ -10,6 +10,9 @@ const AuthProvider = ({ children }) => {
   const [userAge, setUserAge] = useState("");
   const navigate = useNavigate();
 
+  const [selectedVideoTitle, setSelectedVideoTitle] = useState([]);
+  const [selectedVideoYear, setSelectedVideoYear] = useState([]);
+
   const logout = useCallback(() => {
     localStorage.removeItem("token");
     setUser(null);
@@ -67,7 +70,7 @@ const AuthProvider = ({ children }) => {
     userClass && navigate("/result");
   };
 
-  console.log("user", user);
+  // console.log("user", user);
 
   useEffect(() => {
     // token이 localstorage 에 있다면 loadUser 호출
@@ -77,15 +80,35 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  const checkedVideo = ({ videoTitle, videoYear }) => {
+    const setTitle = selectedVideoTitle.concat(videoTitle);
+    setSelectedVideoTitle(setTitle);
+    const setYear = selectedVideoYear.concat(videoYear);
+    setSelectedVideoYear(setYear);
+  };
+
+  const removeVideo = ({ videoTitle }) => {
+    let index = selectedVideoTitle.indexOf(videoTitle);
+    const setTitle = selectedVideoTitle;
+    if (index > -1) {
+      setTitle.splice(index, 1);
+    }
+    setSelectedVideoTitle(setTitle);
+  };
+
   const store = {
     user,
     loading,
     userClass,
     userAge,
+    selectedVideoTitle,
+    selectedVideoYear,
     handleLogin,
     logout,
     setUser,
     handleUserClass,
+    checkedVideo,
+    removeVideo,
   };
 
   return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
