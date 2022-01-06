@@ -227,35 +227,6 @@ def contents():
             return resp
 
         lastPageId = request_data['lastPageId'] * 12
-        OttVideoList.query.filter_by()
-        ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
-            OttVideoList.id.between(lastPageId, lastPageId+11)).all()
-
-        ImageURL_list = []
-        for obj in ImageURL:
-            title = obj.title
-            img_url = request.host_url + 'static/images/' + obj.img_url
-            ImageURL_list.append([title, img_url])
-
-        resp.status_code = 200
-        resp.set_data(json.dumps(
-            {
-                'ImageURL': ImageURL_list
-            }))
-        return resp
-
-
-@bp.route('/contents', methods=('POST',))
-def contents():
-    if request.method == 'POST':
-        request_data = request.get_json()
-
-        if 'lastPageId' not in request_data:
-            resp.status_code = 400
-            resp.set_data(json.dumps({'result': "Input Validation Error"}))
-            return resp
-
-        lastPageId = request_data['lastPageId'] * 12
 
         if 1010 < lastPageId + 11:
             resp.status_code = 400
