@@ -228,7 +228,7 @@ def contents():
 
         lastPageId = request_data['lastPageId'] * 12
 
-        if 1010 < lastPageId + 11:
+        if 0 <= lastPageId and lastPageId + 11 > 1010:
             resp.status_code = 400
             resp.set_data(json.dumps({'result': "Out Of Index"}))
             return resp
