@@ -140,6 +140,9 @@
 - 사용자 취향에 따른 플랫폼 추천
 </br>
 
-## 📂스토리보드
-- 🔗 https://www.figma.com/file/od7rNoPL0p5R8W83ntgGSF/WhichOTT?node-id=0%3A1
+
+## 📂와이어프레임/기획서/발표자료
+- 와이어프레임🔗 https://www.figma.com/file/od7rNoPL0p5R8W83ntgGSF/WhichOTT?node-id=0%3A1
+- 기획서🔗 
+- 발표자료🔗 
 
