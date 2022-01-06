@@ -1,6 +1,10 @@
 import json
 
-from flask import Blueprint, request, Response
+from flask import (
+    Blueprint,
+    request,
+    Response
+)
 from flask_jwt_extended import create_access_token
 from werkzeug.security import (
     generate_password_hash,
@@ -8,10 +12,13 @@ from werkzeug.security import (
 )
 
 from app import db
+
+# Todo: column_list 삭제
 from models.models import (
     User,
     OttUsageTime_statistics,
     OttFrequencyOfUse_statistics,
+    OttVideoList,
     usage_time_column_list,
     frequency_of_use_column_list,
 )
@@ -205,5 +212,63 @@ def usage_statistics():
                 'result': "OTT 사용 등급 통계",
                 'usage_time_data_list': usage_time_data_list,
                 'frequency_of_use_data_list': frequency_of_use_data_list
+            }))
+        return resp
+
+
+@bp.route('/contents', methods=('POST',))
+def contents():
+    if request.method == 'POST':
+        request_data = request.get_json()
+
+        if 'lastPageId' not in request_data:
+            resp.status_code = 400
+            resp.set_data(json.dumps({'result': "Input Validation Error"}))
+            return resp
+
+        lastPageId = request_data['lastPageId'] * 12
+        OttVideoList.query.filter_by()
+        ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
+            OttVideoList.id.between(lastPageId, lastPageId+11)).all()
+
+        ImageURL_list = []
+        for obj in ImageURL:
+            title = obj.title
+            img_url = request.host_url + 'static/images/' + obj.img_url
+            ImageURL_list.append([title, img_url])
+
+        resp.status_code = 200
+        resp.set_data(json.dumps(
+            {
+                'ImageURL': ImageURL_list
+            }))
+        return resp
+
+
+@bp.route('/contents', methods=('POST',))
+def contents():
+    if request.method == 'POST':
+        request_data = request.get_json()
+
+        if 'lastPageId' not in request_data:
+            resp.status_code = 400
+            resp.set_data(json.dumps({'result': "Input Validation Error"}))
+            return resp
+
+        lastPageId = request_data['lastPageId'] * 12
+        OttVideoList.query.filter_by()
+        ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
+            OttVideoList.id.between(lastPageId, lastPageId+11)).all()
+
+        ImageURL_list = []
+        for obj in ImageURL:
+            title = obj.title
+            img_url = request.host_url + 'static/images/' + obj.img_url
+            ImageURL_list.append([title, img_url])
+
+        resp.status_code = 200
+        resp.set_data(json.dumps(
+            {
+                'ImageURL': ImageURL_list
             }))
         return resp
