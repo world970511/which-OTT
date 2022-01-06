@@ -2,10 +2,19 @@ import json
 
 from flask import Blueprint, request, Response
 from flask_jwt_extended import create_access_token
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import (
+    generate_password_hash,
+    check_password_hash,
+)
 
 from app import db
-from models.models import User, ott_usage_time_statistics, ott_frequency_of_use_statistics, usage_time_column_list, frequency_of_use_column_list
+from models.models import (
+    User,
+    OttUsageTime_statistics,
+    OttFrequencyOfUse_statistics,
+    usage_time_column_list,
+    frequency_of_use_column_list,
+)
 
 '''
 main_api.py
@@ -24,6 +33,13 @@ resp.headers['Access-Control-Allow-Origin'] = '*'
 def register():
     if request.method == 'POST':
         request_data = request.get_json()
+
+        for key in ['user_id', 'password', 'nickname', 'email']:
+            if key not in request_data:
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "Input Validation Error"}))
+                return resp
+
         user = User.query.filter_by(
             id=request_data['user_id']).first()
 
@@ -38,11 +54,10 @@ def register():
             db.session.close()
 
             resp.status_code = 200
-            resp.set_data(json.dumps({'result': "회원가입 성공"}))
             return resp
         else:
             resp.status_code = 400
-            resp.set_data(json.dumps({'result': "이미 가입된 아이디입니다."}))
+            resp.set_data(json.dumps({'result': "ID is already registered"}))
             return resp
 
 
@@ -50,6 +65,13 @@ def register():
 def login():
     if request.method == 'POST':
         request_data = request.get_json()
+
+        for key in ['user_id', 'password']:
+            if key not in request_data:
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "Input Validation Error"}))
+                return resp
+
         id = request_data['user_id']
         password = request_data['password']
 
@@ -58,16 +80,15 @@ def login():
 
         if user_data is None:
             resp.status_code = 400
-            resp.set_data(json.dumps({'result': "없는 아이디입니다."}))
+            resp.set_data(json.dumps({'result': "ID does not exist"}))
             return resp
         elif check_password_hash(user_data.password, password) is False:
             resp.status_code = 400
-            resp.set_data(json.dumps({'result': "비밀번호가 틀렸습니다."}))
+            resp.set_data(json.dumps({'result': "Password is wrong"}))
             return resp
         else:
             resp.status_code = 200
             resp.set_data(json.dumps({
-                'result': "로그인 성공",
                 'nickname': user_data.nickname,
                 'access_token': create_access_token(id)
             }))
@@ -78,6 +99,13 @@ def login():
 def usage_survey():
     if request.method == 'POST':
         request_data = request.get_json()
+
+        for key in ['age', 'usage_time', 'frequency_of_use']:
+            if key not in request_data:
+                resp.status_code = 400
+                resp.set_data(json.dumps({'result': "Input Validation Error"}))
+                return resp
+
         age = request_data['age']
         usage_time = request_data['usage_time']
         frequency_of_use = request_data['frequency_of_use']
@@ -99,7 +127,7 @@ def usage_survey():
         elif age >= 70:
             id = 999
 
-        usage_time_data = ott_usage_time_statistics.query.filter_by(
+        usage_time_data = OttUsageTime_statistics.query.filter_by(
             id=id).first()
 
         fields = [0 for _ in range(len(usage_time_column_list))]
@@ -115,7 +143,7 @@ def usage_survey():
         fields.append(0)
         usage_time_value = fields[usage_time_column_list.index(usage_time)-1]
 
-        frequency_of_use_data = ott_frequency_of_use_statistics.query.filter_by(
+        frequency_of_use_data = OttFrequencyOfUse_statistics.query.filter_by(
             id=id).first()
         db.session.close()
 
@@ -148,7 +176,7 @@ def usage_survey():
 @bp.route('/usage_statistics', methods=('GET',))
 def usage_statistics():
     if request.method == 'GET':
-        usage_time_data = ott_usage_time_statistics.query.all()
+        usage_time_data = OttUsageTime_statistics.query.all()
 
         usage_time_data_list = []
         for obj in usage_time_data:
@@ -159,7 +187,7 @@ def usage_statistics():
                 fields[i] = data
             usage_time_data_list.append(fields)
 
-        frequency_of_use_data = ott_frequency_of_use_statistics.query.all()
+        frequency_of_use_data = OttFrequencyOfUse_statistics.query.all()
         db.session.close()
 
         frequency_of_use_data_list = []
