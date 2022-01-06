@@ -256,6 +256,12 @@ def contents():
             return resp
 
         lastPageId = request_data['lastPageId'] * 12
+
+        if 1010 < lastPageId + 11:
+            resp.status_code = 400
+            resp.set_data(json.dumps({'result': "Out Of Index"}))
+            return resp
+
         OttVideoList.query.filter_by()
         ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
             OttVideoList.id.between(lastPageId, lastPageId+11)).all()
