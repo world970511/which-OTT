@@ -14,21 +14,19 @@ main_api.py
 
 
 bp = Blueprint('main', __name__, url_prefix='/')
+resp = Response()
 
 # 테스트중 cors 문제를 해결하기 위한 임시조치
-resp = Response()
 resp.headers['Access-Control-Allow-Origin'] = '*'
 
 
 @bp.route('/register', methods=('POST',))
-# 회원가입
 def register():
     if request.method == 'POST':
         request_data = request.get_json()
         user = User.query.filter_by(
             id=request_data['user_id']).first()
 
-        # 아이디 중복 체크
         if user is None:
             password = generate_password_hash(request_data['password'])
 
@@ -37,6 +35,7 @@ def register():
 
             db.session.add(user)
             db.session.commit()
+            db.session.close()
 
             resp.status_code = 200
             resp.set_data(json.dumps({'result': "회원가입 성공"}))
@@ -48,7 +47,6 @@ def register():
 
 
 @bp.route('/login', methods=('POST',))
-# 로그인
 def login():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -56,6 +54,7 @@ def login():
         password = request_data['password']
 
         user_data = User.query.filter_by(id=id).first()
+        db.session.close()
 
         if user_data is None:
             resp.status_code = 400
@@ -76,7 +75,6 @@ def login():
 
 
 @bp.route('/usage_survey', methods=('POST',))
-# OTT 사용 등급 검사
 def usage_survey():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -103,6 +101,7 @@ def usage_survey():
 
         usage_time_data = ott_usage_time_statistics.query.filter_by(
             id=id).first()
+
         fields = [0 for _ in range(len(usage_time_column_list))]
         for field in [x for x in dir(usage_time_data) if not x.startswith('_') and x not in ('metadata', 'query', 'query_class', 'registry')]:
             data = usage_time_data.__getattribute__(field)
@@ -118,6 +117,8 @@ def usage_survey():
 
         frequency_of_use_data = ott_frequency_of_use_statistics.query.filter_by(
             id=id).first()
+        db.session.close()
+
         fields = [0 for _ in range(len(frequency_of_use_column_list))]
         for field in [x for x in dir(frequency_of_use_data) if not x.startswith('_') and x not in ('metadata', 'query', 'query_class', 'registry')]:
             data = frequency_of_use_data.__getattribute__(field)
@@ -145,7 +146,6 @@ def usage_survey():
 
 
 @bp.route('/usage_statistics', methods=('GET',))
-# OTT 사용 등급 통계
 def usage_statistics():
     if request.method == 'GET':
         usage_time_data = ott_usage_time_statistics.query.all()
@@ -160,6 +160,7 @@ def usage_statistics():
             usage_time_data_list.append(fields)
 
         frequency_of_use_data = ott_frequency_of_use_statistics.query.all()
+        db.session.close()
 
         frequency_of_use_data_list = []
         for obj in frequency_of_use_data:
