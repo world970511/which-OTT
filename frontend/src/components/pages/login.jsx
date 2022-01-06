@@ -101,7 +101,7 @@ const Login = () => {
       <div className={styles.backdrop}>
         <h1 className={styles.loginTitle}>Welcome!</h1>
         <div className={styles.inputContainer}>
-          <p>아이디</p>
+          <p className={styles.inputBox}>아이디</p>
           <input
             type="text"
             value={form.userId}
@@ -109,7 +109,7 @@ const Login = () => {
             onChange={handleInput}
             placeholder=" ID를 입력해주세요"
           />
-          <p>비밀번호</p>
+          <p className={styles.inputBox}>비밀번호</p>
           <input
             type="text"
             value={form.userPw}
@@ -119,8 +119,12 @@ const Login = () => {
           />
         </div>
         <div className={styles.btnContainer}>
-          <button onClick={onSubmit}>로그인</button>
-          <button onClick={onClick}>회원가입</button>
+          <button className={styles.btn} onClick={onSubmit}>
+            로그인
+          </button>
+          <button className={styles.btn} onClick={onClick}>
+            회원가입
+          </button>
         </div>
       </div>
     </div>

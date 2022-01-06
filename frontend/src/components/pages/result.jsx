@@ -9,10 +9,12 @@ import styles from "./result.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
 const Result = () => {
-  const { userAge } = useContext(AuthContext);
+  const { userAge, userName, userGender } = useContext(AuthContext);
 
   const [checkTest, setCheckTest] = useState(false);
   const [ageTest, setAgeTest] = useState(false);
+  const [genderTest, setGenderTest] = useState(false);
+
   const [useStat, setUseStat] = useState({});
   const [useAge, setUseAge] = useState("");
 
@@ -81,7 +83,9 @@ const Result = () => {
 
   useEffect(() => {
     useAge > 71 ? setRenderAge(71) : setRenderAge(useAge);
-  }, [useAge]);
+    const gender = userGender === "man" ? true : false;
+    setGenderTest(gender);
+  }, [useAge, userGender]);
 
   useEffect(() => {
     console.log(useAge);
@@ -145,7 +149,7 @@ const Result = () => {
               width={350}
               height={150}
               title={"등급 %"}
-              most={userClass.rank_percent}
+              most={Math.round(userClass.rank_percent)}
               backgroundColor={`#80deea`}
             ></Box>
             <Box
@@ -161,7 +165,7 @@ const Result = () => {
         <div className={styles.totalContainer}>
           <div>
             <h4 className={styles.detail}>
-              당신의 정보와 비슷한 이용자의 평균 결과는 다음과 같습니다.
+              {`${userName}님의 성별과 비슷한 이용자의 평균 결과는 다음과 같습니다.`}
             </h4>
             <div className={styles.line}></div>
           </div>
@@ -174,14 +178,26 @@ const Result = () => {
               <h4 className={styles.statTitle}>OTT 서비스 이용 시간</h4>
               <div className={styles.genderStat}>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>남성</p>
+                  <p
+                    className={`${styles.pieTitle} ${
+                      genderTest ? styles.genderCheck : null
+                    }`}
+                  >
+                    남성
+                  </p>
                   <div className={styles.detailLine}></div>
-                  <Pie w={350} h={350} data={manTime} color={`#c5e1a5`}></Pie>
+                  <Pie w={400} h={350} data={manTime} color={`#c5e1a5`}></Pie>
                 </div>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>여성</p>
+                  <p
+                    className={`${styles.pieTitle} ${
+                      genderTest ? null : styles.genderCheck
+                    }`}
+                  >
+                    여성
+                  </p>
                   <div className={styles.detailLine}></div>
-                  <Pie w={350} h={350} data={womanTime} color={`#ffcdd2`}></Pie>
+                  <Pie w={400} h={350} data={womanTime} color={`#ffcdd2`}></Pie>
                 </div>
               </div>
             </div>
@@ -193,21 +209,33 @@ const Result = () => {
               <h4 className={styles.statTitle}>OTT 서비스 이용 빈도</h4>
               <div className={styles.genderStat}>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>남성</p>
+                  <p
+                    className={`${styles.pieTitle} ${
+                      genderTest ? styles.genderCheck : null
+                    }`}
+                  >
+                    남성
+                  </p>
                   <div className={styles.detailLine}></div>
                   <PiePlus
-                    w={350}
-                    h={350}
+                    w={400}
+                    h={400}
                     data={manCycle}
                     color={`#c5e1a5`}
                   ></PiePlus>
                 </div>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>여성</p>
+                  <p
+                    className={`${styles.pieTitle} ${
+                      genderTest ? null : styles.genderCheck
+                    }`}
+                  >
+                    여성
+                  </p>
                   <div className={styles.detailLine}></div>
                   <PiePlus
-                    w={350}
-                    h={350}
+                    w={400}
+                    h={400}
                     data={womanCycle}
                     color={`#ffcdd2`}
                   ></PiePlus>
@@ -244,7 +272,7 @@ const Result = () => {
         <div className={styles.totalContainer}>
           <div>
             <h4 className={styles.detail}>
-              당신의 정보와 비슷한 이용자의 평균 결과는 다음과 같습니다.
+              {`${userName}님의 연령과 비슷한 이용자의 평균 결과는 다음과 같습니다.`}
             </h4>
             <div className={styles.line}></div>
           </div>
@@ -257,11 +285,11 @@ const Result = () => {
               <h4 className={styles.statTitle}>OTT 서비스 이용 시간</h4>
               <div className={styles.ageStat}>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>
+                  <p className={styles.ageTitle}>
                     {renderAge > 70 ? "70대 이상" : `${renderAge} 대`}
                   </p>
                   <div className={styles.detailLine}></div>
-                  <Bar w={750} h={350} age={ageTime}></Bar>
+                  <Bar w={750} h={400} age={ageTime}></Bar>
                 </div>
               </div>
             </div>
@@ -273,11 +301,11 @@ const Result = () => {
               <h4 className={styles.statTitle}>OTT 서비스 이용 빈도</h4>
               <div className={styles.ageStat}>
                 <div className={styles.pieChart}>
-                  <p className={styles.pieTitle}>
+                  <p className={styles.ageTitle}>
                     {renderAge > 70 ? "70대 이상" : `${renderAge} 대`}
                   </p>
                   <div className={styles.detailLine}></div>
-                  <BarPlus w={750} h={350} age={ageCycle}></BarPlus>
+                  <BarPlus w={750} h={400} age={ageCycle}></BarPlus>
                 </div>
               </div>
             </div>

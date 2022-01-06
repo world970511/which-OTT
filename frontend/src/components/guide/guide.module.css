@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  color: black;
+  /* color: black; */
 }
 
 body {
@@ -13,7 +13,8 @@ h1 {
   color: white;
 }
 
-button {
+.testBtn,
+.statBtn {
   width: 100px;
   height: 40px;
   background-color: transparent;
@@ -27,8 +28,8 @@ button {
   font-size: 0.8rem;
 }
 
-button:hover {
-  /* background-color: #eeeeee; */
+.testBtn:hover,
+.statBtn:hover {
   background: rgb(255, 177, 87);
   background: linear-gradient(
     90deg,

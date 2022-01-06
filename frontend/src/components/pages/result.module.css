@@ -21,7 +21,8 @@ body {
 }
 
 .intro {
-  font-size: 24px;
+  font-size: 28px;
+  color: white;
   padding-bottom: 40px;
 }
 
@@ -68,6 +69,7 @@ body {
 }
 
 .statTitle {
+  color: white;
   width: 100%;
   font-size: 36px;
   padding-top: 20px;
@@ -119,7 +121,7 @@ body {
 }
 
 .pieChart {
-  padding: 40px;
+  padding: 0px 40px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -128,28 +130,67 @@ body {
 
 .pieTitle {
   font-size: 28px;
+  /* color: white; */
   margin-bottom: 15px;
+}
+
+.ageTitle {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.genderCheck {
+  color: white;
 }
 
 .prevBtn {
   border: 0;
   position: absolute;
-  top: 520px;
+  top: 460px;
   left: 0px;
   font-size: 50px;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
+
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
 }
 
 .nextBtn {
   border: 0;
   position: absolute;
-  top: 520px;
+  top: 460px;
   right: 0px;
   font-size: 50px;
   margin: 0;
   padding: 0;
+
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
 }
+
+.prevBtn:hover,
+.nextBtn:hover {
+  color: orange;
+}
+
+/* .prevBtn i,
+.nextBtn i {
+  color: white;
+} */
 
 .grayBtn {
   color: #757575;
@@ -178,7 +219,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 
 .age_rightMove {

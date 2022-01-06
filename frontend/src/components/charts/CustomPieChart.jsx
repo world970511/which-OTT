@@ -2,25 +2,25 @@ import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer, Cell } from "recharts";
 
 const data = [
-  { name: "넷플릭스", value: 612 },
+  { name: "왓챠", value: 2858 },
   { name: "웨이브", value: 2503 },
   { name: "티빙", value: 1173 },
-  { name: "쿠팡플레이", value: 341 },
-  { name: "왓챠", value: 2858 },
+  { name: "넷플릭스", value: 612 },
   { name: "디즈니+", value: 528 },
   { name: "seezn", value: 441 },
+  { name: "쿠팡플레이", value: 341 },
   { name: "라프텔", value: 260 },
 ];
 
 const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#FFBB28",
-  "#FF8042",
-  "#1188FE",
-  "#00C45F",
-  "#FFBB58",
-  "#DD8042",
+  "#ef9a9a",
+  "#ce93d8",
+  "#90caf9",
+  "#80cbc4",
+  "#c5e1a5",
+  "#fff59d",
+  "#ffcc80",
+  "#b0bec5",
 ];
 
 const renderActiveShape = (props) => {
@@ -112,13 +112,13 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width={500} height={500}>
+      <ResponsiveContainer width={800} height={500}>
         <PieChart width={450} height={450}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
             data={data}
-            cx={250}
+            cx={400}
             cy={250}
             innerRadius={100}
             outerRadius={140}

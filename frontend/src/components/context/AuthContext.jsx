@@ -6,8 +6,12 @@ const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
   const [userClass, setUserClass] = useState({});
   const [userAge, setUserAge] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userGender, setUserGender] = useState("");
+
   const navigate = useNavigate();
 
   const [selectedVideoTitle, setSelectedVideoTitle] = useState([]);
@@ -60,17 +64,17 @@ const AuthProvider = ({ children }) => {
     loadUser();
   };
 
-  const handleUserClass = ({ classTest, userAge }) => {
+  const handleUserClass = ({ classTest, userAge, userName, userGender }) => {
     console.log("classTest :", classTest);
     if (!classTest) {
       console.log("new classTest");
     }
     setUserClass(classTest);
     setUserAge(userAge);
+    setUserName(userName);
+    setUserGender(userGender);
     userClass && navigate("/result");
   };
-
-  // console.log("user", user);
 
   useEffect(() => {
     // token이 localstorage 에 있다면 loadUser 호출
@@ -101,6 +105,8 @@ const AuthProvider = ({ children }) => {
     loading,
     userClass,
     userAge,
+    userName,
+    userGender,
     selectedVideoTitle,
     selectedVideoYear,
     handleLogin,

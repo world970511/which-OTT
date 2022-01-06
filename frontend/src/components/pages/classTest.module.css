@@ -97,6 +97,7 @@ select {
   border-radius: 10px;
   outline: 0 none;
   text-align: center;
+  color: white;
 }
 
 option {
@@ -113,6 +114,10 @@ option {
 
 .moveText {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   left: 210px;
   padding: 50px 100px;
 }
@@ -131,4 +136,55 @@ option {
 
 .btnContainer {
   padding-bottom: 40px;
+}
+
+.selectTitle {
+  color: white;
+  padding-bottom: 10px;
+}
+
+.radioBtn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 5px;
+  align-items: center;
+  flex-direction: row;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radioInput {
+  width: 40px;
+}
+
+.playTime {
+  margin-bottom: 20px;
+}
+
+.testBtn {
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  border: 1.5px solid #ff6f00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.testBtn:hover {
+  background: rgb(255, 177, 87);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 177, 87, 0.3) 0%,
+    rgba(255, 111, 0, 1) 100%
+  );
+  color: black;
 }

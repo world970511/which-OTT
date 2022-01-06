@@ -19,7 +19,16 @@ const RenderPieChart = (props) => {
     <div style={{ width: w, height: h }}>
       <ResponsiveContainer>
         <PieChart>
-          <Pie dataKey="value" data={data} fill={props.color} label />
+          <Pie
+            // cx={200}
+            // cy={200}
+            // innerRadius={50}
+            // outerRadius={100}
+            dataKey="value"
+            data={data}
+            fill={props.color}
+            label
+          />
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>

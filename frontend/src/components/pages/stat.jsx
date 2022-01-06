@@ -1,31 +1,12 @@
-import React, { useEffect, useState } from "react";
-import ActivePie from "../charts/ActivePieChart.jsx";
-import Diamond from "../charts/DiamondChart.jsx";
+import React from "react";
 import MixBar from "../charts/MixBarChart.jsx";
 import DoubleBar from "../charts/DoubleBarChart.jsx";
 import CustomPie from "../charts/CustomPieChart.jsx";
-
-import Bar from "../charts/barChart";
 import Nav from "../nav/nav.jsx";
 import Box from "../box/box.jsx";
 import styles from "./stat.module.css";
 
-import platform from "../../PlatformStat/js_origin.json";
-
 const Stat = () => {
-  const [platformObj, setPlatformObj] = useState([]);
-
-  useEffect(() => {
-    setPlatformObj(platform);
-  });
-
-  useEffect(() => {
-    for (let key in platform) {
-      console.log(key);
-      console.log(platform[key]);
-    }
-  }, [platformObj]);
-
   return (
     <>
       <Nav></Nav>
@@ -40,10 +21,8 @@ const Stat = () => {
         </div>
       </div>
       <div className={styles.ageStat}>
-        <p className={styles.pieTitle}>2008년 이전 컨텐츠</p>
+        <p className={styles.pieTitle}>2008년 이전 컨텐츠 비율</p>
         <div className={styles.line}></div>
-        {/* <Diamond></Diamond> */}
-        {/* <ActivePie></ActivePie> */}
         <CustomPie></CustomPie>
       </div>
       <div className={styles.ageStat}>

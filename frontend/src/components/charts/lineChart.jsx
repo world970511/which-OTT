@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -9,60 +9,76 @@ import {
   Legend,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const RenderLineChart = (props) => {
+  const dataset = props.data;
 
-const RenderLineChart = () => {
-  const w = window.innerWidth * 0.7;
-  const h = window.innerHeight * 0.6;
+  // const w = window.innerWidth * 0.7;
+  // const h = window.innerHeight * 0.6;
+
+  const data = [
+    {
+      name: "연간 1회",
+      2019: dataset[7],
+      2020: dataset[15],
+      2021: dataset[23],
+      amt: 2100,
+    },
+    {
+      name: "월 1회",
+      2019: dataset[6],
+      2020: dataset[14],
+      2021: dataset[22],
+      amt: 2500,
+    },
+    {
+      name: "월 1~3회",
+      2019: dataset[5],
+      2020: dataset[13],
+      2021: dataset[21],
+      amt: 2181,
+    },
+    {
+      name: "1주 1~2회",
+      2019: dataset[4],
+      2020: dataset[12],
+      2021: dataset[20],
+      amt: 2181,
+    },
+    {
+      name: "1주 3~4회",
+      2019: dataset[3],
+      2020: dataset[11],
+      2021: dataset[19],
+      amt: 2000,
+    },
+    {
+      name: "1주 5~6회",
+      2019: dataset[2],
+      2020: dataset[10],
+      2021: dataset[18],
+      amt: 2290,
+    },
+    {
+      name: "하루1번",
+      2019: dataset[1],
+      2020: dataset[9],
+      2021: dataset[17],
+      amt: 2210,
+    },
+    {
+      name: "여러번",
+      2019: dataset[0],
+      2020: dataset[8],
+      2021: dataset[16],
+      amt: 2400,
+    },
+  ];
 
   return (
     <div>
       <LineChart
-        width={w}
-        height={h}
+        width={1200}
+        height={600}
         data={data}
         margin={{
           top: 5,
@@ -72,17 +88,26 @@ const RenderLineChart = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis
+          dataKey="name"
+          padding={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 55,
+          }}
+        />
         <YAxis />
         <Tooltip />
         <Legend />
+        <Line type="monotone" dataKey={2019} stroke="#8884d8" />
+        <Line type="monotone" dataKey={2020} stroke="#82ca9d" />
         <Line
           type="monotone"
-          dataKey="pv"
-          stroke="#8884d8"
+          dataKey={2021}
           activeDot={{ r: 8 }}
+          stroke="#10ca9d"
         />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart>
     </div>
   );

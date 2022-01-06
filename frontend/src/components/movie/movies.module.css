@@ -18,27 +18,27 @@
   box-sizing: border-box;
   width: 200px;
   height: 300px;
-  transition: all 100ms ease-in;
+  transition: all 150ms ease-in;
 }
 
 .movieContainer:hover {
   transform: scale(1.02);
-  background: rgb(96, 96, 96);
+  background: rgb(169, 241, 255);
   background: linear-gradient(
-    135deg,
-    rgba(73, 5, 5, 0.9) 0%,
-    rgb(46, 13, 13) 100%
+    180deg,
+    rgba(169, 241, 255, 0.5) 0%,
+    rgba(240, 212, 255, 1) 100%
   );
   backdrop-filter: blur(10px);
 }
 
 .selectedVideo {
   transform: scale(1.02);
-  background: rgb(96, 96, 96);
+  background: rgb(169, 241, 255);
   background: linear-gradient(
-    135deg,
-    rgba(73, 5, 5, 0.9) 0%,
-    rgb(46, 13, 13) 100%
+    180deg,
+    rgba(169, 241, 255, 0.5) 0%,
+    rgba(240, 212, 255, 1) 100%
   );
   backdrop-filter: blur(10px);
 }

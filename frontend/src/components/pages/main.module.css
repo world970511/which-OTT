@@ -22,5 +22,35 @@ body {
 .mainGraphTitle {
   font-size: 30px;
   color: black;
-  padding-bottom: 50px;
+}
+
+.subTitle {
+  font-size: 20px;
+  padding-bottom: 25px;
+  padding-top: 50px;
+}
+
+.pieContainer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.pieTitle {
+  padding-top: 40px;
+  font-size: 17px;
+}
+
+.lineContainer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+  border: 2px solid black;
+  border-radius: 10px;
 }

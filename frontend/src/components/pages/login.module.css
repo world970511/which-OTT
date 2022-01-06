@@ -49,10 +49,39 @@ input:focus {
   padding: 10px;
 }
 
+.inputBox {
+  color: white;
+  font-weight: bold;
+}
+
 .btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  border: 1.5px solid #ff6f00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.btn:hover {
+  background: rgb(255, 177, 87);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 177, 87, 0.3) 0%,
+    rgba(255, 111, 0, 1) 100%
+  );
+  color: black;
 }
 
 .backdrop {
