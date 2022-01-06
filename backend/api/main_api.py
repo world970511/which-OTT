@@ -259,6 +259,7 @@ def contents():
         OttVideoList.query.filter_by()
         ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
             OttVideoList.id.between(lastPageId, lastPageId+11)).all()
+        db.session.close()
 
         ImageURL_list = []
         for obj in ImageURL:
