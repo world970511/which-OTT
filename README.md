@@ -1,3 +1,7 @@
+<h1 align="center">
+  <img width="300" src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/%EA%B7%B8%EB%A6%BC1_1.jpg">
+</h1>
+
 <h3 align="center">앨리스 AI 트랙 -OTT 서비스 프로젝트: Watch OTT</h3>
 
 <p align="center">
@@ -93,11 +97,21 @@
 
 ## ⚒️기술 스택
 
-### Front-end                                                                                                                        
+### Front-end   
+|<img src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" width="50px" height="50px" />|<img src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" width="50px" height="50px" />|  <img src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" width="50px" height="50px" />| <img src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" width="50px" height="50px" />| <img src="https://profilinator.rishav.dev/skills-assets/logo-title.svg" alt="Chart.js" width="50px" height="50px" />|
+| :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
+|HTML5|CSS3|JavaScript|React|Chart.js|
 
 ### Back-end
 
-### AI
+|<img src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" width="50px" height="50px" />|<img src="https://profilinator.rishav.dev/skills-assets/flask.png" alt="Flask" width="50px" height="50px"/> |<img src="https://profilinator.rishav.dev/skills-assets/mariadb.png" alt="Maria DB" width="50px" height="50px"/>|
+| :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
+| Python | Flask | MariaDB |
+
+### 데이터분석
+|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/800px-Pandas_logo.svg.png" width="90px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/1200px-NumPy_logo_2020.svg.png" width="80px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/logo-plotly.svg" width="50px" height="50px">|
+| :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
+|Pandas|Numpy|Plotly|
 
 ### 버전 관리
 
@@ -115,17 +129,16 @@
 |  기능  |                                                                                        내용                                                                                       |
 | :----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | OTT 추천 서비스 | 사용자의 콘텐츠 성향 검사 후 사용자에게 알맞은 OTT 서비스 추천|
-| OTT 관련 통계 제공 | 각 OTT 별 콘텐츠 관련 통계 기타 관련 자료를 제공해주는 기능|
-| OTT 사용 등급 검사 | 본인의 OTT 사용 등급을 한눈에 볼 수 있도록 도와주는 기능|
+| OTT 관련 통계 제공 | 각 OTT서비스 분석을 통한 콘텐츠 통계 자료를 제공|
+| OTT 사용 등급 검사 | 본인의 OTT 사용 빈도와 시간을 통해 OTT서비스 이용도 파악을 돕는 기능 |
 
-### 서브 기능
-- 로그인/로그아웃/회원가입
-- 동적인 시각화 자료 제공
+
 
 ### 웹 서비스의 사용자가 데이터 분석 시각화 자료를 통해 얻는 인사이트
-- 본인의 OTT 서비스 이용도 및 경제적 비용 확인
-- OTT별 장단점 및 콘텐츠 특성 
+- 본인의 OTT 서비스 이용도 확인
+- OTT별 장단점 및 콘텐츠 특성 확인
+- 사용자 취향에 따른 플랫폼 추천
 </br>
 
 ## 📂스토리보드
-- 🔗 https://whimsical.com/CnoGZyqFuYrqz95s6d4NiM
+- 🔗 https://www.figma.com/file/od7rNoPL0p5R8W83ntgGSF/watchOTT?node-id=0%3A1
