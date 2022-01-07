@@ -12,7 +12,6 @@ from werkzeug.security import (
 )
 
 from app import db
-
 # Todo: column_list 삭제
 from models.models import (
     User,
@@ -22,6 +21,7 @@ from models.models import (
     usage_time_column_list,
     frequency_of_use_column_list,
 )
+from api.analysis.ott_ranking import get_rank
 
 '''
 main_api.py
@@ -233,7 +233,6 @@ def contents():
             resp.set_data(json.dumps({'result': "Out Of Index"}))
             return resp
 
-        OttVideoList.query.filter_by()
         ImageURL = db.session.query(OttVideoList.title, OttVideoList.img_url).filter(
             OttVideoList.id.between(lastPageId, lastPageId+11)).all()
         db.session.close()
@@ -248,5 +247,40 @@ def contents():
         resp.set_data(json.dumps(
             {
                 'ImageURL': ImageURL_list
+            }))
+        return resp
+
+
+@bp.route('/recommend', methods=('POST',))
+def recommend():
+    if request.method == 'POST':
+        request_data = request.get_json()
+
+        if 'titles' not in request_data:
+            resp.status_code = 400
+            resp.set_data(json.dumps({'result': "Input Validation Error"}))
+            return resp
+
+        ott_data = db.session.query(OttVideoList).filter(
+            OttVideoList.title.in_(request_data["titles"])).all()
+        db.session.close()
+
+        genre_list = []
+        country_list = []
+        for obj in ott_data:
+            genre = obj.genre.split('|')
+            country = obj.country.split('|')
+
+            genre_list.append(genre[0])
+            country_list.append(country[0])
+
+        common_rank, original_rank = get_rank(
+            genre_list, country_list)
+
+        resp.status_code = 200
+        resp.set_data(json.dumps(
+            {
+                'common_rank': common_rank,
+                'original_rank': original_rank
             }))
         return resp
