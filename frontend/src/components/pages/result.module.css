@@ -3,7 +3,6 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   margin: 0;
   cursor: default;
   display: flex;
@@ -84,7 +83,7 @@ body {
 
 .genderContainer {
   position: relative;
-  left: 530px;
+  left: 545px;
   display: inline-block;
   width: 80%;
   height: 600px;
@@ -102,7 +101,7 @@ body {
 
 .rightMove {
   -webkit-transition-duration: 500ms;
-  -webkit-transform: translateX(-1060px);
+  -webkit-transform: translateX(-1095px);
   -webkit-transition-timing-function: ease-out;
 }
 
@@ -130,7 +129,6 @@ body {
 
 .pieTitle {
   font-size: 28px;
-  /* color: white; */
   margin-bottom: 15px;
 }
 
@@ -150,9 +148,6 @@ body {
   top: 460px;
   left: 0px;
   font-size: 50px;
-  /* margin: 0;
-  padding: 0; */
-
   width: 100px;
   height: 40px;
   background-color: transparent;
@@ -187,10 +182,30 @@ body {
   color: orange;
 }
 
-/* .prevBtn i,
-.nextBtn i {
+.btn {
+  width: 150px;
+  height: 60px;
+  background-color: transparent;
+  border: 1.5px solid black;
   color: white;
-} */
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: rgb(225, 251, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(225, 251, 255, 1) 0%,
+    rgba(116, 102, 154, 1) 100%
+  );
+  color: black;
+}
 
 .grayBtn {
   color: #757575;
@@ -224,7 +239,7 @@ body {
 
 .age_rightMove {
   -webkit-transition-duration: 500ms;
-  -webkit-transform: translateX(-1050px);
+  -webkit-transform: translateX(-1060px);
   -webkit-transition-timing-function: ease-out;
 }
 

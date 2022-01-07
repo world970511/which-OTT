@@ -23,7 +23,6 @@
 }
 
 input {
-  /* margin-right: 340px; */
   text-align: center;
   margin-bottom: 8px;
   width: 220px;
@@ -135,7 +134,19 @@ option {
 }
 
 .btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 40px;
+}
+
+.checkName {
+  color: #ff5252;
+}
+
+.nullText {
+  visibility: hidden;
 }
 
 .selectTitle {
@@ -153,12 +164,16 @@ option {
 }
 
 label {
+  width: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
 .radioInput {
-  width: 40px;
+  width: 20px;
+  margin: 0;
 }
 
 .playTime {
@@ -177,6 +192,7 @@ label {
   margin: 40px 10px;
   border-radius: 10px;
   font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .testBtn:hover {
@@ -187,4 +203,12 @@ label {
     rgba(255, 111, 0, 1) 100%
   );
   color: black;
+}
+
+.checkBtn {
+}
+
+.nullBtn {
+  opacity: 0.5;
+  pointer-events: none;
 }

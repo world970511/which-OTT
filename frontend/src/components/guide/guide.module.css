@@ -1,10 +1,8 @@
 * {
   box-sizing: border-box;
-  /* color: black; */
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   margin: 0;
   cursor: default;
 }
@@ -18,7 +16,7 @@ h1 {
   width: 100px;
   height: 40px;
   background-color: transparent;
-  border: 1.5px solid #ff6f00;
+  border: 1.5px solid black;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -26,15 +24,16 @@ h1 {
   margin: 40px 10px;
   border-radius: 10px;
   font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .testBtn:hover,
 .statBtn:hover {
-  background: rgb(255, 177, 87);
+  background: rgb(225, 251, 255);
   background: linear-gradient(
-    90deg,
-    rgba(255, 177, 87, 0.3) 0%,
-    rgba(255, 111, 0, 1) 100%
+    180deg,
+    rgba(225, 251, 255, 1) 0%,
+    rgba(255, 223, 163, 1) 100%
   );
   color: black;
 }

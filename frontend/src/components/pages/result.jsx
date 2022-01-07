@@ -3,13 +3,15 @@ import Pie from "../charts/pieChart";
 import Bar from "../charts/barChart";
 import BarPlus from "../charts/barChartPlus";
 import PiePlus from "../charts/pieChartPlus";
-import Box from "../box/box.jsx";
+import NormalBox from "../box/normalBox.jsx";
 import Nav from "../nav/nav.jsx";
+import { useNavigate } from "react-router-dom";
 import styles from "./result.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
 const Result = () => {
   const { userAge, userName, userGender } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [checkTest, setCheckTest] = useState(false);
   const [ageTest, setAgeTest] = useState(false);
@@ -56,11 +58,8 @@ const Result = () => {
   };
 
   useEffect(() => {
-    // var raw = "";
-
     var requestOptions = {
       method: "GET",
-      // body: raw,
       redirect: "follow",
     };
 
@@ -75,7 +74,6 @@ const Result = () => {
   useEffect(() => {
     for (let key in age) {
       if (key === String(userAge)) {
-        console.log("for문 key", age[key]);
         setUseAge(age[key]);
       }
     }
@@ -88,7 +86,6 @@ const Result = () => {
   }, [useAge, userGender]);
 
   useEffect(() => {
-    console.log(useAge);
     for (let val in useStat.usage_time_data_list) {
       if (useStat.usage_time_data_list[val][0] === String(useAge)) {
         setAgeTime(useStat.usage_time_data_list[val]);
@@ -145,20 +142,20 @@ const Result = () => {
             <div className={styles.line}></div>
           </div>
           <div className={styles.boxContainer}>
-            <Box
+            <NormalBox
               width={350}
               height={150}
               title={"등급 %"}
               most={Math.round(userClass.rank_percent)}
               backgroundColor={`#80deea`}
-            ></Box>
-            <Box
+            ></NormalBox>
+            <NormalBox
               width={350}
               height={150}
               title={"등급 순위"}
               most={userClass.rank_class}
               backgroundColor={`#ffab91`}
-            ></Box>
+            ></NormalBox>
           </div>
         </div>
         {/* 성별에 따른 차트 */}
@@ -334,6 +331,27 @@ const Result = () => {
               ></i>
             </button>
           </div>
+        </div>
+        <h1 className={styles.resultTitle}>
+          {`${userName}님에게 어울리는 플랫폼을 찾아보세요.`}{" "}
+        </h1>
+        <div className={styles.totalContainer}>
+          <div>
+            <h4
+              className={styles.intro}
+            >{`자신과 맞는 플랫폼을 찾고 싶다면?`}</h4>
+            <h4 className={styles.detail}>{`아래 버튼을 눌러주세요`}</h4>
+            <div className={styles.line}></div>
+          </div>
+
+          <button
+            className={`${styles.btn}`}
+            onClick={() => {
+              navigate("/recommend");
+            }}
+          >
+            테스트
+          </button>
         </div>
       </div>
     </>

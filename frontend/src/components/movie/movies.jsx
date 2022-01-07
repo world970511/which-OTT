@@ -2,30 +2,30 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import styles from "./movies.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
-const Movies = ({ key, title, poster, year, onVideoClick }) => {
+const Movies = ({ title, poster, onVideoClick }) => {
   const [check, setCheck] = useState(false);
 
   const movieRef = useRef();
 
-  const { selectedVideoTitle, removeVideo } = useContext(AuthContext);
+  const { selectedVideoTitle, removeVideo, selectList } =
+    useContext(AuthContext);
 
   useEffect(() => {
-    console.log(selectedVideoTitle);
-  }, [selectedVideoTitle]);
+    selectList({ videoList: selectedVideoTitle.length });
+  });
 
   const onClick = (e) => {
-    onVideoClick(title, year);
+    if (selectedVideoTitle.length > 9) {
+      alert("컨텐츠는 최대 10개까지 선택 가능합니다.");
+    } else {
+      onVideoClick(title);
+      setCheck(true);
+    }
 
-    // console.log(selectedVideoTitle);
-
-    setCheck(true);
-
-    for (let key in selectedVideoTitle) {
-      if (selectedVideoTitle[key] === title) {
+    for (let keys in selectedVideoTitle) {
+      if (selectedVideoTitle[keys] === title) {
         removeVideo({ videoTitle: title });
         setCheck(false);
-      } else {
-        console.log("체크");
       }
     }
   };
@@ -37,7 +37,6 @@ const Movies = ({ key, title, poster, year, onVideoClick }) => {
           check ? styles.selectedVideo : null
         }`}
         onClick={onClick}
-        data-id={key}
       >
         <img className={styles.moviePoster} src={poster} alt="movie poster" />
         <h4 ref={movieRef} className={styles.movieTitle}>

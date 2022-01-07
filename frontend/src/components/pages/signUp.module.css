@@ -8,8 +8,8 @@ p {
 }
 
 input {
-  margin-bottom: 8px;
-  width: 220px;
+  margin-bottom: 0px;
+  width: 400px;
   height: 28px;
   color: white;
   background-color: transparent;
@@ -23,6 +23,17 @@ input:focus {
 
 input::placeholder {
   color: white;
+}
+
+.checkData {
+  text-align: center;
+  width: 350px;
+  height: 30px;
+  color: #f44336;
+}
+
+.nullData {
+  visibility: hidden;
 }
 
 .basicContainer {
@@ -40,17 +51,30 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 70px 0 10px;
 }
 
-.inputBox {
+.inputText {
   color: white;
   font-weight: bold;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btnContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.inputBox {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -66,6 +90,7 @@ input::placeholder {
   margin: 40px 10px;
   border-radius: 10px;
   font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .signupBtn:hover {
@@ -76,6 +101,22 @@ input::placeholder {
     rgba(255, 111, 0, 1) 100%
   );
   color: black;
+}
+
+.signBtn {
+  width: 100px;
+  height: 40px;
+  background-color: gray;
+  border: 1.5px solid gray;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .basicContainer {
@@ -100,214 +141,3 @@ input::placeholder {
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
   z-index: 3;
 }
-
-.sticker {
-  z-index: 4;
-  visibility: hidden;
-  position: fixed;
-  bottom: -150px;
-  /* left: 200px; */
-  /* /* transform: translateX(0%); */
-  transform: translateY(0%);
-  min-width: 400px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-
-.moving {
-  visibility: visible;
-  animation: fa-in 700ms, fa-out 700ms 2000ms;
-}
-
-@keyframes fa-in {
-  from {
-    opacity: 0;
-    bottom: -150px;
-  }
-  to {
-    opacity: 1;
-    bottom: 0px;
-  }
-}
-@keyframes fa-out {
-  from {
-    bottom: 0px;
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    bottom: -150px;
-  }
-}
-
-/* .toast {
-  visibility: hidden;
-  position: fixed;
-  top: 120px;
-  left: 540px;
-  transform: translateX(100%);
-  transform: translateY(-50%);
-  min-width: 400px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-.show {
-  visibility: visible;
-  animation: fade-in 700ms, fade-out 700ms 2000ms;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.toast1 {
-  visibility: hidden;
-  position: fixed;
-  bottom: 500px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 100px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-.show1 {
-  z-index: 3;
-  visibility: visible;
-  animation: fade-in 700ms, fade-out 700ms 2000ms;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.toast2 {
-  visibility: hidden;
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 100px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-.show2 {
-  z-index: 3;
-  visibility: visible;
-  animation: fade-in 700ms, fade-out 700ms 2000ms;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.toast3 {
-  visibility: hidden;
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 100px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-.show3 {
-  z-index: 3;
-  visibility: visible;
-  animation: fade-in 700ms, fade-out 700ms 2000ms;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.toast4 {
-  visibility: hidden;
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 100px;
-  border-radius: 25px;
-  background-color: #666666;
-  color: #ffffff;
-  padding: 15px 25px;
-}
-.show4 {
-  z-index: 3;
-  visibility: visible;
-  animation: fade-in 700ms, fade-out 700ms 2000ms;
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-} */

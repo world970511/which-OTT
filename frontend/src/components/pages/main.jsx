@@ -4,14 +4,13 @@ import Nav from "../nav/nav.jsx";
 import Guide from "../guide/guide.jsx";
 import Line from "../charts/lineChart.jsx";
 import ActivePie from "../charts/ActivePieChart.jsx";
+import ThirdBar from "../charts/ThirdBarChart.jsx";
 import experience from "../../PlatformStat/ott_experience.json";
 import frequency from "../../PlatformStat/ott_frequency.json";
 
 const Main = () => {
   const [expData, setExpData] = useState([]);
   const [freqData, setFreqData] = useState([]);
-
-  console.log(frequency);
 
   useEffect(() => {
     for (let key in experience) {
@@ -45,7 +44,7 @@ const Main = () => {
         </div>
         <h4 className={styles.subTitle}>년도별 OTT 이용 빈도</h4>
         <div className={styles.lineContainer}>
-          <Line data={freqData}></Line>
+          <ThirdBar data={freqData}></ThirdBar>
         </div>
       </div>
     </>

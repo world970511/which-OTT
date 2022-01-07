@@ -5,12 +5,7 @@ import Nav from "../nav/nav.jsx";
 import axios from "axios";
 
 const SignUp = () => {
-  const [toast, setToast] = useState(false);
-
-  const [toss, setToss] = useState(false);
-
   const navigate = useNavigate();
-  // const history = useHistory();
 
   const [checkedId, setCheckedId] = useState("");
   const [checkedPW, setCheckedPW] = useState("");
@@ -23,6 +18,14 @@ const SignUp = () => {
   const [checkPw, setCheckPw] = useState("");
   const [userNick, setUserNick] = useState("");
   const [userEmail, setUserEmail] = useState("");
+
+  const [passId, setPssId] = useState(false);
+  const [passPw, setPassPw] = useState(false);
+  const [passCheckPw, setPassCheckPw] = useState(false);
+  const [passNick, setPasNick] = useState(false);
+  const [passEmail, setPassEmail] = useState(false);
+
+  const [passBtn, setPassBtn] = useState(false);
 
   const idRef = useRef();
   const pwRef = useRef();
@@ -50,62 +53,59 @@ const SignUp = () => {
     setUserEmail(emailValue);
   };
 
-  const toastShow = () => {
-    if (toast) return;
-    console.log("show");
-    setToast(true);
-    setToss(true);
-    setTimeout(() => {
-      setToss(false);
-      setToast(false);
-    }, 2000);
-  };
-
   useEffect(() => {
-    if (!strCheck(userPw, "id")) {
+    if (!strCheck(userId, "id")) {
       setCheckedId("영문으로 입력해주세요");
-      toastShow();
+      setPssId(false);
     } else {
-      setCheckedId(null);
+      setCheckedId("사용가능");
+      setPssId(true);
     }
   }, [userId]);
 
   useEffect(() => {
     if (!strCheck(userPw, "pwd")) {
-      setCheckedPW("영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력");
-      toastShow();
+      setCheckedPW("영문/숫자/특수문자를 포함하여 8~16자로 입력");
+      setPassPw(false);
     } else {
-      setCheckedPW(null);
+      setCheckedPW("사용가능");
+      setPassPw(true);
     }
-    if (userPw !== checkPw) {
+  }, [userPw]);
+
+  useEffect(() => {
+    if (userPw !== checkPw || checkPw === "") {
       setDoublePW("동일한 비밀번호를 입력해주세요");
-      toastShow();
+      setPassCheckPw(false);
     } else {
-      setDoublePW(null);
+      setDoublePW("비밀번호동일");
+      setPassCheckPw(true);
     }
-  }, [userPw, checkPw]);
+  }, [checkPw]);
 
   useEffect(() => {
     if (!strCheck(userNick, "nickname")) {
       setCheckedNick("영문으로 입력해주세요");
-      toastShow();
+      setPasNick(false);
     } else {
-      setCheckedNick(null);
+      setCheckedNick("사용가능");
+      setPasNick(true);
     }
   }, [userNick]);
 
   useEffect(() => {
     if (!strCheck(userEmail, "email")) {
       setCheckedEmail("이메일 형식을 지켜주세요");
-      toastShow();
+      setPassEmail(false);
     } else {
-      setCheckedEmail(null);
+      setCheckedEmail("사용가능");
+      setPassEmail(true);
     }
   }, [userEmail]);
 
   const strCheck = (str, type) => {
     var REGEX = {
-      ID: /^[A-za-z]/g,
+      ID: /^[a-z]+[a-z0-9]{4,19}$/g,
       EMAIL: /\S+@\S+\.\S+/,
       PWD_RULE: /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/,
       NAME_RULE: /^[가-힣a-zA-Z]+$/,
@@ -123,6 +123,18 @@ const SignUp = () => {
       return false;
     }
   };
+
+  const check = () => {
+    register_ok();
+  };
+
+  useEffect(() => {
+    if (passId && passPw && passCheckPw && passNick && passEmail) {
+      setPassBtn(true);
+    } else {
+      setPassBtn(false);
+    }
+  }, [passId, passPw, passCheckPw, passNick, passEmail]);
 
   const register_ok = () => {
     var axios = require("axios");
@@ -146,13 +158,15 @@ const SignUp = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        alert("가입 완료");
+        navigate("/login");
       })
       // .then((result) => {
-      //   result.status === 200 ? alert("회원가입 성공") : alert("회원가입 실패");
+      //   alert("가입 완료");
+      //   navigate("/login");
       // })
       .catch(function (error) {
-        console.log(error);
+        alert("이미 가입된 회원 정보입니다.");
       });
   };
 
@@ -162,76 +176,100 @@ const SignUp = () => {
       <div className={styles.signbackdrop}>
         <h1 className={styles.loginTitle}>Sign Up</h1>
         <div className={styles.inputContainer}>
-          <p className={styles.inputBox}>아이디</p>
-          <input
-            type="text"
-            value={userId}
-            ref={idRef}
-            onChange={handleInput}
-            placeholder="ID를 입력해주세요"
-          />
-          <p className={styles.inputBox}>비밀번호</p>
-          <input
-            type="text"
-            value={userPw}
-            ref={pwRef}
-            onChange={handleInput}
-            placeholder="비밀번호를 입력해주세요."
-          />
-          <p className={styles.inputBox}>비밀번호 확인</p>
-          <input
-            type="text"
-            value={checkPw}
-            ref={checkRef}
-            onChange={handleInput}
-            placeholder="비밀번호 재확인"
-          />
-          <p className={styles.inputBox}>닉네임</p>
-          <input
-            type="text"
-            value={userNick}
-            ref={nickRef}
-            onChange={handleInput}
-            placeholder="닉네임을 입력해주세요."
-          />
-          <p className={styles.inputBox}>이메일</p>
-          <input
-            type="text"
-            value={userEmail}
-            ref={emailRef}
-            onChange={handleInput}
-            placeholder="이메일을 입력해주세요."
-          />
-          <div>
-            {/* <div className={`${styles.toast} ${toss && styles.show}`}>
-              {userId !== "" ? checkedId : null}
-            </div>
-            <div className={`${styles.toast1} ${toss && styles.show1}`}>
-              {userPw !== "" ? checkedPW : null}
-            </div>
-            <div className={`${styles.toast2} ${toss && styles.show2}`}>
-              {checkPw !== "" ? checkedDoublePW : null}
-            </div>
-            <div className={`${styles.toast3} ${toss && styles.show3}`}>
-              {userNick !== "" ? checkedNick : null}
-            </div>
-            <div className={`${styles.toast4} ${toss && styles.show4}`}>
-              {userEmail !== "" ? checkedEmail : null}
-            </div> */}
+          <div className={styles.inputBox}>
+            <p className={styles.inputText}>아이디</p>
+            <input
+              type="text"
+              value={userId}
+              ref={idRef}
+              onChange={handleInput}
+              placeholder="ID를 입력해주세요"
+            />
+          </div>
+          <div className={styles.checkData}>
+            {userId.length > 0 && (
+              <div className={` ${passId ? styles.nullData : null}`}>
+                {checkedId}
+              </div>
+            )}
+          </div>
+          <div className={styles.inputBox}>
+            <p className={styles.inputText}>비밀번호</p>
+            <input
+              type="text"
+              value={userPw}
+              ref={pwRef}
+              onChange={handleInput}
+              placeholder="비밀번호를 입력해주세요."
+            />
+          </div>
+          <div className={styles.checkData}>
+            {userPw.length > 0 && (
+              <div className={` ${passPw ? styles.nullData : null}`}>
+                {checkedPW}
+              </div>
+            )}
+          </div>
+          <div className={styles.inputBox}>
+            <p className={styles.inputText}>비밀번호 확인</p>
+            <input
+              type="text"
+              value={checkPw}
+              ref={checkRef}
+              onChange={handleInput}
+              placeholder="비밀번호 재확인"
+            />
+          </div>
+          <div className={styles.checkData}>
+            {checkPw.length > 0 && (
+              <div className={` ${passCheckPw ? styles.nullData : null}`}>
+                {checkedDoublePW}
+              </div>
+            )}
+          </div>
+          <div className={styles.inputBox}>
+            <p className={styles.inputText}>닉네임</p>
+            <input
+              type="text"
+              value={userNick}
+              ref={nickRef}
+              onChange={handleInput}
+              placeholder="닉네임을 입력해주세요."
+            />
+          </div>
+          <div className={styles.checkData}>
+            {userNick.length > 0 && (
+              <div className={` ${passNick ? styles.nullData : null}`}>
+                {checkedNick}
+              </div>
+            )}
+          </div>
+          <div className={styles.inputBox}>
+            <p className={styles.inputText}>이메일</p>
+            <input
+              type="text"
+              value={userEmail}
+              ref={emailRef}
+              onChange={handleInput}
+              placeholder="이메일을 입력해주세요."
+            />
+          </div>
+          <div className={styles.checkData}>
+            {userEmail.length > 0 && (
+              <div className={` ${passEmail ? styles.nullData : null}`}>
+                {checkedEmail}
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.btnContainer}>
-          <button className={styles.signupBtn} onClick={register_ok}>
+          <button
+            className={`${passBtn ? styles.signupBtn : styles.signBtn}`}
+            onClick={check}
+          >
             가입하기
           </button>
         </div>
-      </div>
-      <div className={`${styles.sticker} ${toss && styles.moving}`}>
-        <p>{userId !== "" ? checkedId : null}</p>
-        <p>{userPw !== "" ? checkedPW : null}</p>
-        <p>{checkPw !== "" ? checkedDoublePW : null}</p>
-        <p>{userNick !== "" ? checkedNick : null}</p>
-        <p>{userEmail !== "" ? checkedEmail : null}</p>
       </div>
     </div>
   );

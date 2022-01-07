@@ -4,28 +4,11 @@ import styles from "./nav.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
 const Nav = () => {
-  // const [userNickname, setUserNickname] = useState(null);
   const { logout } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   localStorage.getItem("nickname") &&
-  //     setUserNickname(localStorage.getItem("nickname"));
-  // }, []);
-
-  // const getToken = localStorage.getItem("token");
-
-  // const JWT_TOKEN = JSON.parse(atob(getToken.split(".")[1]));
-
-  // console.log(JWT_TOKEN.exp);
-
   const onClick = (e) => {
     logout();
-    // if (localStorage.getItem("token")) {
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("nickname");
-    //   window.location.replace("/main");
-    // }
   };
   return (
     <>

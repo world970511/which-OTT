@@ -3,7 +3,6 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   margin: 0;
   cursor: default;
 }
@@ -28,6 +27,7 @@ body {
   font-size: 20px;
   padding-bottom: 25px;
   padding-top: 50px;
+  color: black;
 }
 
 .pieContainer {

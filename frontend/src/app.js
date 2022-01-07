@@ -7,6 +7,7 @@ import Stat from "./components/pages/stat.jsx";
 import Test from "./components/pages/classTest.jsx";
 import Recommend from "./components/pages/recommend.jsx";
 import Result from "./components/pages/result.jsx";
+
 import { Route, Routes } from "react-router-dom";
 
 function App() {

@@ -6,7 +6,7 @@ const Guide = () => {
   const navigate = useNavigate();
 
   const handleSelectPage = (e) => {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       switch (e.target.value) {
         case "1":
           navigate("/test");
@@ -55,13 +55,13 @@ const Guide = () => {
           >
             플랫폼추천
           </button>
-          <button
+          {/* <button
             className={styles.statBtn}
             value={3}
             onClick={handleSelectPage}
           >
             통계
-          </button>
+          </button> */}
         </div>
         <div className={styles.guides__right}>
           <img src="/img/ott.png" alt="소개 이미지" className={styles.imgs} />
