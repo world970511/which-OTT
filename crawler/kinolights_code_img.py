@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
             if s=='': s='0'
             num=float(s)
-
+            #키노라이츠 90퍼 이상인 것만 링크 수집
             if num>=90:
                 site=l.select_one('a')
                 li= 'https://m.kinolights.com'+regex.search(str(site)).group()
