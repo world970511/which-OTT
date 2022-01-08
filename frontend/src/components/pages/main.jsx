@@ -23,7 +23,7 @@ const Main = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <Nav></Nav>
+      {/* <Nav></Nav> */}
       <Guide></Guide>
       <div className={styles.graph}>
         <h3 className={styles.mainGraphTitle}>코로나 전후 OTT 사용량 변화</h3>

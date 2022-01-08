@@ -9,6 +9,28 @@ import { useNavigate } from "react-router-dom";
 import styles from "./result.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
 
+const raking_word = {
+  1: `OTT is my life..`,
+  2: `우리 너무 자주봐요`,
+  3: `우리 앞으로 좀 자주봐요`,
+  4: `처음 뵙겠습니다!`,
+  5: `지긋지긋한 인간! 당신은 심각한 OTT 중독자입니다!`,
+  6: `우리 이젠 덜 봐도 될 것 같아요.....`,
+  7: `우리 친해져서 깐부하지 않을래요?`,
+  8: `OTT를 거의 사용하지 않고 있어요.. OTT 추천 받기를 권장드립니다!`,
+};
+
+const age = {
+  9: 10,
+  19: 20,
+  29: 30,
+  39: 40,
+  49: 50,
+  59: 60,
+  69: 70,
+  79: 999,
+};
+
 const Result = () => {
   const { userAge, userName, userGender } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -34,28 +56,6 @@ const Result = () => {
   const [ageCycle, setAgeCycle] = useState([]);
 
   const [renderAge, setRenderAge] = useState(0);
-
-  const raking_word = {
-    1: `OTT is my life..`,
-    2: `우리 너무 자주봐요`,
-    3: `우리 앞으로 좀 자주봐요`,
-    4: `처음 뵙겠습니다!`,
-    5: `지긋지긋한 인간! 당신은 심각한 OTT 중독자입니다!`,
-    6: `우리 이젠 덜 봐도 될 것 같아요.....`,
-    7: `우리 친해져서 깐부하지 않을래요?`,
-    8: `OTT를 거의 사용하지 않고 있어요.. OTT 추천 받기를 권장드립니다!`,
-  };
-
-  const age = {
-    9: 10,
-    19: 20,
-    29: 30,
-    39: 40,
-    49: 50,
-    59: 60,
-    69: 70,
-    79: 999,
-  };
 
   useEffect(() => {
     var requestOptions = {

@@ -62,43 +62,38 @@ const Login = () => {
   const handleInput = (e) => {
     let idValue;
     let pwValue;
-
     idValue = idRef.current.value;
     pwValue = pwRef.current.value;
 
     const { name, value } = e.target;
+
     setForm((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    setUserId(e.target.value);
-    setUserPw(e.target.value);
+    if (name === "userId") {
+      if (!strCheck(value, "id")) {
+        setCheckedId("아이디를 정확하게 입력해주세요");
+        setPssId(false);
+      } else {
+        setCheckedId("사용가능");
+        setPssId(true);
+      }
+    } else {
+      if (!strCheck(value, "pwd")) {
+        setCheckedPW("영문/숫자/특수문자를 포함하여 8~16자로 입력");
+        setPassPw(false);
+      } else {
+        setCheckedPW("사용가능");
+        setPassPw(true);
+      }
+    }
   };
 
   const onClick = () => {
     navigate("/signup");
   };
-
-  useEffect(() => {
-    if (!strCheck(form.userId, "id")) {
-      setCheckedId("아이디를 정확하게 입력해주세요");
-      setPssId(false);
-    } else {
-      setCheckedId("사용가능");
-      setPssId(true);
-    }
-  }, [userId]);
-
-  useEffect(() => {
-    if (!strCheck(form.userPw, "pwd")) {
-      setCheckedPW("영문/숫자/특수문자를 포함하여 8~16자로 입력");
-      setPassPw(false);
-    } else {
-      setCheckedPW("사용가능");
-      setPassPw(true);
-    }
-  }, [userPw]);
 
   const strCheck = (str, type) => {
     var REGEX = {
@@ -130,7 +125,7 @@ const Login = () => {
   }, [passId, passPw]);
 
   const check = () => {
-    if (form.userId && form.userId) {
+    if (form.userId && form.userPw) {
       onSubmit();
     }
   };
@@ -185,7 +180,12 @@ const Login = () => {
           >
             로그인
           </button>
-          <button className={styles.btn} onClick={onClick}>
+          <button
+            type="button"
+            title="회원가입"
+            className={styles.btn}
+            onClick={onClick}
+          >
             회원가입
           </button>
         </div>
