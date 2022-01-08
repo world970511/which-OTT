@@ -35,7 +35,7 @@ const Login = () => {
       password: `${form.userPw}`,
     });
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/login"}`;
+    const url = `${"http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/login"}`;
 
     var config = {
       method: "post",

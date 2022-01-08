@@ -15,59 +15,59 @@ const MixBarChart = () => {
   const data = [
     {
       name: "넷플릭스",
-      drama: 1906,
-      docu: 293,
-      ent: 321,
-      ani: 752,
+      드라마: 1906,
+      다큐: 293,
+      예능: 321,
+      애니: 752,
     },
     {
       name: "웨이브",
-      drama: 2735,
-      docu: 27,
-      ent: 608,
-      ani: 743,
+      드라마: 2735,
+      다큐: 27,
+      예능: 608,
+      애니: 743,
     },
     {
       name: "티빙",
-      drama: 1325,
-      docu: 44,
-      ent: 1188,
-      ani: 781,
+      드라마: 1325,
+      다큐: 44,
+      예능: 1188,
+      애니: 781,
     },
     {
       name: "쿠팡플레이",
-      drama: 323,
-      docu: 57,
-      ent: 46,
-      ani: 160,
+      드라마: 323,
+      다큐: 57,
+      예능: 46,
+      애니: 160,
     },
     {
       name: "왓챠",
-      drama: 1884,
-      docu: 419,
-      ent: 604,
-      ani: 1112,
+      드라마: 1884,
+      다큐: 419,
+      예능: 604,
+      애니: 1112,
     },
     {
       name: "디즈니+",
-      drama: 398,
-      docu: 91,
-      ent: 25,
-      ani: 206,
+      드라마: 398,
+      다큐: 91,
+      예능: 25,
+      애니: 206,
     },
     {
       name: "seezn",
-      drama: 288,
-      docu: 1,
-      ent: 107,
-      ani: 10,
+      드라마: 288,
+      다큐: 1,
+      예능: 107,
+      애니: 10,
     },
     {
       name: "라프텔",
-      drama: 0,
-      docu: 0,
-      ent: 0,
-      ani: 1285,
+      드라마: 0,
+      다큐: 0,
+      예능: 0,
+      애니: 1285,
     },
   ];
 
@@ -89,10 +89,10 @@ const MixBarChart = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="drama" stackId="a" fill="#ffcdd2" />
-        <Bar dataKey="docu" stackId="a" fill="#ffd180" />
-        <Bar dataKey="ent" stackId="a" fill="#ff9e80" />
-        <Bar dataKey="ani" stackId="a" fill="#b2ebf2" />
+        <Bar dataKey="드라마" stackId="a" fill="#ffcdd2" />
+        <Bar dataKey="다큐" stackId="a" fill="#ffd180" />
+        <Bar dataKey="예능" stackId="a" fill="#ff9e80" />
+        <Bar dataKey="애니" stackId="a" fill="#b2ebf2" />
       </BarChart>
     </ResponsiveContainer>
   );

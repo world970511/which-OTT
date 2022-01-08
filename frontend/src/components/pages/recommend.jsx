@@ -55,7 +55,7 @@ const Recommend = () => {
       redirect: "follow",
     };
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/contents"}`;
+    const url = `${"http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/contents"}`;
 
     fetch(url, requestOptions)
       .then((response) => response.json())
@@ -123,7 +123,7 @@ const Recommend = () => {
       redirect: "follow",
     };
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/recommend"}`;
+    const url = `${"http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/recommend"}`;
 
     fetch(url, requestOptions)
       .then((response) => response.json())

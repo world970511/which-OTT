@@ -117,7 +117,7 @@ const ClassTest = () => {
       redirect: "follow",
     };
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/usage_survey"}`;
+    const url = `${"http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/usage_survey"}`;
 
     fetch(url, requestOptions)
       .then((response) => response.json())

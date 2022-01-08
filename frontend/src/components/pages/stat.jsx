@@ -17,7 +17,7 @@ const Stat = () => {
       <div className={styles.containerSet}>
         <div className={styles.suggestionBox}>
           <h3 className={styles.boxName}>
-            선호 컨텐츠와 유사한 독점 컨텐츠가 많은 플랫폼
+            선호 컨텐츠와 유사한 장르 컨텐츠가 많은 플랫폼
           </h3>
           {common ? (
             <div className={styles.suggestionContainer}>
@@ -51,7 +51,7 @@ const Stat = () => {
 
         <div className={styles.suggestionBox}>
           <h3 className={styles.boxName}>
-            선호 컨텐츠와 유사한 오리지널 컨텐츠가 많은 플랫폼
+            선호 컨텐츠와 유사한 독점 컨텐츠가 많은 플랫폼
           </h3>
           {original ? (
             <div className={styles.suggestionContainer}>

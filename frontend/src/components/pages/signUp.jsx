@@ -145,7 +145,7 @@ const SignUp = () => {
       email: `${userEmail}`,
     });
 
-    const url = `${"https://cors-anywhere.herokuapp.com/http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/register"}`;
+    const url = `${"http://elice-kdt-3rd-team-14.koreacentral.cloudapp.azure.com:5000/register"}`;
 
     var config = {
       method: "post",
