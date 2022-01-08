@@ -19,6 +19,7 @@ body {
 }
 
 .mainGraphTitle {
+  font-family: "Jua", sans-serif;
   font-size: 30px;
   color: black;
 }

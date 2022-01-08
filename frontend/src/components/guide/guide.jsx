@@ -27,19 +27,13 @@ const Guide = () => {
     <>
       <div className={styles.guideContainer}>
         <div className={styles.guides__left}>
-          <h1>웹 서비스 가이드</h1>
+          <h1>Which OTT</h1>
           <p className={styles.guide_word}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint enim
-            ad saepe cupiditate, eligendi odit porro nam sunt culpa iure beatae
-            vero numquam! Et quibusdam dolores aspernatur error harum asperiores
-            dicta facilis perferendis delectus ipsa. Molestiae corrupti sed,
-            delectus cum beatae quidem maxime dolor in error cupiditate
-            voluptate eius atque? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Atque recusandae voluptas veniam delectus harum
-            quas velit eius vero culpa sint, et aperiam, rem quibusdam qui.
-            Beatae quia facilis veniam minus iusto, ipsa voluptatum laboriosam
-            aut totam obcaecati tenetur enim blanditiis animi exercitationem
-            tempore eaque deleniti ducimus rem dignissimos commodi libero.
+            최근 사용량이 증가한 OTT 서비스 <br />
+            컨텐츠도 많아지고 OTT 플랫폼도 많아진 지금 <br />
+            내가 평소에 좋아하는 컨텐츠가 어떤 플랫폼에 많은지, <br />
+            내가 평소에 다른 사람보다 얼마나 OTT 서비스를 이용하는지, <br />
+            궁금하다면 지금 바로 아래 버튼을 눌러보세요.
           </p>
           <button
             className={styles.testBtn}

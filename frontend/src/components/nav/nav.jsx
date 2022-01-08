@@ -16,7 +16,7 @@ const Nav = () => {
         <div className={styles.navbar__logo}>
           <Link to="/main">
             <img className={styles.logo_img} src="/img/logo.png" alt="" />
-            Which OTT
+            <div>Which OTT</div>
           </Link>
         </div>
         <ul className={styles.navbar__menu}>

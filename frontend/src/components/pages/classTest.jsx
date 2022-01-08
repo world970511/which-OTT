@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import Nav from "../nav/nav.jsx";
 import styles from "./classTest.module.css";
+import PieLoading from "../loading/pieLoading.jsx";
 import { AuthContext } from "../context/AuthContext.jsx";
 import Loading from "../loading/loading.jsx";
 
@@ -17,7 +18,7 @@ const ClassTest = () => {
 
   const [CheckedName, setCheckedName] = useState("");
   const [passName, setPassName] = useState(false);
-  const [toast, setToast] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [passBtn, setPassBtn] = useState(false);
 
@@ -73,7 +74,7 @@ const ClassTest = () => {
       setCheckedName("한글 이름 2~4자 이내");
       setPassName(false);
     } else {
-      setCheckedName(".");
+      setCheckedName("");
       setPassName(true);
     }
   }, [userName]);
@@ -90,20 +91,16 @@ const ClassTest = () => {
     }
   };
 
-  const show = () => {
-    setToast(!toast);
-  };
-
   useEffect(() => {
     if (passName && oneCheck && twoCheck) {
       setPassBtn(true);
-      show();
     } else {
       setPassBtn(false);
     }
   }, [oneCheck, twoCheck, passName]);
 
   const result_ok = () => {
+    setLoading(true);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -140,6 +137,7 @@ const ClassTest = () => {
   return (
     <>
       <Nav></Nav>
+      {loading ? <PieLoading /> : null}
       <div className={styles.basicContainer}>
         <h1>등급검사</h1>
         <div className={styles.line}></div>
@@ -246,13 +244,17 @@ const ClassTest = () => {
             </div>
           </div>
           <div className={styles.btnContainer}>
-            <p
-              className={`${styles.checkName} ${
-                passName ? styles.nullText : null
-              }`}
-            >
-              {CheckedName}
-            </p>
+            <div className={styles.checkBox}>
+              {userName.length > 0 && (
+                <p
+                  className={`${styles.checkName} ${
+                    passName ? styles.nullText : null
+                  }`}
+                >
+                  {CheckedName}
+                </p>
+              )}
+            </div>
             <div>
               <button
                 className={styles.testBtn}

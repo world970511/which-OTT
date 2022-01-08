@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import Nav from "../nav/nav.jsx";
 import Movie from "../movie/movies.jsx";
 import Loading from "../loading/loading.jsx";
+import PieLoading from "../loading/pieLoading.jsx";
 import SmallLoading from "../loading/smallLoading";
 import styles from "./recommend.module.css";
 import { AuthContext } from "../context/AuthContext.jsx";
@@ -14,6 +15,7 @@ const Recommend = () => {
   const [resultBtn, setResultBtn] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(false);
 
   const {
     checkedVideo,
@@ -105,6 +107,7 @@ const Recommend = () => {
   }, [pageNumber]);
 
   const result_ok = () => {
+    setResponse(true);
     // console.log(typeof selectedVideoTitle);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -134,6 +137,7 @@ const Recommend = () => {
   return (
     <div className={styles.viewContainer}>
       <Nav></Nav>
+      {response ? <PieLoading /> : null}
       <div className={styles.headerContainer}>
         <h1 className={styles.headerText}>좋아하는 컨텐츠 선택</h1>
         <div>
@@ -153,6 +157,7 @@ const Recommend = () => {
           </div>
         </div>
       </div>
+
       {loading ? (
         movies?.map((movie, index) => {
           return (
@@ -165,7 +170,7 @@ const Recommend = () => {
           );
         })
       ) : (
-        <Loading />
+        <PieLoading />
       )}
       <div className={styles.nullBox}></div>
       {loading ? <SmallLoading /> : null}

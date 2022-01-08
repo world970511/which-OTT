@@ -162,7 +162,7 @@ const Login = () => {
           <div className={styles.inputBox}>
             <p className={styles.inputText}>비밀번호</p>
             <input
-              type="text"
+              type="password"
               value={form.userPw}
               name="userPw"
               ref={pwRef}

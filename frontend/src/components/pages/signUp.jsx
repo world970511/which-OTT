@@ -196,7 +196,7 @@ const SignUp = () => {
           <div className={styles.inputBox}>
             <p className={styles.inputText}>비밀번호</p>
             <input
-              type="text"
+              type="password"
               value={userPw}
               ref={pwRef}
               onChange={handleInput}
@@ -213,7 +213,7 @@ const SignUp = () => {
           <div className={styles.inputBox}>
             <p className={styles.inputText}>비밀번호 확인</p>
             <input
-              type="text"
+              type="password"
               value={checkPw}
               ref={checkRef}
               onChange={handleInput}

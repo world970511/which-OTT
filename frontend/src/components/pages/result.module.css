@@ -5,12 +5,16 @@
 body {
   margin: 0;
   cursor: default;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
 }
 
 .resultContainer {
-  width: 1120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .resultTitle {
@@ -38,6 +42,7 @@ body {
 
 .totalContainer {
   display: flex;
+  width: 1100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

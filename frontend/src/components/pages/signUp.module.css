@@ -94,11 +94,11 @@ input::placeholder {
 }
 
 .signupBtn:hover {
-  background: rgb(255, 177, 87);
+  background: rgb(255, 249, 225);
   background: linear-gradient(
-    90deg,
-    rgba(255, 177, 87, 0.3) 0%,
-    rgba(255, 111, 0, 1) 100%
+    180deg,
+    rgba(255, 249, 225, 1) 0%,
+    rgba(255, 223, 163, 1) 100%
   );
   color: black;
 }
