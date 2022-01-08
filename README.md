@@ -147,6 +147,6 @@
 
 ## 📂구성도/기획서/발표자료
 - 구성도🔗 https://www.figma.com/file/od7rNoPL0p5R8W83ntgGSF/WhichOTT?node-id=0%3A1
-- 기획서🔗 
-- 발표자료🔗 
+- <a href="https://github.com/world970511/elice_OTT/blob/master/doc/Which_OTT_%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf">기획서</a>
+- <a href="https://github.com/world970511/elice_OTT/blob/master/doc/OTT%EC%84%9C%EB%B9%84%EC%8A%A4_14%ED%8C%80_%EC%B5%9C%EC%A2%85%EB%B0%9C%ED%91%9C.pdf">발표자료</a>
 
