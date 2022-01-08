@@ -65,6 +65,9 @@ ul {
 
 /* NavBar */
 
+.navContainer {
+}
+
 .navbar {
   position: fixed;
   width: 100%;

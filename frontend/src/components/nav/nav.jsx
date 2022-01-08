@@ -11,7 +11,7 @@ const Nav = () => {
     logout();
   };
   return (
-    <>
+    <div className={styles.navContainer}>
       <nav className={styles.navbar}>
         <div className={styles.navbar__logo}>
           <Link to="/main">
@@ -49,7 +49,7 @@ const Nav = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 

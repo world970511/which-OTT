@@ -183,7 +183,7 @@ const Login = () => {
             className={`${passBtn ? styles.btn : styles.sealBtn}`}
             onClick={check}
           >
-            가입하기
+            로그인
           </button>
           <button className={styles.btn} onClick={onClick}>
             회원가입

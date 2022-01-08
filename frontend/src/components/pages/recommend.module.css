@@ -11,6 +11,7 @@ body {
 
 .headerContainer {
   position: fixed;
+  min-width: 1700px;
   top: 0;
   z-index: 1;
   display: flex;
@@ -52,6 +53,7 @@ body {
 .viewContainer {
   display: flex;
   width: 1903px;
+  min-width: 1700px;
   padding: 230px 200px;
   flex-wrap: wrap;
   justify-content: center;

@@ -7,6 +7,10 @@ body {
   cursor: default;
 }
 
+.mainContainer {
+  min-width: 1700px;
+}
+
 .graph {
   display: flex;
   flex-direction: column;

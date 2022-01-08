@@ -22,7 +22,7 @@ const Main = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.mainContainer}>
       <Nav></Nav>
       <Guide></Guide>
       <div className={styles.graph}>
@@ -47,7 +47,7 @@ const Main = () => {
           <ThirdBar data={freqData}></ThirdBar>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
