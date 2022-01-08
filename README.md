@@ -30,7 +30,7 @@
   <summary>문제 정의</summary>
   <div markdown="1">
     <ul>
-      <li>코로나 이후 ott 서비스 변화 분석 : </li>
+      <li>코로나 이후 ott 서비스 변화 분석 : <a href="https://github.com/world970511/elice_OTT/blob/master/eda/OTT_covid_EDA.ipynb">미디어통계포털 미디어 이용행태 조사(OTT)</a></li>
       <li>코로나 이후 ott 서비스 이용량이 급증함과 동시에 여러 서비스들이 런칭함에 따라 
       다수의 서비스 중 자신에게 맞는 서비스를 선택하는데 어려움을 겪거나 다수의 서비스를 구독하는 것에 대해 부담을 느끼는 사람들이 늘어나고 있다.</li>
     </ul>
@@ -40,9 +40,9 @@
   <summary>가설 설정 방법</summary>
   <div markdown="1">
     <ul>
-      <li>서비스마다 지원하는 콘텐츠들의 특징을 기반으로 본인에게 알맞은 ott서비스를 추천한다. 
-      나아가 ott서비스에 대한 분석을 통계자료로 제공해 각 ott서비스의 장단점을 파악할 수 있도록 돕는다.
-      또한, 소비자의 ott 서비스 구독 비용, 시청시간 등의 데이터를 바탕으로 ott서비스 이용도를 확인할 수 있도록 돕는다. </li>
+      <li>각 OTT서비스가 보유한 콘텐츠의 장르/국가/관람가 등의 데이터와 플랫폼의 오리지널/독점 콘텐츠 보유 비중을 시각화하면 각 서비스의 콘텐츠 특성을 파악할 수 있다</li>
+      <li>분석으로 발견한 특성을 바탕으로 콘텐츠 기반 추천(CBF) 모델 적용 시 사용자가 원하는 콘텐츠를 많이 보유한 서비스를 추천받을 수 있을 것이다.</li>
+      <li>사용자의 OTT 서비스 이용 시간/빈도 데이터를 바탕으로 사용자가 어느 정도로 OTT를 사용하고 있는지 파악할 수 있도록 돕고 이를 바탕으로 OTT 서비스 추천에 대해 홍보한다면, 서비스에 대한 흥미를 높일 수 있다.</li>
     </ul>
   </div>
 </details>
@@ -86,8 +86,9 @@
   <summary>예상되는 어려움</summary>
   <div markdown="1">
     <ul>
+      <li>크롤링 시 알 수 없는 오류로 데이터 수집이 늦어질 수 있음<li>
+      <li>데이터에 부족 및 탐색 오류로 편향되거나 잘못된 분석을 하는 것</li>
       <li>플랫폼별 콘텐츠 특징을 찾을 수 없거나 그 차이가 크지 않은 경우</li>
-      <li>데이터 부족에 따른 편향된 분석</li>
     </ul>
   </div>
 </details>
@@ -108,9 +109,9 @@
 | Python | Flask | MariaDB |
 
 ### 데이터분석
-|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/800px-Pandas_logo.svg.png" width="90px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/1200px-NumPy_logo_2020.svg.png" width="80px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/logo-plotly.svg" width="50px" height="50px">|
-| :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
-|Pandas|Numpy|Plotly|
+|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/800px-Pandas_logo.svg.png" width="90px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/1200px-NumPy_logo_2020.svg.png" width="80px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/logo-plotly.svg" width="50px" height="50px">|<img src="https://raw.githubusercontent.com/world970511/elice_OTT/master/doc/img_etc/colab.png" width="50px" height="50px">|
+| :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
+|Pandas|Numpy|Plotly|Colab|
 
 ### 버전 관리
 
@@ -136,7 +137,6 @@
 | :----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | OTT 관련 통계 제공 | 각 OTT서비스 분석을 통한 콘텐츠 통계 자료를 제공|
 | OTT 사용 등급 검사 | 본인의 OTT 사용 빈도와 시간을 통해 OTT서비스 이용도 파악을 돕는 기능 |
-
 
 ### 웹 서비스의 사용자가 데이터 분석 시각화 자료를 통해 얻는 인사이트
 - 본인의 OTT 서비스 이용도 확인
