@@ -8,8 +8,8 @@ p {
 }
 
 input {
-  margin-bottom: 8px;
-  width: 220px;
+  margin-bottom: 0px;
+  width: 400px;
   height: 28px;
   color: white;
   background-color: transparent;
@@ -23,6 +23,17 @@ input:focus {
 
 input::placeholder {
   color: white;
+}
+
+.checkData {
+  text-align: center;
+  width: 350px;
+  height: 30px;
+  color: #f44336;
+}
+
+.nullData {
+  visibility: hidden;
 }
 
 .basicContainer {
@@ -40,13 +51,72 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 70px 0 10px;
+}
+
+.inputText {
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.inputBox {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signupBtn {
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  border: 1.5px solid #ff6f00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.signupBtn:hover {
+  background: rgb(255, 249, 225);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 225, 1) 0%,
+    rgba(255, 223, 163, 1) 100%
+  );
+  color: black;
+}
+
+.signBtn {
+  width: 100px;
+  height: 40px;
+  background-color: gray;
+  border: 1.5px solid gray;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .basicContainer {
@@ -56,6 +126,8 @@ input::placeholder {
 }
 
 .signbackdrop {
+  position: absolute;
+  top: 150px;
   width: 500px;
   height: 750px;
   border-radius: 30px;
@@ -67,4 +139,5 @@ input::placeholder {
   );
   backdrop-filter: blur(10px);
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 }

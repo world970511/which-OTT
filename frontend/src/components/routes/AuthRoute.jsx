@@ -7,14 +7,12 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   const navigate = useNavigate();
 
   return (
-    <Routes>
-      <Route
-        {...rest}
-        render={(props) =>
-          !user && !loading ? navigate("/login") : <Component {...props} />
-        }
-      />
-    </Routes>
+    <Route
+      {...rest}
+      element={(props) =>
+        !user && !loading ? navigate("/login") : <Component {...props} />
+      }
+    />
   );
 };
 

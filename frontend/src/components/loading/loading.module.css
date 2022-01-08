@@ -5,7 +5,7 @@
 }
 
 body {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -13,7 +13,8 @@ body {
 }
 
 .container {
-  position: relative;
+  z-index: 999;
+  position: fixed;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -25,7 +26,7 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: #fff8e1;
+  background: transparent;
   animation: animate 2s linear infinite;
 }
 
@@ -74,6 +75,6 @@ body {
   left: 20px;
   right: 20px;
   bottom: 20px;
-  background: #fff8e1;
+  background: #212121;
   border-radius: 50%;
 }

@@ -1,10 +1,8 @@
 * {
   box-sizing: border-box;
-  color: white;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   margin: 0;
   cursor: default;
 }
@@ -19,7 +17,7 @@ p {
 }
 
 input {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   width: 220px;
   height: 28px;
   color: white;
@@ -47,13 +45,71 @@ input:focus {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 70px 0 10px;
+}
+.inputBox {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputText {
+  color: white;
+  font-weight: bold;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  border: 1.5px solid #ff6f00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: rgb(255, 249, 225);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 225, 1) 0%,
+    rgba(255, 223, 163, 1) 100%
+  );
+  color: black;
+}
+
+.sealBtn {
+  width: 100px;
+  height: 40px;
+  background-color: gray;
+  border: 1.5px solid gray;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 40px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .backdrop {
@@ -68,4 +124,15 @@ input:focus {
   );
   backdrop-filter: blur(10px);
   box-shadow: 2px 7px 15px 8px rgba(0, 0, 0, 0.3);
+}
+
+.checkData {
+  text-align: center;
+  width: 350px;
+  height: 30px;
+  color: #f44336;
+}
+
+.nullData {
+  visibility: hidden;
 }
