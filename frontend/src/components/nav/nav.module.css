@@ -42,12 +42,17 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   margin: 0;
   cursor: default;
 }
 
 a {
+  width: 330px;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   text-decoration: none;
   color: var(--text-color);
@@ -60,21 +65,30 @@ ul {
 
 /* NavBar */
 
+.navContainer {
+}
+
 .navbar {
   position: fixed;
   width: 100%;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   background-color: transparent;
+  text-align: center;
   align-items: center;
   backdrop-filter: blur(10px);
   padding: 16px 300px;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   right: 0;
 }
 
 .navbar__logo {
+  width: 500px;
+  display: flex;
+  height: 80px;
+  align-items: center;
   font-size: var(--font-large);
   color: var(--text-color);
 }
@@ -84,20 +98,18 @@ ul {
 }
 
 .logo_img {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   vertical-align: middle;
   -webkit-filter: opacity(1) drop-shadow(0 0 0 rgb(255, 102, 0));
   filter: opacity(1) drop-shadow(0 0 0 rgb(255, 102, 0));
-  /* color: var(--text-color);
-  -webkit-filter: opacity(1) drop-shadow(0 0 0 orange);
-  filter: opacity(1) drop-shadow(0 0 0 orange); */
 }
 
 .navbarBtn {
   max-width: 100%;
   max-height: 100%;
   font-weight: bold;
+  text-align: center;
   color: var(----color-white);
 }
 
@@ -110,18 +122,21 @@ ul {
   width: 100px;
   padding: 8px 12px;
   margin: 0 4px;
-  text-align: center;
+
   cursor: pointer;
+  color: white;
+  text-align: center;
   border: 1px solid #ff6f00;
   border-radius: var(--size-border-radius);
+  transition: all 0.2s ease-in;
 }
 
 .navbar__menu__item:hover {
-  background: rgb(255, 177, 87);
+  background: rgb(255, 249, 225);
   background: linear-gradient(
-    90deg,
-    rgba(255, 177, 87, 1) 0%,
-    rgba(255, 111, 0, 1) 100%
+    180deg,
+    rgba(255, 249, 225, 1) 0%,
+    rgba(255, 223, 163, 1) 100%
   );
   color: #000000;
 }
@@ -137,6 +152,7 @@ ul {
   margin: 0 4px;
   text-align: center;
   cursor: pointer;
+  color: white;
   border: 1px solid #ffae70;
   border-radius: var(--size-border-radius);
 }

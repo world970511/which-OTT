@@ -1,8 +1,7 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,54 +10,51 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    amt: 2100,
-  },
-];
+const RenderBarChart = (props) => {
+  const w = props.w;
+  const h = props.h;
 
-const RenderBarChart = () => {
-  const w = window.innerWidth * 0.45;
-  const h = window.innerHeight * 0.6;
+  const age = props.age;
+
+  const data = [
+    {
+      name: "5분 미만",
+      시간: `${age[1]}`,
+      amt: 2400,
+    },
+    {
+      name: "10분 미만",
+      시간: `${age[2]}`,
+      amt: 2210,
+    },
+    {
+      name: "30분 미만",
+      시간: `${age[3]}`,
+      amt: 2290,
+    },
+    {
+      name: "1시간 미만",
+      시간: `${age[4]}`,
+      amt: 2000,
+    },
+    {
+      name: "2시간 미만",
+      시간: `${age[5]}`,
+      amt: 2181,
+    },
+    {
+      name: "2시간 이상",
+      시간: `${age[6]}`,
+      amt: 2500,
+    },
+  ];
 
   return (
     <div>
       <ResponsiveContainer width={w} height={h}>
         <BarChart
-          width={500}
-          height={300}
+          width={w}
+          height={h}
           data={data}
           margin={{
             top: 20,
@@ -72,8 +68,7 @@ const RenderBarChart = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-          <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+          <Bar dataKey="시간" stackId="a" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
     </div>

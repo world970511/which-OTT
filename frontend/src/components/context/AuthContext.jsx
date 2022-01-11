@@ -6,71 +6,109 @@ const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const [userClass, setUserClass] = useState({});
+  const [userAge, setUserAge] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userGender, setUserGender] = useState("");
+
   const navigate = useNavigate();
 
+  const [selectedVideoTitle, setSelectedVideoTitle] = useState([]);
+  const [selectedVideoList, setSelectedVideoList] = useState(0);
+
+  const [common, setCommon] = useState([]);
+  const [original, setOriginal] = useState([]);
+
   const logout = useCallback(() => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("nickname");
     setUser(null);
     setLoading(false);
     navigate("/");
   }, []);
 
   const loadUser = () => {
-    // const url = "";
-    // var config = {
-    //   method: "get",
-    //   url: "/loadUser",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //     // `Authorization`: `Bearer ${token}`,
-    //   }
-    // };
-    // axios(config)
-    //   .then((res) => {
-    //     // 토큰 저장
-    //     if (res.status === 200) {
-    //       const user = res.data.user;
-    //       setUser(user);
-    //       setLoading(false);
-    //       navigate("/");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //   });
-    // navigate("/");
-
-    setUser("eliceda");
+    setUser(sessionStorage.getItem("nickname"));
     setLoading(false);
     navigate("/");
   };
 
-  const handleLogin = ({ newToken }) => {
-    newToken && console.log("newToken");
-    console.log("newToken : ", newToken);
+  const handleLogin = ({ newToken, nickname }) => {
     if (!newToken) {
       console.error("no new token");
     }
-    localStorage.setItem("token", newToken);
+    sessionStorage.setItem("token", newToken);
+    sessionStorage.setItem("nickname", nickname);
     loadUser();
   };
 
-  console.log("user", user);
+  const handleUserClass = ({ classTest, userAge, userName, userGender }) => {
+    if (!classTest) {
+      console.log("new classTest");
+    }
+    setUserClass(classTest);
+    setUserAge(userAge);
+    setUserName(userName);
+    setUserGender(userGender);
+    userClass && navigate("/result");
+  };
 
   useEffect(() => {
-    // token이 localstorage 에 있다면 loadUser 호출
-    if (localStorage.getItem("token")) loadUser();
+    if (sessionStorage.getItem("token")) loadUser();
     else {
       logout();
     }
   }, []);
 
+  const selectList = ({ videoList }) => {
+    setSelectedVideoList(videoList);
+  };
+
+  const checkedVideo = ({ videoTitle }) => {
+    const setTitle = selectedVideoTitle.concat(videoTitle);
+    setSelectedVideoTitle(setTitle);
+  };
+
+  const removeVideo = ({ videoTitle }) => {
+    let index = selectedVideoTitle.indexOf(videoTitle);
+    const setTitle = selectedVideoTitle;
+    if (index > -1) {
+      setTitle.splice(index, 1);
+    }
+    setSelectedVideoTitle(setTitle);
+  };
+
+  const clearVideo = () => {
+    setSelectedVideoTitle([]);
+  };
+
+  const platformRank = ({ platform }) => {
+    platform && setCommon(platform.common_rank);
+    platform && setOriginal(platform.original_rank);
+    navigate("/stat");
+  };
+
   const store = {
     user,
     loading,
+    userClass,
+    userAge,
+    userName,
+    userGender,
+    selectedVideoTitle,
+    selectedVideoList,
+    common,
+    original,
     handleLogin,
     logout,
     setUser,
+    handleUserClass,
+    checkedVideo,
+    removeVideo,
+    selectList,
+    platformRank,
+    clearVideo,
   };
 
   return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
